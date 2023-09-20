@@ -13,16 +13,18 @@ public class Cameramovement : MonoBehaviour
     void Start()
     {
         
-       // Vector3 fdf = new Vector3 player.GetComponent<RectTransform>().localPosition.x + ;
-     //  _transform.localPosition = fdf ;
-        
+       Vector3 fdf = new Vector3 (player.GetComponent<RectTransform>().localPosition.x, player.GetComponent<RectTransform>().localPosition.y, -10) ;
+     _transform.localPosition = fdf;
+
     }
 
- 
+
     void Update()
     {
-        _transform.localPosition = player.GetComponent<RectTransform>().localPosition;
-        Debug.Log(player.GetComponent<RectTransform>().localPosition.x);
-        Debug.Log("yeet" + player.GetComponent<RectTransform>().localPosition);
+        Vector3 fdf = new Vector3(player.GetComponent<RectTransform>().localPosition.x, player.GetComponent<RectTransform>().localPosition.y, -10);
+        _transform.localPosition = fdf;
+
+
+        //   +
     }
 }
