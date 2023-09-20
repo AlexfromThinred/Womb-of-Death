@@ -1,0 +1,30 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Arm : MonoBehaviour
+{
+    public Movement movement;
+    public void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("wall") == true)
+        {
+            movement.xMin = -0.004f;
+            movement.xMax = 0.004f;
+          //  Debug.Log()
+        }
+            
+
+
+    }
+    public void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("wall") == true)
+        {
+            movement.xMax = 2f;
+            movement.xMin = -2f;
+        }
+
+
+    }
+}

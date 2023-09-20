@@ -10,6 +10,11 @@ public class Cameramovement : MonoBehaviour
     public GameObject player;
 
 
+    public void Awake()
+    {
+        _transform = GetComponent<RectTransform>();
+    }
+
     void Start()
     {
         
