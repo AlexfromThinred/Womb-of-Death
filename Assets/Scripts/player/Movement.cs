@@ -13,7 +13,7 @@ public class Movement : MonoBehaviour
     public float currentpropelltime;
     public bool isgoingtoleft;
 
-
+    public Animator animator;
 
     public float playermovementspeed;
     public float playermovementspeedbuff = 0;
@@ -28,6 +28,7 @@ public class Movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponentInChildren<Animator>();
         playercollider = GetComponent<BoxCollider2D>();
         yeet = FindObjectOfType<Rigidbody2D>();
         gravitymultiplier = -0.5f;
@@ -36,8 +37,8 @@ public class Movement : MonoBehaviour
         isonwall = false;
         ispropelling = false;
     }
+   
 
-  
     // Update is called once per frame
     void Update()
     {
@@ -75,6 +76,7 @@ public class Movement : MonoBehaviour
             }
 
         }
+       
 
 
         playermovementspeed = Mathf.Clamp(playermovementspeed, xMin, xMax);
@@ -87,11 +89,17 @@ public class Movement : MonoBehaviour
 
         if (yeet.velocity.y < 0)
         {
+            animator.ResetTrigger("Jump");
             yeet.velocity += 0.025f * Vector2.down;
-        }
+        } 
 
-      
+        if (yeet.velocity.y > 0) animator.SetBool("acceleratedown", false); else animator.SetBool("acceleratedown", true);
 
+        if (grounded) animator.SetBool("isgrounded", true); else animator.SetBool("isgrounded", false);
+        // animator.SetBool("dontdownaccel", true); else animator.SetBool("downaccel", false);
+
+
+        if (grounded && playermovementspeed != 0) animator.SetBool("walking", true); else animator.SetBool("walking", false);
 
     }
 
@@ -99,6 +107,8 @@ public class Movement : MonoBehaviour
 
     public void jump()
     {
+        animator.SetTrigger("Jump");
+     
        
         playerymov = jumpspeed;
         Vector2 jumpvelocity = new Vector2(playermovementspeed, playerymov);
