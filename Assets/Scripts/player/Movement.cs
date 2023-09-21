@@ -35,9 +35,9 @@ public class Movement : MonoBehaviour
         if (grounded && Input.GetKey(KeyCode.Space)) jump();
         if (!Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A) && grounded == true) playermovementspeed = 0;
        
-        if(Input.GetKey(KeyCode.D)) playermovementspeed += 0.01f + playermovementspeedbuff ;
+        if(Input.GetKey(KeyCode.D)) playermovementspeed += 0.02f + playermovementspeedbuff ;
 
-        if (Input.GetKey(KeyCode.A)) playermovementspeed -= 0.01f + playermovementspeedbuff;
+        if (Input.GetKey(KeyCode.A)) playermovementspeed -= 0.02f + playermovementspeedbuff;
       
 
         playermovementspeed = Mathf.Clamp(playermovementspeed, xMin, xMax);
@@ -47,15 +47,10 @@ public class Movement : MonoBehaviour
         if (playermovementspeed > 0) transform.localScale = new Vector2(3, 3);
         if (playermovementspeed < 0) transform.localScale = new Vector2(-3, 3);
 
-        //bug.Log(playerymov);
-        //   if (yeet.velocity.y < 0) { playerymov += gravitymultiplier; }
-
-        //  Vector2 pvelocityy = new Vector2(yeet.velocity.x, playerymov);
-        //  yeet.velocity = pvelocityy;
-
+        // Fall Accelleration
         if (yeet.velocity.y < 0)
         {
-            yeet.velocity += 0.018f * Vector2.down;
+            yeet.velocity += 0.03f * Vector2.down;
         }
 
 
