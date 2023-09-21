@@ -1,4 +1,4 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,7 +11,8 @@ public class Arm : MonoBehaviour
         {
             movement.xMin = -0.004f;
             movement.xMax = 0.004f;
-          //  Debug.Log()
+         
+            movement.isonwall = true;
         }
             
 
@@ -23,6 +24,7 @@ public class Arm : MonoBehaviour
         {
             movement.xMax = 2f;
             movement.xMin = -2f;
+            movement.isonwall = false;
         }
 
 

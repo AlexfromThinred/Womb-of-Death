@@ -18,7 +18,7 @@ public class Cameramovement : MonoBehaviour
     void Start()
     {
         
-       Vector3 fdf = new Vector3 (player.GetComponent<RectTransform>().localPosition.x, player.GetComponent<RectTransform>().localPosition.y, -10) ;
+       Vector3 fdf = new Vector3 (player.GetComponent<RectTransform>().localPosition.x, player.GetComponent<RectTransform>().localPosition.y +2, -10) ;
      _transform.localPosition = fdf;
 
     }
@@ -26,7 +26,7 @@ public class Cameramovement : MonoBehaviour
 
     void Update()
     {
-        Vector3 fdf = new Vector3(player.GetComponent<RectTransform>().localPosition.x, player.GetComponent<RectTransform>().localPosition.y, -10);
+        Vector3 fdf = new Vector3(player.GetComponent<RectTransform>().localPosition.x, player.GetComponent<RectTransform>().localPosition.y + 2, -10);
         _transform.localPosition = fdf;
 
 

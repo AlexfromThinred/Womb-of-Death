@@ -5,8 +5,18 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     public bool grounded;
-    float playermovementspeed;
-    float playermovementspeedbuff = 0;
+    public bool isonwall;
+    public bool ispropelling;
+    public float propelltime;
+    public bool boosted;
+
+    public float currentpropelltime;
+    public bool isgoingtoleft;
+
+
+
+    public float playermovementspeed;
+    public float playermovementspeedbuff = 0;
     public Rigidbody2D yeet;
     public float jumpspeed;
     public float gravitymultiplier;
@@ -21,24 +31,51 @@ public class Movement : MonoBehaviour
         playercollider = GetComponent<BoxCollider2D>();
         yeet = FindObjectOfType<Rigidbody2D>();
         gravitymultiplier = -0.5f;
-        jumpspeed = 3.5f;
-        xMin = -2f - playermovementspeed; xMax = 2f + playermovementspeed;
+        jumpspeed = 4.5f;
+        xMin = -3f - playermovementspeedbuff; xMax = 3f + playermovementspeedbuff;
+        isonwall = false;
+        ispropelling = false;
     }
 
   
     // Update is called once per frame
     void Update()
     {
+        if (grounded && boosted == false || isonwall) playermovementspeedbuff = 0;
+        xMin = -3f - playermovementspeedbuff; xMax = 3f + playermovementspeedbuff;
 
-      
 
-        if (grounded && Input.GetKey(KeyCode.Space)) jump();
-        if (!Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A) && grounded == true) playermovementspeed = 0;
+        if (grounded && Input.GetKey(KeyCode.Space)) jump(); else if (!grounded && Input.GetKey(KeyCode.Space) && isonwall && !ispropelling) walljump();
+
+
+
+
+     
+        if (!Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A) && grounded == true) { playermovementspeed = 0; }
+
+
+
+
        
-        if(Input.GetKey(KeyCode.D)) playermovementspeed += 0.01f + playermovementspeedbuff ;
+        if(Input.GetKey(KeyCode.D) && ispropelling == false) playermovementspeed += 0.02f + playermovementspeedbuff ;
 
-        if (Input.GetKey(KeyCode.A)) playermovementspeed -= 0.01f + playermovementspeedbuff;
-      
+        if (Input.GetKey(KeyCode.A) && ispropelling == false) playermovementspeed -= 0.02f + playermovementspeedbuff;
+
+
+
+        if (ispropelling == true)
+        {
+           
+
+            if (isgoingtoleft == true) { playermovementspeed = -3 - playermovementspeedbuff; }
+            else
+            {
+                playermovementspeed = 3 + playermovementspeedbuff;
+                Debug.Log(isgoingtoleft);
+            }
+
+        }
+
 
         playermovementspeed = Mathf.Clamp(playermovementspeed, xMin, xMax);
 
@@ -47,18 +84,13 @@ public class Movement : MonoBehaviour
         if (playermovementspeed > 0) transform.localScale = new Vector2(3, 3);
         if (playermovementspeed < 0) transform.localScale = new Vector2(-3, 3);
 
-        //bug.Log(playerymov);
-        //   if (yeet.velocity.y < 0) { playerymov += gravitymultiplier; }
-
-        //  Vector2 pvelocityy = new Vector2(yeet.velocity.x, playerymov);
-        //  yeet.velocity = pvelocityy;
 
         if (yeet.velocity.y < 0)
         {
-            yeet.velocity += 0.018f * Vector2.down;
+            yeet.velocity += 0.025f * Vector2.down;
         }
 
-
+      
 
 
     }
@@ -67,14 +99,41 @@ public class Movement : MonoBehaviour
 
     public void jump()
     {
-        Debug.Log("jeet");
+       
         playerymov = jumpspeed;
         Vector2 jumpvelocity = new Vector2(playermovementspeed, playerymov);
     
 
         yeet.velocity = jumpvelocity;
+        
+
+
+    }
+    private IEnumerator Wait()
+    {
+       
+        yield return new WaitForSeconds(0.4f);
+       
+        ispropelling = false;
+    }
+    public void walljump()
+    {
+
+
+        if (playermovementspeed > 0) { playermovementspeed = -3f; isgoingtoleft = true;  } else if (playermovementspeed < 0) { playermovementspeed = 3f; isgoingtoleft = false; }
+
+
+        ispropelling = true;
+
+        playerymov = jumpspeed;
+        Vector2 jumpvelocity = new Vector2(playermovementspeed, playerymov);
        
 
+        yeet.velocity = jumpvelocity;
+
+        StartCoroutine(Wait());
+
+     
 
     }
 }
