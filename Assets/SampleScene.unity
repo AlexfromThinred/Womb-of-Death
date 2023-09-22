@@ -5020,6 +5020,38 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1322625575 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3632618936604917165, guid: e98d82efd45711f48b051597301740c5,
+    type: 3}
+  m_PrefabInstance: {fileID: 2719251274445079933}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1322625577 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3139499753578725263, guid: e98d82efd45711f48b051597301740c5,
+    type: 3}
+  m_PrefabInstance: {fileID: 2719251274445079933}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1322625579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1322625575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b60261fbb7f31946963ce947eb33ea0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spellobject: {fileID: 11400000, guid: dc362aa4d030aeb4e9be98e72479a958, type: 2}
+  obj: {fileID: 6936343112673328755, guid: 767f593a4336f1e4e8b44274c5d9d1d4, type: 3}
+  animator: {fileID: 1322625577}
+  cooldown: 0
+  currentcooldown: 0
+  cancast: 0
+  wordforanomationtrigger: 
+  movement: {fileID: 597894269}
 --- !u!1 &1345116473
 GameObject:
   m_ObjectHideFlags: 0
@@ -8726,6 +8758,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 26194901645153798, guid: e98d82efd45711f48b051597301740c5,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 216087541287879734, guid: e98d82efd45711f48b051597301740c5,
         type: 3}
       propertyPath: m_Size.x
@@ -8828,6 +8865,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 7129381305258570809}
+    - targetCorrespondingSourceObject: {fileID: 3632618936604917165, guid: e98d82efd45711f48b051597301740c5,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1322625579}
   m_SourcePrefab: {fileID: 100100000, guid: e98d82efd45711f48b051597301740c5, type: 3}
 --- !u!1 &7129381305258570808 stripped
 GameObject:
