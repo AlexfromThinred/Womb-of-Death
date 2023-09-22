@@ -33,7 +33,8 @@ public class Arm : MonoBehaviour
     {
         if(collision.CompareTag("weapon") == true)
         {
-            collision.gameObject.GetComponent
+            GetComponentInParent<Memory>().weaponPickup(collision.gameObject.GetComponent<CollectWeapon>().weaponData);
+            Destroy(collision.gameObject);
         }
     }
 }

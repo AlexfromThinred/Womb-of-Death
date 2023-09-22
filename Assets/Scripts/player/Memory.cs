@@ -17,5 +17,8 @@ public class Memory : MonoBehaviour
      {
       
      }
-
+    public void weaponPickup(WeaponData weaponData)
+    {
+        currentItem = weaponData.weaponName;
+    }
 }
