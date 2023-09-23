@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 3555944027170265463}
   - component: {fileID: 326163890851919210}
   - component: {fileID: 6875231862313171976}
-  - component: {fileID: 8613526313137008117}
   - component: {fileID: 913776508830085253}
+  - component: {fileID: 4637690367214129919}
   m_Layer: 0
   m_Name: Doomshroom
   m_TagString: Untagged
@@ -132,19 +132,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5675554, y: 0.9342203}
   m_EdgeRadius: 0
---- !u!114 &8613526313137008117
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 541822562348961440}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fe52468f790fd14aaac139947563372, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
 --- !u!70 &913776508830085253
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -180,3 +167,18 @@ CapsuleCollider2D:
   m_Offset: {x: 0.000000011113523, y: 0.093227}
   m_Size: {x: 1.000001, y: 0.43936294}
   m_Direction: 1
+--- !u!114 &4637690367214129919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 541822562348961440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fe52468f790fd14aaac139947563372, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  obj: {fileID: 2653685686588842468, guid: 17e7d9d1f0e320146a2183328fa4e34a, type: 3}
+  objc: {fileID: 0}
