@@ -66,6 +66,7 @@
     <Compile Include="Assets\Scripts\player\Playerboost.cs" />
     <Compile Include="Assets\Scripts\player\Feet.cs" />
     <Compile Include="Assets\Scripts\player\Spells und Würfe\Spells.cs" />
+    <Compile Include="Assets\Scripts\player\Playerhealth.cs" />
     <Compile Include="Assets\Scripts\player\Cameramovement.cs" />
     <Compile Include="Assets\Scripts\player\Memory.cs" />
     <Compile Include="Assets\Scripts\player\Arm.cs" />

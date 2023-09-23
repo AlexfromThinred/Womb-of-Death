@@ -29,17 +29,15 @@ public class Spellmovement : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
 
-        Debug.Log(other.gameObject);
-
-        // if (other.gameObject.GetComponent<Enemyhealth>() == null) { Debug.Log("no enemy"); return; }
 
 
-        Debug.Log(spell.damage);
-        //  other.GetComponent<Enemyhealth>().dealdamage(spell.damage);
+        if (other.gameObject.GetComponent<Enemyhealth>() == null) { Debug.Log("no enemy"); return; }
+
+
+      
+         other.GetComponent<Enemyhealth>().dealdamage(spell.damage);
+        Destroy(gameObject);
     }
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        Debug.Log("aweergawgwgeagaqehrtawh");
 
-    }
+
 }
