@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 031fb040e3e641d4aad0c6af5a708120
+guid: 45ec294713cee114899261651d85b42b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Shroomstonwalk_0
+      name: fireballshoot_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4cf4c2b64253b0f45872f27a2cee7807
-      internalID: 1809480787
+      spriteID: 780ed5aeb9fcb8547932ce02eda6d579
+      internalID: 1774233653
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shroomstonwalk_1
+      name: fireballshoot_1
       rect:
         serializedVersion: 2
         x: 32
@@ -145,14 +145,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ad9b4f7b6bc656040a966e145bac79c7
-      internalID: -1430678319
+      spriteID: be6cc6c3ecf07d04b874bf860e077e7f
+      internalID: -1515228402
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shroomstonwalk_2
+      name: fireballshoot_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15efb48064b8c3441a38b6dba49d795f
+      internalID: -1806778004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireballshoot_3
       rect:
         serializedVersion: 2
         x: 0
@@ -166,14 +187,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 212320f563c1c0940b596361fc4d5eee
-      internalID: -74416093
+      spriteID: deb321a7517a6c943b4aceca0b802208
+      internalID: -663607837
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shroomstonwalk_3
+      name: fireballshoot_4
       rect:
         serializedVersion: 2
         x: 32
@@ -187,14 +208,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: db2c5588341a23d4a9773640b27c9ce7
-      internalID: -1658176189
+      spriteID: 658ea542888e89a4fac0b8859a525293
+      internalID: 516385428
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shroomstonwalk_4
+      name: fireballshoot_5
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb791b35f034aea46b2ff4819604f91c
+      internalID: -463761241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireballshoot_6
       rect:
         serializedVersion: 2
         x: 0
@@ -208,14 +250,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 987e845b36c880f42bb63effabe99fb6
-      internalID: -1311811066
+      spriteID: 016268efc3289864db2273aaf99d06fc
+      internalID: 1003147858
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shroomstonwalk_5
+      name: fireballshoot_7
       rect:
         serializedVersion: 2
         x: 32
@@ -229,8 +271,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9122e8dc6aae8d54f87d8ec9f17e2e27
-      internalID: -1838903433
+      spriteID: 7d8d23a15df070f4983bb15c54e16e55
+      internalID: 1564375462
       vertices: []
       indices: 
       edges: []
@@ -246,12 +288,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Shroomstonwalk_0: 1809480787
-      Shroomstonwalk_1: -1430678319
-      Shroomstonwalk_2: -74416093
-      Shroomstonwalk_3: -1658176189
-      Shroomstonwalk_4: -1311811066
-      Shroomstonwalk_5: -1838903433
+      fireballshoot_0: 1774233653
+      fireballshoot_1: -1515228402
+      fireballshoot_2: -1806778004
+      fireballshoot_3: -663607837
+      fireballshoot_4: 516385428
+      fireballshoot_5: -463761241
+      fireballshoot_6: 1003147858
+      fireballshoot_7: 1564375462
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

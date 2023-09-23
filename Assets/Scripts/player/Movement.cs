@@ -80,7 +80,7 @@ public class Movement : MonoBehaviour
                 else
                 {
                     playermovementspeed = 3 + playermovementspeedbuff;
-                    Debug.Log(isgoingtoleft);
+                   
                 }
 
             }

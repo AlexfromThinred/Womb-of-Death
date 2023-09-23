@@ -60,7 +60,9 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\weapons\WeaponData.cs" />
     <Compile Include="Assets\Scripts\weapons\CollectWeapon.cs" />
+    <Compile Include="Assets\Scripts\colliderawrg.cs" />
     <Compile Include="Assets\Scripts\player\Spells und Würfe\singlespellscripts\Spellmovement.cs" />
+    <Compile Include="Assets\Scripts\Enemys\Basics\Enemyhealth.cs" />
     <Compile Include="Assets\Scripts\player\Playerboost.cs" />
     <Compile Include="Assets\Scripts\player\Feet.cs" />
     <Compile Include="Assets\Scripts\player\Spells und Würfe\Spells.cs" />

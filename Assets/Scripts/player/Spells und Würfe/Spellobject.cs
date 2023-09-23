@@ -12,7 +12,7 @@ public class Spellobject : ScriptableObject
     public float spellcooldown;
     public bool setsyoustill;
     public string animationtriggerword;
-    public float damage;
+    public int damage;
 
     public float xmovement, ymovement;
 

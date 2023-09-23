@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c1a531a649cdbc4a8d632afa3309cc8, type: 3}
   m_Name: Fireball
   m_EditorClassIdentifier: 
-  spellcooldown: 4
+  spellcooldown: 2
   setsyoustill: 1
   animationtriggerword: fireball
-  damage: 1
+  damage: 3
   xmovement: 0.009
   ymovement: 0
   spellName: fireball

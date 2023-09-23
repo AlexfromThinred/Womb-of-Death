@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 031fb040e3e641d4aad0c6af5a708120
+guid: f551054ad1b8703408c3c18735ae314f
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Shroomstonwalk_0
+      name: placeholdergrastile_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 64
-        width: 32
-        height: 32
+        y: 61
+        width: 64
+        height: 61
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4cf4c2b64253b0f45872f27a2cee7807
-      internalID: 1809480787
+      spriteID: b58271f0cdbc5ab419516e9a369516bc
+      internalID: -1188613347
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shroomstonwalk_1
+      name: placeholdergrastile_1
       rect:
         serializedVersion: 2
-        x: 32
-        y: 64
-        width: 32
-        height: 32
+        x: 64
+        y: 61
+        width: 64
+        height: 61
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,62 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ad9b4f7b6bc656040a966e145bac79c7
-      internalID: -1430678319
+      spriteID: 9e55de95743b6a543850e2259b34ebfe
+      internalID: -1022365588
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shroomstonwalk_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 212320f563c1c0940b596361fc4d5eee
-      internalID: -74416093
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Shroomstonwalk_3
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: db2c5588341a23d4a9773640b27c9ce7
-      internalID: -1658176189
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Shroomstonwalk_4
+      name: placeholdergrastile_2
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 32
+        width: 64
+        height: 61
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 987e845b36c880f42bb63effabe99fb6
-      internalID: -1311811066
+      spriteID: 69832f11ac10ee44bb412ef8ebe4c781
+      internalID: -213031731
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shroomstonwalk_5
+      name: placeholdergrastile_3
       rect:
         serializedVersion: 2
-        x: 32
+        x: 64
         y: 0
-        width: 32
-        height: 32
+        width: 64
+        height: 61
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,8 +187,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9122e8dc6aae8d54f87d8ec9f17e2e27
-      internalID: -1838903433
+      spriteID: feae84743622b514d8db524bc6699843
+      internalID: -1946362107
       vertices: []
       indices: 
       edges: []
@@ -246,12 +204,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Shroomstonwalk_0: 1809480787
-      Shroomstonwalk_1: -1430678319
-      Shroomstonwalk_2: -74416093
-      Shroomstonwalk_3: -1658176189
-      Shroomstonwalk_4: -1311811066
-      Shroomstonwalk_5: -1838903433
+      placeholdergrastile_0: -1188613347
+      placeholdergrastile_1: -1022365588
+      placeholdergrastile_2: -213031731
+      placeholdergrastile_3: -1946362107
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
