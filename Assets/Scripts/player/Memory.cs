@@ -7,6 +7,7 @@ using UnityEngine;
 public class Memory : MonoBehaviour
 {
     public string currentItem;
+    public WeaponData currentWeaponData;
 
     void Start()
     {
@@ -20,5 +21,6 @@ public class Memory : MonoBehaviour
     public void weaponPickup(WeaponData weaponData)
     {
         currentItem = weaponData.weaponName;
+        currentWeaponData = weaponData;
     }
 }

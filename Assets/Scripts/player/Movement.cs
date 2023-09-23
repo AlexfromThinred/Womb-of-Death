@@ -34,7 +34,7 @@ public class Movement : MonoBehaviour
         movementrestriction = false;
         animator = GetComponentInChildren<Animator>();
         playercollider = GetComponent<BoxCollider2D>();
-        yeet = FindObjectOfType<Rigidbody2D>();
+        yeet = GetComponent<Rigidbody2D>();
         gravitymultiplier = -0.5f;
         jumpspeed = 4.5f;
         xMin = -3f - playermovementspeedbuff; xMax = 3f + playermovementspeedbuff;

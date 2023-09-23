@@ -58,14 +58,22 @@
     <Analyzer Include="D:\Unity\2022.3.9f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\weapons\bowProjectile.cs" />
     <Compile Include="Assets\Scripts\weapons\WeaponData.cs" />
     <Compile Include="Assets\Scripts\weapons\CollectWeapon.cs" />
+    <Compile Include="Assets\Scripts\colliderawrg.cs" />
+    <Compile Include="Assets\Scripts\player\Spells und Würfe\singlespellscripts\Spellmovement.cs" />
+    <Compile Include="Assets\Scripts\Enemys\Basics\Enemyhealth.cs" />
     <Compile Include="Assets\Scripts\player\Playerboost.cs" />
     <Compile Include="Assets\Scripts\player\Feet.cs" />
+    <Compile Include="Assets\Scripts\player\Spells und Würfe\Spells.cs" />
+    <Compile Include="Assets\Scripts\player\Attack.cs" />
+    <Compile Include="Assets\Scripts\player\Playerhealth.cs" />
     <Compile Include="Assets\Scripts\player\Cameramovement.cs" />
     <Compile Include="Assets\Scripts\player\Memory.cs" />
     <Compile Include="Assets\Scripts\player\Arm.cs" />
     <Compile Include="Assets\Scripts\player\Movement.cs" />
+    <Compile Include="Assets\Scripts\player\Spells und Würfe\Spellobject.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
