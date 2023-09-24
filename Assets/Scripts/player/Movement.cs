@@ -52,7 +52,7 @@ public class Movement : MonoBehaviour
         {
             if (gameObject.transform.localScale.x < 1f) { playermovementspeed = -3f - playermovementspeedbuff; }
             else playermovementspeed = 3f +playermovementspeedbuff;
-            yeet.velocity = new Vector2(playermovementspeed + playermovementspeedbuff, 0f);
+            yeet.velocity = new Vector2(playermovementspeed, 0f);
         }
 
         if (movementrestriction == false)
@@ -74,9 +74,9 @@ public class Movement : MonoBehaviour
 
 
 
-            if (Input.GetKey(KeyCode.D) && ispropelling == false && boosted == false) playermovementspeed += 0.02f + playermovementspeedbuff;
+            if (Input.GetKey(KeyCode.D) && ispropelling == false && boosted == false) playermovementspeed += 0.03f + playermovementspeedbuff;
 
-            if (Input.GetKey(KeyCode.A) && ispropelling == false && boosted == false) playermovementspeed -= 0.02f + playermovementspeedbuff;
+            if (Input.GetKey(KeyCode.A) && ispropelling == false && boosted == false) playermovementspeed -= 0.03f + playermovementspeedbuff;
 
 
 
