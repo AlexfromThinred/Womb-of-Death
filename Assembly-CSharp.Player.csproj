@@ -69,6 +69,7 @@
     <Compile Include="Assets\Scripts\player\Spells und Würfe\Spells.cs" />
     <Compile Include="Assets\Scripts\player\Attack.cs" />
     <Compile Include="Assets\Scripts\player\Playerhealth.cs" />
+    <Compile Include="Assets\Scripts\Enemys\Basics\Showdamagenumber.cs" />
     <Compile Include="Assets\Scripts\player\Cameramovement.cs" />
     <Compile Include="Assets\Scripts\player\Memory.cs" />
     <Compile Include="Assets\Scripts\player\Arm.cs" />

@@ -8,8 +8,6 @@ public class Attack : MonoBehaviour
     public string currentWeapon;
     public bool canMeeleAttack;
     public bool canRangedAttack;
-    public float meleeCooldown;
-    public float rangedCooldown;
     public float currentRangedCooldown;
     public float currentMeeleCooldown;
     public GameObject arrow;
@@ -26,7 +24,8 @@ public class Attack : MonoBehaviour
             {
                 case WeaponData.Type.Bow: Debug.Log("Bow");
                     // Bow Default Attack
-                //    var projectile = Instantiate(arrow, new Vector3(gameObject.transform.localPosition.x,gameObject.transform.localPosition.y, 0), Quaternion.Euler(Physics.));
+                     var projectile = Instantiate(arrow, new Vector3(gameObject.transform.localPosition.x,gameObject.transform.localPosition.y, 0), 
+                          Quaternion.Euler(0f, 0f, (Mathf.Atan2(Input.mousePosition.y - Camera.main.WorldToScreenPoint(gameObject.transform.localPosition).y, Input.mousePosition.x - Camera.main.WorldToScreenPoint(gameObject.transform.localPosition).x) * Mathf.Rad2Deg)));
                    break;
                 default: Debug.Log("none");
                    break;
