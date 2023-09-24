@@ -11,7 +11,7 @@ public class WeaponData : ScriptableObject
     public string itemDescription = "New Description";
     public Sprite sprite;
     public Sprite projectileSprite;
-    public float damage = 0;
+    public int damage = 0;
     public float cooldown = 1;
     public enum Type { Default, Sword, Bow }
     public Type type = Type.Default;

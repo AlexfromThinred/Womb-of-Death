@@ -15,7 +15,6 @@ public class Spellmovement : MonoBehaviour
         renderer = GetComponent<SpriteRenderer>();
         gameObject.GetComponent<Collider2D>().enabled = false;
         gameObject.GetComponent<Collider2D>().enabled = true;
-
     }
 
     // Update is called once per frame
@@ -28,13 +27,7 @@ public class Spellmovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-
-
-
         if (other.gameObject.GetComponent<Enemyhealth>() == null) { Debug.Log("no enemy"); return; }
-
-
-      
          other.GetComponent<Enemyhealth>().dealdamage(spell.damage);
         Destroy(gameObject);
     }
