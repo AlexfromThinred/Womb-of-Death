@@ -106,7 +106,7 @@ public class Movement : MonoBehaviour
             if (yeet.velocity.y < 0)
             {
                 animator.ResetTrigger("Jump");
-                yeet.velocity += 0.025f * Vector2.down;
+                yeet.velocity += 0.035f * Vector2.down;
             }
 
             if (yeet.velocity.y > 0) animator.SetBool("acceleratedown", false); else animator.SetBool("acceleratedown", true);
