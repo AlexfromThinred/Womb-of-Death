@@ -7,10 +7,9 @@ public class Arm : MonoBehaviour
     public Movement movement;
     public void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.CompareTag("wall") == true)
+        if (collision.GetComponent<isawall>() != null)
         {
-            movement.xMin = -0.004f;
-            movement.xMax = 0.004f;
+       
          
             movement.isonwall = true;
         }
@@ -20,10 +19,9 @@ public class Arm : MonoBehaviour
     }
     public void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("wall") == true)
+        if (collision.GetComponent<isawall>() != null)
         {
-            movement.xMax = 2f;
-            movement.xMin = -2f;
+        
             movement.isonwall = false;
         }
 
