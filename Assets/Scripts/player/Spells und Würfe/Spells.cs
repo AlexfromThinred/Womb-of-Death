@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class Spells : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class Spells : MonoBehaviour
 
     void Start()
     {
-        // animator
+     
         cancast = true;
         getspellinfos(spellobject);
    
@@ -31,7 +32,7 @@ public class Spells : MonoBehaviour
         if (currentcooldown >= cooldown) { cancast = true; currentcooldown = 0; }
     }
 
-    // Update is called once per frame
+   
     void Update()
     {
         
@@ -46,12 +47,15 @@ public class Spells : MonoBehaviour
 
     public void Usespell(Spellobject spell)
     {
-        // Instantiate oder animator.gettrigger to start animation and use own function
+      
         Debug.Log(wordforanomationtrigger);
         animator.SetTrigger(wordforanomationtrigger);
         cancast = false;
         if (spell.setsyoustill == true) movement.movementrestriction = true;
-
+        if(movement.boosted == false)
+        movement.yeet.velocity = new Vector2(0,0);
+       
+       
 
     }
 
@@ -72,14 +76,37 @@ public class Spells : MonoBehaviour
 
     public void resetmovementrestriction()
     {
+        
         movement.movementrestriction = false;
+        movement.yeet.gravityScale = 0.5f;
+
+        
     }
 
     public  void instanspell()
     {
-        var fireball = Instantiate(obj, new Vector3(movement.transform.localPosition.x, movement.transform.localPosition.y + 1, 0), Quaternion.identity);
+        var fireball = Instantiate(obj, new Vector3(movement.transform.localPosition.x, movement.transform.localPosition.y, 0), Quaternion.identity);
         if( movement.GetComponent<RectTransform>().localScale.x < 0) fireball.GetComponent<Spellmovement>().goestoleft = true;
 
     }
 
+   public void pushback(AnimationEvent animation)
+    {
+        float x = animation.floatParameter;
+            int y = animation.intParameter;
+      
+
+        if (movement.transform.localScale.x < 1f)
+        {
+            movement.yeet.velocity = new Vector2(x, y);
+            movement.playermovementspeed = 3f;
+        }
+        else
+        {
+            movement.yeet.velocity = new Vector2(-x, y);
+            movement.playermovementspeed = -3f;
+        }
+
+        
+    }
 }

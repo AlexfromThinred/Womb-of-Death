@@ -36,7 +36,7 @@ public class Movement : MonoBehaviour
         playercollider = GetComponent<BoxCollider2D>();
         yeet = GetComponent<Rigidbody2D>();
         gravitymultiplier = -0.5f;
-        jumpspeed = 4.5f;
+        jumpspeed = 6.5f;
         xMin = -3f - playermovementspeedbuff; xMax = 3f + playermovementspeedbuff;
         isonwall = false;
         ispropelling = false;
@@ -46,12 +46,20 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+      
+        xMin = -3f - playermovementspeedbuff; xMax = 3f + playermovementspeedbuff;
+        if (boosted == true)
+        {
+            if (gameObject.transform.localScale.x < 1f) { playermovementspeed = -3f - playermovementspeedbuff; }
+            else playermovementspeed = 3f +playermovementspeedbuff;
+            yeet.velocity = new Vector2(playermovementspeed + playermovementspeedbuff, 0f);
+        }
 
         if (movementrestriction == false)
         {
-            yeet.bodyType = RigidbodyType2D.Dynamic;
+        
             if (grounded && boosted == false || isonwall) playermovementspeedbuff = 0;
-            xMin = -3f - playermovementspeedbuff; xMax = 3f + playermovementspeedbuff;
+          
 
 
             if (grounded && Input.GetKey(KeyCode.Space)) jump(); else if (!grounded && Input.GetKey(KeyCode.Space) && isonwall && !ispropelling) walljump();
@@ -66,9 +74,9 @@ public class Movement : MonoBehaviour
 
 
 
-            if (Input.GetKey(KeyCode.D) && ispropelling == false) playermovementspeed += 0.02f + playermovementspeedbuff;
+            if (Input.GetKey(KeyCode.D) && ispropelling == false && boosted == false) playermovementspeed += 0.02f + playermovementspeedbuff;
 
-            if (Input.GetKey(KeyCode.A) && ispropelling == false) playermovementspeed -= 0.02f + playermovementspeedbuff;
+            if (Input.GetKey(KeyCode.A) && ispropelling == false && boosted == false) playermovementspeed -= 0.02f + playermovementspeedbuff;
 
 
 
@@ -80,7 +88,7 @@ public class Movement : MonoBehaviour
                 else
                 {
                     playermovementspeed = 3 + playermovementspeedbuff;
-                   
+
                 }
 
             }
@@ -109,13 +117,15 @@ public class Movement : MonoBehaviour
 
             if (grounded && playermovementspeed != 0) animator.SetBool("walking", true); else animator.SetBool("walking", false);
         }
-        else yeet.bodyType = RigidbodyType2D.Static;
+        else  yeet.gravityScale = 0;  
         
 
     }
 
 
+    
 
+ 
     public void jump()
     {
         animator.SetTrigger("Jump");

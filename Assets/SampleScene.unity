@@ -8816,7 +8816,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6638569928027698647, guid: 647bd784fd046174b9037f46efc5f511,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4508687840273818648}
   m_SourcePrefab: {fileID: 100100000, guid: 647bd784fd046174b9037f46efc5f511, type: 3}
 --- !u!1 &4508687840273818640 stripped
 GameObject:
@@ -8824,6 +8828,24 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1891593382643606545}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4508687840273818648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4508687840273818640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2661e0e98cb21a14f91a029e743c171a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentWeapon: 
+  canMeeleAttack: 0
+  canRangedAttack: 0
+  currentRangedCooldown: 0
+  currentMeeleCooldown: 0
+  arrow: {fileID: 4654331999713941771, guid: f9f5f2fc8c3c57e408ce802fec99d252, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

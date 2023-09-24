@@ -19,5 +19,7 @@ public class Spellobject : ScriptableObject
     public string spellName = "New Spell";
     public string spellDescription = "New Description";
 
+    public bool pushesYouBack;
 
+    public float pushX, pushY;
 }

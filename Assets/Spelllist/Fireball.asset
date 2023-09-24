@@ -20,3 +20,6 @@ MonoBehaviour:
   ymovement: 0
   spellName: fireball
   spellDescription: stand still in the air for a moment and shoot a fireball.
+  pushesYouBack: 1
+  pushX: 2.5
+  pushY: 1
