@@ -8,13 +8,19 @@ public class Attack : MonoBehaviour
     public WeaponData currentWeapon;
     public bool canMeeleAttack;
     public bool canRangedAttack;
+    public bool comboAttacks;
+    public bool attackQueuedUp;
+    public bool inComboAttack;
     public float currentRangedCooldown;
     public float currentMeeleCooldown;
     public GameObject arrow;
     public GameObject swing;
+    public Animator animator;
+    public Movement movement;
     void Start()
     {
-    
+        animator = GetComponentInChildren<Animator>();
+        movement = GetComponent<Movement>();
     }
 
 
@@ -24,7 +30,7 @@ public class Attack : MonoBehaviour
     void Update()
     {
         currentWeapon = GetComponent<Memory>().currentWeaponData;
-        if (Input.GetKeyDown(KeyCode.Mouse0)) { 
+        if (Input.GetKeyDown(KeyCode.Mouse0) && movement.movementrestriction == false && movement.boosted == false && movement.attackrestriction == false) { 
             switch(currentWeapon.type)
             {
                 case WeaponData.Type.Bow: Debug.Log("Bow");
@@ -33,13 +39,18 @@ public class Attack : MonoBehaviour
                          Quaternion.Euler(0f, 0f, (Mathf.Atan2(Input.mousePosition.y - Camera.main.WorldToScreenPoint(gameObject.transform.localPosition).y, Input.mousePosition.x - Camera.main.WorldToScreenPoint(gameObject.transform.localPosition).x) * Mathf.Rad2Deg)));
                    break;
                 case WeaponData.Type.Sword:
-                    //   var swing = Instantiate();
+
                     Debug.Log("Sword");
+                    //trigger
+                    inComboAttack = true;
+                    animator.SetTrigger("swordattack");
+
                     break;
                 default: Debug.Log("none");
                    break;
             }
         }
+        else if (Input.GetKeyDown(KeyCode.Mouse0) && movement.movementrestriction == false && movement.boosted == false && inComboAttack == true) attackQueuedUp = true;
 
 
 

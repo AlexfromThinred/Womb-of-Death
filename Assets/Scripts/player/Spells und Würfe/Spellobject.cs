@@ -20,6 +20,11 @@ public class Spellobject : ScriptableObject
     public string spellDescription = "New Description";
 
     public bool pushesYouBack;
-
     public float pushX, pushY;
+
+
+
+
+    public bool knocksenemysback;
+    public float enemyknockbackX, enemyknockbackY;
 }

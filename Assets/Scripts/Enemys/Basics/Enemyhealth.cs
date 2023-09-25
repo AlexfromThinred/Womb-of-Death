@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemyhealth : MonoBehaviour
 {
     public int health;
+    private damageflash flash;
 
     public GameObject obj;
 
@@ -12,6 +13,7 @@ public class Enemyhealth : MonoBehaviour
     public void dealdamage(int damage)
     {
 
+        flash.Flash();
         health -= damage;
 
         var damagenumber = Instantiate(obj, new Vector3(gameObject.transform.localPosition.x, gameObject.transform.localPosition.y + 1, -3), Quaternion.identity);
@@ -25,15 +27,13 @@ public class Enemyhealth : MonoBehaviour
     
 
 
-    // Start is called before the first frame update
+  
     void Start()
     {
-        
+        flash = GetComponent<damageflash>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
+
+  
 }

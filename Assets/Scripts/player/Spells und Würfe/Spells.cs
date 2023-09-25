@@ -36,7 +36,7 @@ public class Spells : MonoBehaviour
     void Update()
     {
         
-        if(Input.GetKeyDown(KeyCode.R) && cancast == true)
+        if(Input.GetKeyDown(KeyCode.R) && cancast == true && movement.attackrestriction == false)
         {
             Usespell(spellobject);
 

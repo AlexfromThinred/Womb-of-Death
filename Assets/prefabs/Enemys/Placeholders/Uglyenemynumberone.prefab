@@ -105,6 +105,7 @@ GameObject:
   - component: {fileID: 2463597382160803422}
   - component: {fileID: 2852845235852642262}
   - component: {fileID: 1758550449198543788}
+  - component: {fileID: -2837113211565325913}
   m_Layer: 0
   m_Name: Uglyenemynumberone
   m_TagString: Untagged
@@ -235,6 +236,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   body: {fileID: 2463597382160803422}
   enemyspeed: 1
+  isstillstaggrered: 0
+  grounded: 0
 --- !u!61 &1758550449198543788
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -280,3 +283,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.25, y: 0.25}
   m_EdgeRadius: 0
+--- !u!114 &-2837113211565325913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8432965214011535713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 124953bd7a0df0347828e0f83899686f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashMaterial: {fileID: 2100000, guid: f18c7ee79b1d2ad43b5885d8fdcde5d1, type: 2}
+  duration: 0.1

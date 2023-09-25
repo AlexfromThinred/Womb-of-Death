@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6875231862313171976}
   - component: {fileID: 913776508830085253}
   - component: {fileID: 4637690367214129919}
+  - component: {fileID: 3939880762440678004}
   m_Layer: 0
   m_Name: Doomshroom
   m_TagString: Untagged
@@ -181,3 +182,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 30
   obj: {fileID: 2653685686588842468, guid: 17e7d9d1f0e320146a2183328fa4e34a, type: 3}
+--- !u!114 &3939880762440678004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 541822562348961440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 124953bd7a0df0347828e0f83899686f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashMaterial: {fileID: 2100000, guid: f18c7ee79b1d2ad43b5885d8fdcde5d1, type: 2}
+  duration: 0.1

@@ -9,6 +9,8 @@ public class Movement : MonoBehaviour
     public bool ispropelling;
     public float propelltime;
     public bool boosted;
+    public bool attackrestriction;
+    public bool attackrestrictionwithgravity;
 
     public float currentpropelltime;
     public bool isgoingtoleft;
@@ -27,23 +29,26 @@ public class Movement : MonoBehaviour
     public float xMin, xMax;
     float playerymov;
     Collider2D feet;
+    public bool canattack;
 
-    // Start is called before the first frame update
+   
     void Start()
     {
+        attackrestriction = false;
+        attackrestrictionwithgravity = false;
         movementrestriction = false;
         animator = GetComponentInChildren<Animator>();
         playercollider = GetComponent<BoxCollider2D>();
         yeet = GetComponent<Rigidbody2D>();
         gravitymultiplier = -0.5f;
-        jumpspeed = 6.5f;
+        jumpspeed = 6f;
         xMin = -3f - playermovementspeedbuff; xMax = 3f + playermovementspeedbuff;
         isonwall = false;
         ispropelling = false;
     }
    
 
-    // Update is called once per frame
+
     void Update()
     {
       
@@ -55,67 +60,80 @@ public class Movement : MonoBehaviour
             yeet.velocity = new Vector2(playermovementspeed, 0f);
         }
 
+        
         if (movementrestriction == false)
         {
-        
-            if (grounded && boosted == false || isonwall) playermovementspeedbuff = 0;
-          
-
-
-            if (grounded && Input.GetKey(KeyCode.Space)) jump(); else if (!grounded && Input.GetKey(KeyCode.Space) && isonwall && !ispropelling) walljump();
-
-
-
-
-
-            if (!Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A) && grounded == true) { playermovementspeed = 0; }
-
-
-
-
-
-            if (Input.GetKey(KeyCode.D) && ispropelling == false && boosted == false) playermovementspeed += 0.03f + playermovementspeedbuff;
-
-            if (Input.GetKey(KeyCode.A) && ispropelling == false && boosted == false) playermovementspeed -= 0.03f + playermovementspeedbuff;
-
-
-
-            if (ispropelling == true)
+            if(attackrestriction == false )
             {
+                if (grounded && boosted == false || isonwall) playermovementspeedbuff = 0;
 
 
-                if (isgoingtoleft == true) { playermovementspeed = -3 - playermovementspeedbuff; }
-                else
+
+                if (grounded && Input.GetKey(KeyCode.Space)) jump(); else if (!grounded && Input.GetKey(KeyCode.Space) && isonwall && !ispropelling) walljump();
+
+
+
+
+
+                if (!Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A) && grounded == true) { playermovementspeed = 0; }
+
+
+
+
+
+                if (Input.GetKey(KeyCode.D) && ispropelling == false && boosted == false) playermovementspeed += 0.03f + playermovementspeedbuff;
+
+                if (Input.GetKey(KeyCode.A) && ispropelling == false && boosted == false) playermovementspeed -= 0.03f + playermovementspeedbuff;
+
+
+
+                if (ispropelling == true)
                 {
-                    playermovementspeed = 3 + playermovementspeedbuff;
+
+
+                    if (isgoingtoleft == true) { playermovementspeed = -3 - playermovementspeedbuff; }
+                    else
+                    {
+                        playermovementspeed = 3 + playermovementspeedbuff;
+
+                    }
 
                 }
 
-            }
 
 
+                playermovementspeed = Mathf.Clamp(playermovementspeed, xMin, xMax);
 
-            playermovementspeed = Mathf.Clamp(playermovementspeed, xMin, xMax);
-
-            Vector2 pvelocity = new Vector2(playermovementspeed, yeet.velocity.y);
-            yeet.velocity = pvelocity;
-            if (playermovementspeed > 0) transform.localScale = new Vector2(3, 3);
-            if (playermovementspeed < 0) transform.localScale = new Vector2(-3, 3);
+                Vector2 pvelocity = new Vector2(playermovementspeed, yeet.velocity.y);
+                yeet.velocity = pvelocity;
+                if (playermovementspeed > 0) transform.localScale = new Vector2(3, 3);
+                if (playermovementspeed < 0) transform.localScale = new Vector2(-3, 3);
 
 
-            if (yeet.velocity.y < 0)
+                if (yeet.velocity.y < 0)
+                {
+                    animator.ResetTrigger("Jump");
+                    yeet.velocity += 0.035f * Vector2.down;
+                }
+
+                if (yeet.velocity.y > 0) animator.SetBool("acceleratedown", false); else animator.SetBool("acceleratedown", true);
+
+                if (grounded) animator.SetBool("isgrounded", true); else animator.SetBool("isgrounded", false);
+               
+
+
+                if (grounded && playermovementspeed != 0) animator.SetBool("walking", true); else animator.SetBool("walking", false);
+
+            } else if (attackrestrictionwithgravity == true)
             {
-                animator.ResetTrigger("Jump");
-                yeet.velocity += 0.035f * Vector2.down;
+                if (yeet.velocity.y < 0)
+                {
+                    animator.ResetTrigger("Jump");
+                    yeet.velocity += 0.035f * Vector2.down;
+                }
             }
+            
 
-            if (yeet.velocity.y > 0) animator.SetBool("acceleratedown", false); else animator.SetBool("acceleratedown", true);
-
-            if (grounded) animator.SetBool("isgrounded", true); else animator.SetBool("isgrounded", false);
-            // animator.SetBool("dontdownaccel", true); else animator.SetBool("downaccel", false);
-
-
-            if (grounded && playermovementspeed != 0) animator.SetBool("walking", true); else animator.SetBool("walking", false);
         }
         else  yeet.gravityScale = 0;  
         
