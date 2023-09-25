@@ -61,6 +61,7 @@ public class Playerboost : MonoBehaviour
       if(movement.isonwall == true)
         {
             movement.boosted = false;
+            movement.playermovementspeedbuff = 0f;
         }
 
     }

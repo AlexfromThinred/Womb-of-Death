@@ -81,10 +81,19 @@ public class Movement : MonoBehaviour
 
 
 
-                if (Input.GetKey(KeyCode.D) && ispropelling == false && boosted == false) playermovementspeed += 0.03f + playermovementspeedbuff;
+                if (Input.GetKey(KeyCode.D) && ispropelling == false && boosted == false)
+                {
+                    if(yeet.velocity.x < 0) playermovementspeed += 0.06f + playermovementspeedbuff;
 
-                if (Input.GetKey(KeyCode.A) && ispropelling == false && boosted == false) playermovementspeed -= 0.03f + playermovementspeedbuff;
 
+                    playermovementspeed += 0.025f + playermovementspeedbuff;
+                }
+
+                if (Input.GetKey(KeyCode.A) && ispropelling == false && boosted == false)
+                {
+                    if (yeet.velocity.x > 0) playermovementspeed -= 0.06f + playermovementspeedbuff;
+                    playermovementspeed -= 0.025f + playermovementspeedbuff;
+                }
 
 
                 if (ispropelling == true)

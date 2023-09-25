@@ -75,6 +75,7 @@ GameObject:
   - component: {fileID: 612212184878682957}
   - component: {fileID: 6041522187203388066}
   - component: {fileID: 1041637907160139984}
+  - component: {fileID: 8123495417724738644}
   m_Layer: 0
   m_Name: Shroomston
   m_TagString: Untagged
@@ -190,6 +191,23 @@ MonoBehaviour:
   cancast: 0
   wordforanomationtrigger: 
   movement: {fileID: 8525104783757719975}
+--- !u!114 &8123495417724738644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3340485427605269579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 709b579d5e7876a4397ad3f56c79f7ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attack: {fileID: 0}
+  movement: {fileID: 0}
+  animator: {fileID: 0}
+  swordAttackRange: 0.5
+  swordHitbox: {fileID: 3991550186891628393}
 --- !u!1 &3373930359289539613
 GameObject:
   m_ObjectHideFlags: 0
