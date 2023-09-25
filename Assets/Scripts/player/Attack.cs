@@ -5,12 +5,13 @@ using UnityEngine;
 public class Attack : MonoBehaviour
 {
     // Start is called before the first frame update
-    public string currentWeapon;
+    public WeaponData currentWeapon;
     public bool canMeeleAttack;
     public bool canRangedAttack;
     public float currentRangedCooldown;
     public float currentMeeleCooldown;
     public GameObject arrow;
+    public GameObject swing;
     void Start()
     {
     
@@ -22,8 +23,9 @@ public class Attack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        currentWeapon = GetComponent<Memory>().currentWeaponData;
         if (Input.GetKeyDown(KeyCode.Mouse0)) { 
-            switch(GetComponentInParent<Memory>().currentWeaponData.type)
+            switch(currentWeapon.type)
             {
                 case WeaponData.Type.Bow: Debug.Log("Bow");
                     // Bow Default Attack
@@ -31,7 +33,8 @@ public class Attack : MonoBehaviour
                          Quaternion.Euler(0f, 0f, (Mathf.Atan2(Input.mousePosition.y - Camera.main.WorldToScreenPoint(gameObject.transform.localPosition).y, Input.mousePosition.x - Camera.main.WorldToScreenPoint(gameObject.transform.localPosition).x) * Mathf.Rad2Deg)));
                    break;
                 case WeaponData.Type.Sword:
-                    //var projectile =
+                    //   var swing = Instantiate();
+                    Debug.Log("Sword");
                     break;
                 default: Debug.Log("none");
                    break;

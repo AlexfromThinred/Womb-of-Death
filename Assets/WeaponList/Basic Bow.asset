@@ -19,4 +19,4 @@ MonoBehaviour:
   projectileSprite: {fileID: 21300000, guid: 9e93f28461e8d794490feacb351836ee, type: 3}
   damage: 2
   cooldown: 1
-  type: 2
+  type: 5

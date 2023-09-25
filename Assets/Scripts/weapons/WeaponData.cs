@@ -13,6 +13,6 @@ public class WeaponData : ScriptableObject
     public Sprite projectileSprite;
     public int damage = 0;
     public float cooldown = 1;
-    public enum Type { Default, Sword, Bow }
+    public enum Type { Default, Sword, Daggers, Hammer, Spear, Bow, Crossbow, Staff, Wand}
     public Type type = Type.Default;
 }
