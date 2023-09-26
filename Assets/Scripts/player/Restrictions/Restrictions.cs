@@ -8,11 +8,18 @@ public class Restrictions : MonoBehaviour
     public Movement movement;
     public Animator animator;
     public float swordAttackRange;
-    public bool isupattack;
+    public bool isupattack, isONLYupattack;
     public bool isdownattack;
     public bool isdownslashingendless;
-    public Transform  swordHitbox;
+    public Transform swordHitbox;
+    public Transform downslashhitbox;
+    public Transform upslashhitbox;
+    public Transform backslashhitbox;
     public bool reducedamagebyhalf;
+    public bool boosteddown;
+    public int downdamagecounter;
+    public bool hasNOknockback;
+    public bool trippledamage;
 
     public void Start()
     {
@@ -22,25 +29,30 @@ public class Restrictions : MonoBehaviour
         isupattack = false;
         isdownattack = false;
         isdownslashingendless = false;
+        trippledamage = false;
     }
+
+    #region singleattacks
 
     public void sworduupslash()
     {
         isupattack = true;
         movement.yeet.velocity = new Vector2(0, 0);
         movement.attackrestriction = true;
-       
+        reducedamagebyhalf = true;
+
     }
     public void sworduupslashmovement()
     {
         movement.yeet.gravityScale = 0;
         movement.yeet.velocity = new Vector2(0, 10f);
         animator.ResetTrigger("swordattackup");
+
     }
 
     public void sworddownstart()
     {
-    
+
         isdownattack = true;
         reducedamagebyhalf = true;
         movement.yeet.velocity = new Vector2(1, 2);
@@ -52,17 +64,21 @@ public class Restrictions : MonoBehaviour
     {
         movement.yeet.velocity = new Vector2(0, -15);
         isdownslashingendless = true;
-       
+        boosteddown = true;
+
     }
 
     public void swordslashone()
     {
+        swordAttackRange = swordAttackRange + 0.2f;
+        reducedamagebyhalf = true;
         movement.attackrestriction = true;
-        if(movement.transform.localScale.x < 1f)
-        movement.yeet.velocity = new Vector2(-4f, -0.5f);
-        else movement.yeet.velocity = new Vector2(4f,-0.5f);
+        if (movement.transform.localScale.x < 1f)
+            movement.yeet.velocity = new Vector2(-4f, -0.5f);
+        else movement.yeet.velocity = new Vector2(4f, -0.5f);
         movement.yeet.gravityScale = 0;
-
+        attack.currentMeeleCooldown = attack.currentWeapon.cooldown;
+        Debug.Log(attack.currentWeapon.cooldown);
     }
 
     public void swordstop()
@@ -71,13 +87,15 @@ public class Restrictions : MonoBehaviour
     }
     public void swordslashtwo()
     {
-        
+        reducedamagebyhalf = false;
         if (attack.attackQueuedUp == false)
         {
             animator.SetTrigger("stopattack");
             attack.inComboAttack = false;
             resetweaponrestriction();
-      
+            attack.currentMeeleCooldown = attack.currentWeapon.cooldown;
+            swordAttackRange = swordAttackRange - 0.2f;
+
 
         }
         else
@@ -86,7 +104,7 @@ public class Restrictions : MonoBehaviour
                 movement.yeet.velocity = new Vector2(-2f, 2);
             else movement.yeet.velocity = new Vector2(2f, 2);
 
-          
+
 
             attack.attackQueuedUp = false;
         }
@@ -105,9 +123,12 @@ public class Restrictions : MonoBehaviour
             animator.SetTrigger("stopattack");
             attack.inComboAttack = false;
             resetweaponrestriction();
-          
+            attack.currentMeeleCooldown = attack.currentWeapon.cooldown;
+            swordAttackRange = swordAttackRange - 0.2f;
 
-        } else
+
+        }
+        else
         {
             movement.attackrestrictionwithgravity = true;
             movement.yeet.velocity = new Vector2(0f, -2f);
@@ -115,49 +136,27 @@ public class Restrictions : MonoBehaviour
         }
 
 
-       
+
 
     }
 
-    public void Damageenemies()
-    {
-      
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(swordHitbox.position, swordAttackRange);
-        foreach(Collider2D enemy in hitEnemies)
-        {
-                if(enemy.GetComponent<Enemyhealth>() != null)
-             
-            
-                {
-                if(reducedamagebyhalf == false)
-                enemy.GetComponent<Enemyhealth>().dealdamage(attack.currentWeapon.damage);
-                else enemy.GetComponent<Enemyhealth>().dealdamage(  attack.currentWeapon.damage / 2 );
-                if (enemy.GetComponent<Moveenemy>() != null)
-                {
-
-
-
-                    bool left = false;
-                    if (movement.transform.localScale.x < 1f) left = true;
-                    if(isupattack == true) enemy.GetComponent<Moveenemy>().Knockbackafterattack(1.5f, 4, left); else if( isdownattack == true) enemy.GetComponent<Moveenemy>().Knockbackafterattack(1, -6, left); else
-                    enemy.GetComponent<Moveenemy>().Knockbackafterattack(1.5f, 1, left);
-
-
-
-
-                }
-                    Debug.Log("hit enemy");
-            }
-        }
-    }
+   
     public void changetonormal()
     {
-        attack.currentMeeleCooldown = attack.currentWeapon.cooldown;
+
         animator.SetTrigger("stopattack");
         isdownattack = false;
         reducedamagebyhalf = false;
-       
+        attack.currentMeeleCooldown = attack.currentWeapon.cooldown;
 
+        StartCoroutine(fixstuck());
+    }
+
+    public IEnumerator fixstuck()
+    {
+
+        yield return new WaitForSeconds(0.01f);
+        animator.ResetTrigger("stopattack");
     }
 
     public void downslashendsword()
@@ -165,17 +164,19 @@ public class Restrictions : MonoBehaviour
         isdownattack = false;
         reducedamagebyhalf = false;
         animator.ResetTrigger("reachedground");
+        boosteddown = false;
+        downdamagecounter = 0;
     }
 
     public void resetweaponrestriction()
     {
-     
+
         movement.yeet.gravityScale = 0.5f;
         movement.attackrestriction = false;
         movement.attackrestrictionwithgravity = false;
         attack.inComboAttack = false;
         attack.attackQueuedUp = false;
-        
+
     }
 
     public void resetmovement()
@@ -186,18 +187,259 @@ public class Restrictions : MonoBehaviour
     {
         movement.yeet.velocity = new Vector2(0, 1);
         isupattack = false;
+        reducedamagebyhalf = false;
     }
 
     public void Update()
     {
-        if(isdownslashingendless == true && movement.grounded == true)
+        if (isdownslashingendless == true && movement.grounded == true)
         {
             animator.SetTrigger("reachedground");
         }
-        if(movement.grounded == false)
+        if (movement.grounded == false)
         {
             animator.ResetTrigger("reachedground");
         }
 
     }
+
+
+    public void reduceswordattackrange()
+    {
+        swordAttackRange = swordAttackRange - 0.2f;
+    }
+
+    public void resetDaggerTrigger()
+    {
+        animator.ResetTrigger("daggerattack");
+        hasNOknockback = false;
+        trippledamage = false;
+        animator.ResetTrigger("daggerdown");
+        isONLYupattack = false;
+        animator.ResetTrigger("daggerup");
+        movement.attackrestriction = false;
+    }
+    public void daggernoknockback()
+    {
+        hasNOknockback = true;
+    }
+
+    public void dealtrippledamage()
+    {
+        trippledamage = true;
+    }
+
+    public void isupslash()
+    {
+        isONLYupattack = true;
+    }
+    public void onlymoverestriction()
+    {
+        movement.attackrestriction = true;
+        movement.yeet.velocity = new Vector2(0, movement.yeet.velocity.y);
+    }
+    #endregion
+
+
+
+
+
+
+
+
+    #region Damageenemies
+
+    public void Damageenemies()
+    {
+
+        if (boosteddown == true)
+        {
+            movement.yeet.velocity = new Vector2(0, -17 - (downdamagecounter / 2)); downdamagecounter++;
+
+            if (downdamagecounter >= 7) reducedamagebyhalf = false;
+        }
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(swordHitbox.position, swordAttackRange);
+        foreach (Collider2D enemy in hitEnemies)
+        {
+            if (enemy.GetComponent<Enemyhealth>() != null)
+
+
+            {
+                if (reducedamagebyhalf == true)
+                {
+                    enemy.GetComponent<Enemyhealth>().dealdamage(attack.currentWeapon.damage / 2);
+
+                }
+                else if (trippledamage == true) enemy.GetComponent<Enemyhealth>().dealdamage(attack.currentWeapon.damage * 3);
+                else enemy.GetComponent<Enemyhealth>().dealdamage(attack.currentWeapon.damage);
+                if (enemy.GetComponent<Moveenemy>() != null)
+                {
+
+
+
+                    bool left = false;
+                    if (hasNOknockback == false)
+                    {
+                        if (movement.transform.localScale.x < 1f) left = true;
+                        if (isupattack == true) enemy.GetComponent<Moveenemy>().Knockbackafterattack(1.5f, 4, left);
+                        else if (isdownattack == true) enemy.GetComponent<Moveenemy>().Knockbackafterattack(0.3f, -15, left);
+                        else if (isONLYupattack == true) enemy.GetComponent<Moveenemy>().Knockbackafterattack(4, 1f, left);
+                        else
+                            enemy.GetComponent<Moveenemy>().Knockbackafterattack(1.5f, 1, left);
+
+                    }
+
+
+
+
+                }
+                Debug.Log("hit enemy");
+            }
+        }
+    }
+
+
+    public void Damageenemieswithdownslash()
+    {
+
+        
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(downslashhitbox.position, swordAttackRange);
+        foreach (Collider2D enemy in hitEnemies)
+        {
+            if (enemy.GetComponent<Enemyhealth>() != null)
+
+
+            {
+                if (reducedamagebyhalf == true)
+                {
+                    enemy.GetComponent<Enemyhealth>().dealdamage(attack.currentWeapon.damage / 2);
+
+                }
+                else if (trippledamage == true) enemy.GetComponent<Enemyhealth>().dealdamage(attack.currentWeapon.damage * 3);
+                else enemy.GetComponent<Enemyhealth>().dealdamage(attack.currentWeapon.damage);
+                if (enemy.GetComponent<Moveenemy>() != null)
+                {
+
+
+
+                    bool left = false;
+                    if (hasNOknockback == false)
+                    {
+                        if (movement.transform.localScale.x < 1f) left = true;
+                        if (isupattack == true) enemy.GetComponent<Moveenemy>().Knockbackafterattack(1.5f, 4, left);
+                        else if (isdownattack == true) enemy.GetComponent<Moveenemy>().Knockbackafterattack(0.3f, -15, left);
+                        else
+                            enemy.GetComponent<Moveenemy>().Knockbackafterattack(1.5f, 1, left);
+
+                    }
+
+
+
+
+                }
+                Debug.Log("hit enemy");
+            }
+        }
+    }
+
+      public void Damageenemiesupwards()
+    {
+
+        
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(upslashhitbox.position, swordAttackRange * 1.3f );
+        foreach (Collider2D enemy in hitEnemies)
+        {
+            if (enemy.GetComponent<Enemyhealth>() != null)
+
+
+            {
+                if (reducedamagebyhalf == true)
+                {
+                    enemy.GetComponent<Enemyhealth>().dealdamage(attack.currentWeapon.damage / 2);
+
+                }
+                else if (trippledamage == true) enemy.GetComponent<Enemyhealth>().dealdamage(attack.currentWeapon.damage * 3);
+                else enemy.GetComponent<Enemyhealth>().dealdamage(attack.currentWeapon.damage);
+                if (enemy.GetComponent<Moveenemy>() != null)
+                {
+
+
+
+                    bool left = false;
+                    if (hasNOknockback == false)
+                    {
+                        if (movement.transform.localScale.x < 1f) left = true;
+                        if (isupattack == true) enemy.GetComponent<Moveenemy>().Knockbackafterattack(1.5f, 4, left);
+                        else if   (isONLYupattack == true) enemy.GetComponent<Moveenemy>().Knockbackafterattack(0, 5f, left);
+                            else if (isdownattack == true) enemy.GetComponent<Moveenemy>().Knockbackafterattack(0.3f, -15, left);
+                        else
+                            enemy.GetComponent<Moveenemy>().Knockbackafterattack(1.5f, 1, left);
+
+                    }
+
+
+
+
+                }
+                Debug.Log("hit enemy");
+            }
+        }
+    }
+
+
+    public void Damageenemiesbackwards()
+    {
+
+
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(backslashhitbox.position, swordAttackRange );
+        foreach (Collider2D enemy in hitEnemies)
+        {
+            if (enemy.GetComponent<Enemyhealth>() != null)
+
+
+            {
+                if (reducedamagebyhalf == true)
+                {
+                    enemy.GetComponent<Enemyhealth>().dealdamage(attack.currentWeapon.damage / 2);
+
+                }
+                else if (trippledamage == true) enemy.GetComponent<Enemyhealth>().dealdamage(attack.currentWeapon.damage * 3);
+                else enemy.GetComponent<Enemyhealth>().dealdamage(attack.currentWeapon.damage);
+                if (enemy.GetComponent<Moveenemy>() != null)
+                {
+
+
+
+                    bool left = false;
+                    if (hasNOknockback == false)
+                    {
+                        if (movement.transform.localScale.x < 1f) left = true;
+                        if (isupattack == true) enemy.GetComponent<Moveenemy>().Knockbackafterattack(1.5f, 4, left);
+                        else if (isONLYupattack == true) enemy.GetComponent<Moveenemy>().Knockbackafterattack(-4, 1f, left);
+                
+                        else
+                            enemy.GetComponent<Moveenemy>().Knockbackafterattack(1.5f, 1, left);
+
+                    }
+
+
+
+
+                }
+                Debug.Log("hit enemy");
+            }
+        }
+    }
+
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(swordHitbox.position, swordAttackRange);
+        Gizmos.DrawWireSphere(backslashhitbox.position, swordAttackRange);
+        Gizmos.DrawWireSphere(upslashhitbox.position, swordAttackRange * 1.3f);
+        Gizmos.DrawWireSphere(downslashhitbox.position, swordAttackRange);
+    }
+    #endregion 
+
+
 }

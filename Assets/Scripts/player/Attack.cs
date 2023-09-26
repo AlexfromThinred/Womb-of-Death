@@ -29,8 +29,8 @@ public class Attack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        meleeAttackReady = !(currentMeeleCooldown <= 0);
-        rangedAttackReady = !(currentRangedCooldown <= 0);
+        meleeAttackReady = (currentMeeleCooldown <= 0);
+        rangedAttackReady = (currentRangedCooldown <= 0);
         currentWeapon = GetComponent<Memory>().currentWeaponData;
         if (currentRangedCooldown > 0 && currentWeapon.weaponType == WeaponData.WeaponType.Ranged)
         {
@@ -38,7 +38,7 @@ public class Attack : MonoBehaviour
         }
         if (currentMeeleCooldown > 0 && currentWeapon.weaponType == WeaponData.WeaponType.Melee) {
             currentMeeleCooldown -= Time.deltaTime;
-            if(currentWeapon.type == WeaponData.Type.Sword && movement.grounded && currentWeapon.cooldown > currentWeapon.cooldown / 25)
+            if(currentWeapon.type == WeaponData.Type.Sword && movement.grounded && currentMeeleCooldown > currentWeapon.cooldown / 25)
             {
                 currentMeeleCooldown = currentWeapon.cooldown / 25;
             }
@@ -51,7 +51,7 @@ public class Attack : MonoBehaviour
             {
                 case WeaponData.Type.Bow:
                     // Bow Default Attack
-                    if(rangedAttackReady)
+                    if(!rangedAttackReady)
                     {
                         break;
                     }
@@ -59,27 +59,46 @@ public class Attack : MonoBehaviour
                          Quaternion.Euler(0f, 0f, (Mathf.Atan2(Input.mousePosition.y - Camera.main.WorldToScreenPoint(gameObject.transform.localPosition).y, Input.mousePosition.x - Camera.main.WorldToScreenPoint(gameObject.transform.localPosition).x) * Mathf.Rad2Deg)));
                     currentRangedCooldown = currentWeapon.cooldown;
                    break;
+
+
+
                 case WeaponData.Type.Sword:
 
-                    Debug.Log("Sword");
-                    //trigger
                     inComboAttack = true;
                     if (Input.GetKey(KeyCode.W) && movement.grounded == true) { animator.SetTrigger("swordattackup"); } 
                     else if (Input.GetKey(KeyCode.S) && movement.grounded == false) animator.SetTrigger("swordattackdown"); 
-                    else
+                    else if(meleeAttackReady)
                     {
                         inComboAttack = true;
                         animator.SetTrigger("swordattack");
                     }
-                   
-
                     break;
+
+
+
                 case WeaponData.Type.Daggers:
+
                     // Dagger Attack Code
                     Debug.Log("Dagger");
+                    if (!meleeAttackReady)
+                    {
+                        break;
+                    }
+                    if (Input.GetKey(KeyCode.S) && movement.grounded == false) { animator.SetTrigger("daggerdown"); currentMeeleCooldown = currentWeapon.cooldown * 1.8f; }
+                    else if (Input.GetKey(KeyCode.W)) { animator.SetTrigger("daggerup"); currentMeeleCooldown = currentWeapon.cooldown * 1.6f; } else
+                    {
+                        animator.SetTrigger("daggerattack");
+                        currentMeeleCooldown = currentWeapon.cooldown;
+                       
+                    }
+
+
+
                     break;
                 default: Debug.Log("none");
                    break;
+
+
             }
         }
         else if (Input.GetKeyDown(KeyCode.Mouse0) && movement.movementrestriction == false && movement.boosted == false && inComboAttack == true) attackQueuedUp = true;
@@ -90,4 +109,6 @@ public class Attack : MonoBehaviour
 
 
     }
+
+  
 }
