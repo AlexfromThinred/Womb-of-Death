@@ -8,6 +8,7 @@ TagManager:
   - wall
   - weapon
   - player
+  - runestone
   layers:
   - Default
   - TransparentFX

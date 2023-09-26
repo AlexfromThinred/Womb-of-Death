@@ -10,8 +10,11 @@ public class Memory : MonoBehaviour
 {
     public WeaponData currentWeaponData;
     public List<WeaponData> inventory = new List<WeaponData>();
+    public List<GameObject> knownRunesstones = new List<GameObject>();
     public WeaponData[] activeWeapons = new WeaponData[2];
     public int activeWeapon = 0;
+    public WeaponData noWeapon;
+    
 
     void Start()
     {
@@ -22,7 +25,7 @@ public class Memory : MonoBehaviour
      {
       if (Input.GetKeyDown(KeyCode.Tab))
         {
-            if (activeWeapon == 0)
+            if (activeWeapon == 0 && activeWeapons[1] != null)
             {
                 currentWeaponData = activeWeapons[1];
                 activeWeapon = 1;
@@ -34,16 +37,19 @@ public class Memory : MonoBehaviour
             
         }
      }
-    public void weaponPickup(WeaponData weaponData)
+    public void weaponPickup(WeaponData newWeaponData)
     {
-        currentWeaponData = weaponData;
-        inventory.Add(currentWeaponData); 
-        if (activeWeapons[0] == null)
+        if (!inventory.Contains(newWeaponData))
         {
-            activeWeapons[0] = weaponData;
-        } else if (activeWeapons[1] == null)
+            inventory.Add(newWeaponData);
+        }
+        if (activeWeapons[0] == null || activeWeapons[0] == noWeapon)
         {
-            activeWeapons[1] = weaponData;
+            activeWeapons[0] = newWeaponData;
+            currentWeaponData = newWeaponData;
+        } else if (activeWeapons[1] == null || activeWeapons[0] == noWeapon)
+        {
+            activeWeapons[1] = newWeaponData;
         }
     }
 }

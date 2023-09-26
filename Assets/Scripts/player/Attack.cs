@@ -43,13 +43,19 @@ public class Attack : MonoBehaviour
                     Debug.Log("Sword");
                     //trigger
                     inComboAttack = true;
-                    if (Input.GetKey(KeyCode.W) && movement.grounded == true) { animator.SetTrigger("swordattackup"); } else if (Input.GetKey(KeyCode.S) && movement.grounded == false) animator.SetTrigger("swordattackdown"); else
+                    if (Input.GetKey(KeyCode.W) && movement.grounded == true) { animator.SetTrigger("swordattackup"); } 
+                    else if (Input.GetKey(KeyCode.S) && movement.grounded == false) animator.SetTrigger("swordattackdown"); 
+                    else
                     {
                         inComboAttack = true;
                         animator.SetTrigger("swordattack");
                     }
                    
 
+                    break;
+                case WeaponData.Type.Daggers:
+                    // Dagger Attack Code
+                    Debug.Log("Dagger");
                     break;
                 default: Debug.Log("none");
                    break;
