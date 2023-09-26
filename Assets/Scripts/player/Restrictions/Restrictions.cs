@@ -21,6 +21,10 @@ public class Restrictions : MonoBehaviour
     public bool hasNOknockback;
     public bool trippledamage;
 
+
+    public GameObject shockWaveOnGround;
+   
+
     public void Start()
     {
         movement = GetComponentInParent<Movement>();
@@ -30,6 +34,19 @@ public class Restrictions : MonoBehaviour
         isdownattack = false;
         isdownslashingendless = false;
         trippledamage = false;
+    }
+
+    public void Update()
+    {
+        if (isdownslashingendless == true && movement.grounded == true)
+        {
+            animator.SetTrigger("reachedground");
+        }
+        if (movement.grounded == false)
+        {
+            animator.ResetTrigger("reachedground");
+        }
+
     }
 
     #region singleattacks
@@ -42,6 +59,7 @@ public class Restrictions : MonoBehaviour
         reducedamagebyhalf = true;
 
     }
+
     public void sworduupslashmovement()
     {
         movement.yeet.gravityScale = 0;
@@ -85,6 +103,7 @@ public class Restrictions : MonoBehaviour
     {
         movement.yeet.velocity = new Vector2(0, 0);
     }
+
     public void swordslashtwo()
     {
         reducedamagebyhalf = false;
@@ -113,6 +132,7 @@ public class Restrictions : MonoBehaviour
 
 
     }
+
     public void swordslashthree()
     {
         isdownattack = true;
@@ -183,26 +203,13 @@ public class Restrictions : MonoBehaviour
     {
         movement.yeet.velocity = new Vector2(0, 0);
     }
+
     public void resetmovementafterswordup()
     {
         movement.yeet.velocity = new Vector2(0, 1);
         isupattack = false;
         reducedamagebyhalf = false;
     }
-
-    public void Update()
-    {
-        if (isdownslashingendless == true && movement.grounded == true)
-        {
-            animator.SetTrigger("reachedground");
-        }
-        if (movement.grounded == false)
-        {
-            animator.ResetTrigger("reachedground");
-        }
-
-    }
-
 
     public void reduceswordattackrange()
     {
@@ -219,6 +226,7 @@ public class Restrictions : MonoBehaviour
         animator.ResetTrigger("daggerup");
         movement.attackrestriction = false;
     }
+
     public void daggernoknockback()
     {
         hasNOknockback = true;
@@ -233,18 +241,34 @@ public class Restrictions : MonoBehaviour
     {
         isONLYupattack = true;
     }
+
     public void onlymoverestriction()
     {
         movement.attackrestriction = true;
         movement.yeet.velocity = new Vector2(0, movement.yeet.velocity.y);
     }
+
+
     #endregion
 
 
 
+    #region Shockwaves and other instantiated things
+
+    public void instantiateshockwaveonground()
+    {
+        if(movement.transform.localScale.x < 1f)
+        {
+            var Shockwaves = Instantiate(shockWaveOnGround, new Vector3(movement.transform.localPosition.x, movement.transform.localPosition.y, 0), Quaternion.identity);
+            Shockwaves.transform.localScale = new Vector2(-3, 3);
+        }
+        else { var Shockwave = Instantiate(shockWaveOnGround, new Vector3(movement.transform.localPosition.x, movement.transform.localPosition.y, 0), Quaternion.identity);  }
+     
+
+    }
 
 
-
+    #endregion
 
 
     #region Damageenemies

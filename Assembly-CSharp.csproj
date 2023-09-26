@@ -118,6 +118,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
     <Compile Include="Assets\Scripts\player\Memory.cs" />
     <Compile Include="Assets\Scripts\player\Dash\Afterimage.cs" />
+    <Compile Include="Assets\Scripts\Shockwaves\Groundshockwave.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
     <Compile Include="Assets\Scripts\player\Spells und Würfe\Spellobject.cs" />
   </ItemGroup>

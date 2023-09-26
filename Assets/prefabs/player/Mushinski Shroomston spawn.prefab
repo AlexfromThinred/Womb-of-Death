@@ -290,6 +290,8 @@ MonoBehaviour:
   downdamagecounter: 0
   hasNOknockback: 0
   trippledamage: 0
+  shockWaveOnGround: {fileID: 1819753798501667898, guid: c1c74a172d2b05247886c768506d038f,
+    type: 3}
 --- !u!1 &3373930359289539613
 GameObject:
   m_ObjectHideFlags: 0
