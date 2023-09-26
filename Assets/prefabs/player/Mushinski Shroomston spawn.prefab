@@ -276,6 +276,7 @@ MonoBehaviour:
   attack: {fileID: 0}
   movement: {fileID: 0}
   animator: {fileID: 0}
+  memory: {fileID: 5979378824423879603}
   swordAttackRange: 0.5
   isupattack: 0
   isONLYupattack: 0
@@ -735,6 +736,7 @@ MonoBehaviour:
   - {fileID: 0}
   activeWeapon: 0
   noWeapon: {fileID: 0}
+  swordgroundshockwave: 0
 --- !u!114 &8954686304284623989
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -14,11 +14,14 @@ public class Memory : MonoBehaviour
     public WeaponData[] activeWeapons = new WeaponData[2];
     public int activeWeapon = 0;
     public WeaponData noWeapon;
+
+
+    public bool swordgroundshockwave;
     
 
     void Start()
     {
-
+        swordgroundshockwave = true;
     }
     // Update is called once per frame
      void Update()

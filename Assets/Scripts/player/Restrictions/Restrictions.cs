@@ -7,6 +7,7 @@ public class Restrictions : MonoBehaviour
     public Attack attack;
     public Movement movement;
     public Animator animator;
+    public Memory memory;
     public float swordAttackRange;
     public bool isupattack, isONLYupattack;
     public bool isdownattack;
@@ -30,6 +31,7 @@ public class Restrictions : MonoBehaviour
         movement = GetComponentInParent<Movement>();
         attack = GetComponentInParent<Attack>();
         animator = GetComponent<Animator>();
+        memory = GetComponentInParent<Memory>();
         isupattack = false;
         isdownattack = false;
         isdownslashingendless = false;
@@ -257,13 +259,18 @@ public class Restrictions : MonoBehaviour
 
     public void instantiateshockwaveonground()
     {
+
+        if(memory.swordgroundshockwave == true)
+        {
+
+        
         if(movement.transform.localScale.x < 1f)
         {
             var Shockwaves = Instantiate(shockWaveOnGround, new Vector3(movement.transform.localPosition.x, movement.transform.localPosition.y, 0), Quaternion.identity);
             Shockwaves.transform.localScale = new Vector2(-3, 3);
         }
         else { var Shockwave = Instantiate(shockWaveOnGround, new Vector3(movement.transform.localPosition.x, movement.transform.localPosition.y, 0), Quaternion.identity);  }
-     
+        }
 
     }
 
