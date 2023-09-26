@@ -152,6 +152,7 @@ public class Restrictions : MonoBehaviour
     }
     public void changetonormal()
     {
+        attack.currentMeeleCooldown = attack.currentWeapon.cooldown;
         animator.SetTrigger("stopattack");
         isdownattack = false;
         reducedamagebyhalf = false;

@@ -512,8 +512,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentWeapon: {fileID: 0}
-  canMeeleAttack: 0
-  canRangedAttack: 0
+  meleeAttackReady: 0
+  rangedAttackReady: 0
   comboAttacks: 0
   attackQueuedUp: 0
   inComboAttack: 0
@@ -2483,7 +2483,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1851989245
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -18,7 +18,7 @@ public class ArrowMovement : MonoBehaviour
         gameObject.GetComponent<Collider2D>().enabled = false;
         gameObject.GetComponent<Collider2D>().enabled = true;
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = transform.right * 6f;
+        rb.velocity = transform.right * 8f;
     }
 
     // Update is called once per frame

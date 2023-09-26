@@ -14,5 +14,7 @@ public class WeaponData : ScriptableObject
     public int damage = 0;
     public float cooldown = 1;
     public enum Type { Default, Sword, Daggers, Hammer, Spear, Bow, Crossbow, Staff, Wand}
+    public enum WeaponType { Default, Ranged, Melee }
     public Type type = Type.Default;
+    public WeaponType weaponType = WeaponType.Default;
 }

@@ -6,8 +6,8 @@ public class Attack : MonoBehaviour
 {
     // Start is called before the first frame update
     public WeaponData currentWeapon;
-    public bool canMeeleAttack;
-    public bool canRangedAttack;
+    public bool meleeAttackReady;
+    public bool rangedAttackReady;
     public bool comboAttacks;
     public bool attackQueuedUp;
     public bool inComboAttack;
@@ -29,15 +29,35 @@ public class Attack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        meleeAttackReady = !(currentMeeleCooldown <= 0);
+        rangedAttackReady = !(currentRangedCooldown <= 0);
         currentWeapon = GetComponent<Memory>().currentWeaponData;
+        if (currentRangedCooldown > 0 && currentWeapon.weaponType == WeaponData.WeaponType.Ranged)
+        {
+            currentRangedCooldown -= Time.deltaTime;
+        }
+        if (currentMeeleCooldown > 0 && currentWeapon.weaponType == WeaponData.WeaponType.Melee) {
+            currentMeeleCooldown -= Time.deltaTime;
+            if(currentWeapon.type == WeaponData.Type.Sword && movement.grounded && currentWeapon.cooldown > currentWeapon.cooldown / 25)
+            {
+                currentMeeleCooldown = currentWeapon.cooldown / 25;
+            }
+        }
+
+
+
         if (Input.GetKeyDown(KeyCode.Mouse0) && movement.movementrestriction == false && movement.boosted == false && movement.attackrestriction == false) { 
             switch(currentWeapon.type)
             {
-                case WeaponData.Type.Bow: Debug.Log("Bow");
+                case WeaponData.Type.Bow:
                     // Bow Default Attack
+                    if(rangedAttackReady)
+                    {
+                        break;
+                    }
                      var projectile = Instantiate(arrow, new Vector3(gameObject.transform.localPosition.x,gameObject.transform.localPosition.y, 0), 
                          Quaternion.Euler(0f, 0f, (Mathf.Atan2(Input.mousePosition.y - Camera.main.WorldToScreenPoint(gameObject.transform.localPosition).y, Input.mousePosition.x - Camera.main.WorldToScreenPoint(gameObject.transform.localPosition).x) * Mathf.Rad2Deg)));
+                    currentRangedCooldown = currentWeapon.cooldown;
                    break;
                 case WeaponData.Type.Sword:
 
