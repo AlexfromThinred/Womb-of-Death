@@ -29,6 +29,7 @@ public class Attack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         currentWeapon = GetComponent<Memory>().currentWeaponData;
         if (Input.GetKeyDown(KeyCode.Mouse0) && movement.movementrestriction == false && movement.boosted == false && movement.attackrestriction == false) { 
             switch(currentWeapon.type)

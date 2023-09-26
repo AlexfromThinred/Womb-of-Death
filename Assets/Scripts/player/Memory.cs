@@ -36,13 +36,15 @@ public class Memory : MonoBehaviour
             }
             
         }
-     }
+    }
+    // Stuff that happens, when weapon gets picked up
     public void weaponPickup(WeaponData newWeaponData)
     {
         if (!inventory.Contains(newWeaponData))
         {
             inventory.Add(newWeaponData);
         }
+        // Equip Weapon, when no weapon held
         if (activeWeapons[0] == null || activeWeapons[0] == noWeapon)
         {
             activeWeapons[0] = newWeaponData;
