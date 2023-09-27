@@ -112,12 +112,14 @@
     <Compile Include="Assets\Scripts\Menu\Exitfromgam.cs" />
     <Compile Include="Assets\Scripts\Walls\isawall.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
+    <Compile Include="Assets\Scripts\WeaponButtonLogic.cs" />
     <Compile Include="Assets\Scripts\player\Playerhealth.cs" />
     <Compile Include="Assets\Scripts\player\Restrictions\Restrictions.cs" />
     <Compile Include="Assets\Scripts\player\Cameramovement.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
     <Compile Include="Assets\Scripts\player\Memory.cs" />
     <Compile Include="Assets\Scripts\player\Dash\Afterimage.cs" />
+    <Compile Include="Assets\Scripts\Shockwaves\Groundshockwave.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
     <Compile Include="Assets\Scripts\player\Spells und Würfe\Spellobject.cs" />
   </ItemGroup>
