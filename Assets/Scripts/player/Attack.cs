@@ -29,6 +29,7 @@ public class Attack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Cooldown Management
         meleeAttackReady = (currentMeeleCooldown <= 0);
         rangedAttackReady = (currentRangedCooldown <= 0);
         currentWeapon = GetComponent<Memory>().currentWeaponData;
@@ -45,7 +46,7 @@ public class Attack : MonoBehaviour
         }
 
 
-
+        // Main LMB Input
         if (Input.GetKeyDown(KeyCode.Mouse0) && movement.movementrestriction == false && movement.boosted == false && movement.attackrestriction == false) { 
             switch(currentWeapon.type)
             {
@@ -59,9 +60,11 @@ public class Attack : MonoBehaviour
                          Quaternion.Euler(0f, 0f, (Mathf.Atan2(Input.mousePosition.y - Camera.main.WorldToScreenPoint(gameObject.transform.localPosition).y, Input.mousePosition.x - Camera.main.WorldToScreenPoint(gameObject.transform.localPosition).x) * Mathf.Rad2Deg)));
                     currentRangedCooldown = currentWeapon.cooldown;
                    break;
+                case WeaponData.Type.Crossbow:
+                    // Crossbow Attack Code
 
 
-
+                    break;
                 case WeaponData.Type.Sword:
 
                     inComboAttack = true;
@@ -91,6 +94,17 @@ public class Attack : MonoBehaviour
                         currentMeeleCooldown = currentWeapon.cooldown;
                        
                     }
+                    break;
+                case WeaponData.Type.Spear:
+                    // Spear Attack Code
+                    Debug.Log("Spear");
+
+
+
+                    break;
+                case WeaponData.Type.Hammer:
+                    // Hammer Attack Code
+                    Debug.Log("Hammer");
 
 
 
