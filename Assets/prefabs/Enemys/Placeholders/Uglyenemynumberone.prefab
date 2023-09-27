@@ -235,9 +235,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   body: {fileID: 2463597382160803422}
-  enemyspeed: 1
+  enemyspeed: -1
+  enemymaxspeed: 0
+  enemyAcceleration: 0
   isstillstaggrered: 0
   grounded: 0
+  cannotBeKnockedBack: 0
 --- !u!61 &1758550449198543788
 BoxCollider2D:
   m_ObjectHideFlags: 0

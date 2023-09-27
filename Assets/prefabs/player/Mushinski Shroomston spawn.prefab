@@ -291,8 +291,10 @@ MonoBehaviour:
   downdamagecounter: 0
   hasNOknockback: 0
   trippledamage: 0
+  Hammerjumpdown: 0
   shockWaveOnGround: {fileID: 1819753798501667898, guid: c1c74a172d2b05247886c768506d038f,
     type: 3}
+  Lightningstrike: {fileID: 0}
 --- !u!1 &3373930359289539613
 GameObject:
   m_ObjectHideFlags: 0
@@ -358,7 +360,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.039258435, y: -0.05568598}
+  m_Offset: {x: -0.03925457, y: -0.05568598}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -369,7 +371,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.2063494, y: 0.025735714}
+  m_Size: {x: 0.2350805, y: 0.025735714}
   m_EdgeRadius: 0
 --- !u!114 &4547807492949502661
 MonoBehaviour:
@@ -526,6 +528,7 @@ GameObject:
   - component: {fileID: 584955978201350009}
   - component: {fileID: 5979378824423879603}
   - component: {fileID: 8954686304284623989}
+  - component: {fileID: 9012430100336632970}
   m_Layer: 0
   m_Name: Body
   m_TagString: player
@@ -737,6 +740,7 @@ MonoBehaviour:
   activeWeapon: 0
   noWeapon: {fileID: 0}
   swordgroundshockwave: 0
+  lightningstrike: 0
 --- !u!114 &8954686304284623989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -751,6 +755,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerhealth: 20
   maxhealth: 2
+--- !u!114 &9012430100336632970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6638569928027698647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2661e0e98cb21a14f91a029e743c171a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentWeapon: {fileID: 0}
+  meleeAttackReady: 0
+  rangedAttackReady: 0
+  comboAttacks: 0
+  attackQueuedUp: 0
+  inComboAttack: 0
+  currentRangedCooldown: 0
+  currentMeeleCooldown: 0
+  arrow: {fileID: 4654331999713941771, guid: f9f5f2fc8c3c57e408ce802fec99d252, type: 3}
+  swing: {fileID: 0}
+  animator: {fileID: 0}
+  movement: {fileID: 0}
 --- !u!1 &6865465902282334690
 GameObject:
   m_ObjectHideFlags: 0

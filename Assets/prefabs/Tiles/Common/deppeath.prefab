@@ -401,7 +401,7 @@ GameObject:
   - component: {fileID: 6815365572248009165}
   m_Layer: 0
   m_Name: deppeath
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -105,7 +105,11 @@ public class Attack : MonoBehaviour
                 case WeaponData.Type.Hammer:
                     // Hammer Attack Code
                     Debug.Log("Hammer");
-
+                    if (!meleeAttackReady)
+                    {
+                        break;
+                    }
+                    if (Input.GetKey(KeyCode.W)) { animator.SetTrigger("Hammerup"); currentMeeleCooldown = currentWeapon.cooldown / 4f; }
 
 
                     break;

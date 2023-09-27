@@ -23,8 +23,12 @@ public class Restrictions : MonoBehaviour
     public bool trippledamage;
 
 
+
+    public bool Hammerjumpdown;
+
     public GameObject shockWaveOnGround;
-   
+    public GameObject Lightningstrike;
+
 
     public void Start()
     {
@@ -49,9 +53,52 @@ public class Restrictions : MonoBehaviour
             animator.ResetTrigger("reachedground");
         }
 
+       
     }
 
     #region singleattacks
+
+    public void Hammerupstart()
+    {
+        reducedamagebyhalf = true;
+        movement.yeet.velocity = new Vector2(0, 0);
+        attack.currentMeeleCooldown = attack.currentWeapon.cooldown;
+        movement.attackrestriction = true;
+    }
+
+    public void Hammerupjump()
+    {
+        reducedamagebyhalf = true;
+        isONLYupattack = true;
+        if (movement.transform.localScale.x < 1f)
+            movement.yeet.velocity = new Vector2(-5f, 7f);
+        else movement.yeet.velocity = new Vector2(5f, 7f);
+    }
+
+    public void Hammerupdown()
+    {
+        swordAttackRange = swordAttackRange + 0.7f;
+        movement.yeet.velocity = new Vector2(0, -14);
+        isdownslashingendless = true;
+        boosteddown = true;
+        downdamagecounter = 3;
+
+    }
+    public void Hammerfalling()
+    {
+        downdamagecounter ++;
+        movement.yeet.velocity = new Vector2(0, -14);
+    }
+
+    public void Hammerupend()
+    {
+         reducedamagebyhalf = true;
+        animator.ResetTrigger("reachedground");
+        boosteddown = false;
+        downdamagecounter = 0;
+        isdownslashingendless = true;
+        isONLYupattack = true;
+    }
 
     public void sworduupslash()
     {
@@ -85,6 +132,7 @@ public class Restrictions : MonoBehaviour
         movement.yeet.velocity = new Vector2(0, -15);
         isdownslashingendless = true;
         boosteddown = true;
+
 
     }
 
@@ -198,7 +246,8 @@ public class Restrictions : MonoBehaviour
         movement.attackrestrictionwithgravity = false;
         attack.inComboAttack = false;
         attack.attackQueuedUp = false;
-
+        reducedamagebyhalf = false;
+        downdamagecounter = 0;
     }
 
     public void resetmovement()
@@ -216,6 +265,11 @@ public class Restrictions : MonoBehaviour
     public void reduceswordattackrange()
     {
         swordAttackRange = swordAttackRange - 0.2f;
+    }
+    public void reducehammerattackrange()
+    {
+        swordAttackRange = swordAttackRange - 0.7f;
+        reducedamagebyhalf = false;
     }
 
     public void resetDaggerTrigger()
@@ -260,7 +314,7 @@ public class Restrictions : MonoBehaviour
     public void instantiateshockwaveonground()
     {
 
-        if(memory.swordgroundshockwave == true)
+        if(memory.swordgroundshockwave == true )
         {
 
         
@@ -274,7 +328,24 @@ public class Restrictions : MonoBehaviour
 
     }
 
+    public void instantiateLightningsword()
+    {
 
+        if (memory.lightningstrike == true)
+        {
+
+
+            if (movement.transform.localScale.x < 1f)
+            {
+                var Lightnings = Instantiate(Lightningstrike, new Vector3(movement.transform.localPosition.x -1.6f, movement.transform.localPosition.y, 0), Quaternion.identity);
+               
+            }
+            else { var Lightningst = Instantiate(Lightningstrike, new Vector3(movement.transform.localPosition.x+1.6f, movement.transform.localPosition.y, 0), Quaternion.identity); }
+        }
+
+    }
+
+   
     #endregion
 
 

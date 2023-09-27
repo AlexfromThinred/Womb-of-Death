@@ -17,11 +17,14 @@ public class Memory : MonoBehaviour
 
 
     public bool swordgroundshockwave;
-    
+
+    public bool lightningstrike;
+
 
     void Start()
     {
         swordgroundshockwave = true;
+        lightningstrike = true;
     }
     // Update is called once per frame
      void Update()
