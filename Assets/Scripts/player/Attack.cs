@@ -87,8 +87,9 @@ public class Attack : MonoBehaviour
                     {
                         break;
                     }
-                    if (Input.GetKey(KeyCode.S) && movement.grounded == false) { animator.SetTrigger("daggerdown"); currentMeeleCooldown = currentWeapon.cooldown * 1.8f; }
-                    else if (Input.GetKey(KeyCode.W)) { animator.SetTrigger("daggerup"); currentMeeleCooldown = currentWeapon.cooldown * 1.6f; } else
+                    if (Input.GetKey(KeyCode.S) && movement.grounded == false) { animator.SetTrigger("daggerdown"); currentMeeleCooldown = currentWeapon.cooldown * 1.4f; }
+                    else if (Input.GetKey(KeyCode.W)) { animator.SetTrigger("daggerup"); currentMeeleCooldown = currentWeapon.cooldown * 1.5f; } 
+                    else
                     {
                         animator.SetTrigger("daggerattack");
                         currentMeeleCooldown = currentWeapon.cooldown;
@@ -109,9 +110,12 @@ public class Attack : MonoBehaviour
                     {
                         break;
                     }
-                    if (Input.GetKey(KeyCode.W)) { animator.SetTrigger("Hammerup"); currentMeeleCooldown = currentWeapon.cooldown / 4f; }
-
-
+                    if (Input.GetKey(KeyCode.W)) { animator.SetTrigger("Hammerup"); currentMeeleCooldown = currentWeapon.cooldown -1; }
+                    else if(Input.GetKey(KeyCode.S) ) { animator.SetTrigger("Hammerdown"); currentMeeleCooldown = currentWeapon.cooldown -1; } else
+                    {
+                        animator.SetTrigger("Hammer"); currentMeeleCooldown = currentWeapon.cooldown; inComboAttack = true;
+                    }
+                   
                     break;
                 default: Debug.Log("none");
                    break;

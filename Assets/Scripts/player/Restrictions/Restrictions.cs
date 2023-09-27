@@ -21,9 +21,11 @@ public class Restrictions : MonoBehaviour
     public int downdamagecounter;
     public bool hasNOknockback;
     public bool trippledamage;
+    public bool doubledamage;
 
 
 
+    public bool Hammerfarfalling;
     public bool Hammerjumpdown;
 
     public GameObject shockWaveOnGround;
@@ -62,26 +64,76 @@ public class Restrictions : MonoBehaviour
     {
         reducedamagebyhalf = true;
         movement.yeet.velocity = new Vector2(0, 0);
-        attack.currentMeeleCooldown = attack.currentWeapon.cooldown;
+      
         movement.attackrestriction = true;
+    }
+
+    public void Hammerstart()
+    {
+        isONLYupattack = true;
+        attack.inComboAttack = true;
+        movement.yeet.velocity = new Vector2(0, 0);
+        swordAttackRange = swordAttackRange + 0.6f;
+
+        movement.attackrestriction = true;
+    }
+
+    public void dealdoubledamage()
+    {
+
+        doubledamage = true;
+    }
+
+    public void Hammerend()
+    {
+
+        doubledamage = false;
+        attack.inComboAttack = false;
+        movement.attackrestriction = false;
+        swordAttackRange = swordAttackRange - 0.6f;
+        animator.SetTrigger("stopattack");
+        isONLYupattack = false;
+    }
+
+    public void Secondhammerstrike()
+    {
+        if (attack.attackQueuedUp == false)
+        {
+            animator.SetTrigger("stopattack");
+            attack.inComboAttack = false;
+            movement.attackrestriction = false;
+            isONLYupattack = false;
+            swordAttackRange = swordAttackRange - 0.6f;
+
+
+        } else
+        {
+            doubledamage = true;
+        }
+        
+
+        
     }
 
     public void Hammerupjump()
     {
+       downdamagecounter = 1;
         reducedamagebyhalf = true;
         isONLYupattack = true;
         if (movement.transform.localScale.x < 1f)
             movement.yeet.velocity = new Vector2(-5f, 7f);
         else movement.yeet.velocity = new Vector2(5f, 7f);
+        Hammerfarfalling = true;
+      
     }
 
     public void Hammerupdown()
     {
-        swordAttackRange = swordAttackRange + 0.7f;
+        swordAttackRange = swordAttackRange + 1f;
         movement.yeet.velocity = new Vector2(0, -14);
         isdownslashingendless = true;
         boosteddown = true;
-        downdamagecounter = 3;
+       
 
     }
     public void Hammerfalling()
@@ -98,6 +150,8 @@ public class Restrictions : MonoBehaviour
         downdamagecounter = 0;
         isdownslashingendless = true;
         isONLYupattack = true;
+        Hammerfarfalling = false;
+        doubledamage = false;
     }
 
     public void sworduupslash()
@@ -268,7 +322,7 @@ public class Restrictions : MonoBehaviour
     }
     public void reducehammerattackrange()
     {
-        swordAttackRange = swordAttackRange - 0.7f;
+        swordAttackRange = swordAttackRange - 1f;
         reducedamagebyhalf = false;
     }
 
@@ -303,10 +357,23 @@ public class Restrictions : MonoBehaviour
         movement.attackrestriction = true;
         movement.yeet.velocity = new Vector2(0, movement.yeet.velocity.y);
     }
+    public void onlymoverestrictionInAllAchses()
+    {
+        movement.attackrestriction = true;
+        movement.yeet.velocity = new Vector2(0, 0);
+    }
 
-
+    public void Hammerdown()
+    {
+        isONLYupattack = true;
+        movement.yeet.velocity = new Vector2(0, -9);
+    }
     #endregion
-
+    public void Hammerdownend()
+    {
+        isONLYupattack = false;
+        movement.attackrestriction = false;
+    }
 
 
     #region Shockwaves and other instantiated things
@@ -345,7 +412,24 @@ public class Restrictions : MonoBehaviour
 
     }
 
-   
+    public void instantiateLightningHammerdown()
+    {
+        if (memory.lightningstrikeHammer == true)
+        {        
+          var Lightnings = Instantiate(Lightningstrike, new Vector3(movement.transform.localPosition.x - 1.6f, movement.transform.localPosition.y, 0), Quaternion.identity);
+          var Lightningst = Instantiate(Lightningstrike, new Vector3(movement.transform.localPosition.x + 1.6f, movement.transform.localPosition.y, 0), Quaternion.identity); 
+        }
+    }
+    public void instantiateSecondLightningHammerdown()
+    {
+        if (memory.lightningstrikeHammer == true)
+        {
+            var Lightnings = Instantiate(Lightningstrike, new Vector3(movement.transform.localPosition.x - 2.6f, movement.transform.localPosition.y, 0), Quaternion.identity);
+            var Lightningst = Instantiate(Lightningstrike, new Vector3(movement.transform.localPosition.x + 2.6f, movement.transform.localPosition.y, 0), Quaternion.identity);
+        }
+    }
+
+
     #endregion
 
 
@@ -359,6 +443,7 @@ public class Restrictions : MonoBehaviour
             movement.yeet.velocity = new Vector2(0, -17 - (downdamagecounter / 2)); downdamagecounter++;
 
             if (downdamagecounter >= 7) reducedamagebyhalf = false;
+            if (Hammerfarfalling == true && downdamagecounter >= 9) doubledamage = true;
         }
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(swordHitbox.position, swordAttackRange);
         foreach (Collider2D enemy in hitEnemies)
@@ -373,6 +458,7 @@ public class Restrictions : MonoBehaviour
 
                 }
                 else if (trippledamage == true) enemy.GetComponent<Enemyhealth>().dealdamage(attack.currentWeapon.damage * 3);
+                else if (doubledamage == true) enemy.GetComponent<Enemyhealth>().dealdamage(attack.currentWeapon.damage * 2);
                 else enemy.GetComponent<Enemyhealth>().dealdamage(attack.currentWeapon.damage);
                 if (enemy.GetComponent<Moveenemy>() != null)
                 {

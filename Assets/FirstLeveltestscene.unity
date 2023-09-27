@@ -3199,7 +3199,8 @@ PrefabInstance:
         type: 3}
       propertyPath: currentWeaponData
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: 2ec3936660b88a24888c23500847ffd8,
+        type: 2}
     - target: {fileID: 7261656901192655003, guid: 647bd784fd046174b9037f46efc5f511,
         type: 3}
       propertyPath: m_AnchoredPosition.x

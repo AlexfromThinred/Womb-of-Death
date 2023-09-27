@@ -19,12 +19,14 @@ public class Memory : MonoBehaviour
     public bool swordgroundshockwave;
 
     public bool lightningstrike;
+    public bool lightningstrikeHammer;
 
 
     void Start()
     {
         swordgroundshockwave = true;
         lightningstrike = true;
+        lightningstrikeHammer = true;
     }
     // Update is called once per frame
      void Update()
