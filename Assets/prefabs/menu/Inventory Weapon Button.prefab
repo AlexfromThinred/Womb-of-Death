@@ -92,7 +92,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 4160400461550807052}
         m_TargetAssemblyTypeName: selectHoveredInventoryWeapon, Assembly-CSharp
         m_MethodName: selectWeapon
         m_Mode: 1

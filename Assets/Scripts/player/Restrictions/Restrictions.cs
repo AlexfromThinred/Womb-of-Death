@@ -17,6 +17,8 @@ public class Restrictions : MonoBehaviour
     public Transform upslashhitbox;
     public Transform backslashhitbox;
     public Transform spearHitBox;
+    public Transform spearupHitBox;
+    public Transform UpandFront;
     public bool reducedamagebyhalf;
     public bool boosteddown;
     public int downdamagecounter;
@@ -32,7 +34,8 @@ public class Restrictions : MonoBehaviour
     public GameObject shockWaveOnGround;
     public GameObject Lightningstrike;
     public GameObject Earthstab;
-
+    public GameObject tidalWavethrow;
+    public GameObject Fireslash;
 
     public void Start()
     {
@@ -100,6 +103,31 @@ public class Restrictions : MonoBehaviour
         movement.attackrestriction = false;
         animator.SetTrigger("stopattack");
     }
+
+    public void Spearupstart()
+    {
+
+      
+        movement.yeet.velocity = new Vector2(0, 0);
+        swordAttackRange = swordAttackRange + 0.6f;
+
+        movement.attackrestriction = true;
+    }
+    public void Spearupsecond()
+    {
+        isONLYupattack = true;
+    }
+
+    public void Spearupend()
+    {
+
+        isONLYupattack = false;
+
+        swordAttackRange = swordAttackRange - 0.6f;
+
+        movement.attackrestriction = false;
+    }
+
 
 
 
@@ -511,7 +539,47 @@ public class Restrictions : MonoBehaviour
         }
     }
 
+    public void instantiateTidalWaveSpear()
+    {
+        if (memory.tidalWave == true)
+        {
+            if (movement.transform.localScale.x < 1f)
+            {
+                var Tidalwaveleft = Instantiate(tidalWavethrow, new Vector3(movement.transform.localPosition.x - 1.6f, movement.transform.localPosition.y - 0.4f, 0), Quaternion.identity);
+                Tidalwaveleft.GetComponent<Tidalwave>().left = true;
+            }
+            else { var Tidalwavere = Instantiate(tidalWavethrow, new Vector3(movement.transform.localPosition.x + 1.6f, movement.transform.localPosition.y - 0.4f, 0), Quaternion.identity);  }
+           
+        }
+    }
 
+    public void instantiateTidalWaveDaggerUP()
+    {
+        if (memory.tidalWave == true)
+        {
+           
+                var Tidalwaveleft = Instantiate(tidalWavethrow, new Vector3(movement.transform.localPosition.x - 1.6f, movement.transform.localPosition.y - 0.4f, 0), Quaternion.identity);
+                Tidalwaveleft.GetComponent<Tidalwave>().left = true;
+            
+                var Tidalwavere = Instantiate(tidalWavethrow, new Vector3(movement.transform.localPosition.x + 1.6f, movement.transform.localPosition.y - 0.4f, 0), Quaternion.identity); 
+
+        }
+    }
+
+    public void instantiateFireslash()
+    {
+        if (memory.fireslash == true)
+        {
+
+            if (movement.transform.localScale.x < 1f)
+            {
+                var Fireleft = Instantiate(Fireslash, new Vector3(movement.transform.localPosition.x - 1.6f, movement.transform.localPosition.y +0.2f, 0), Quaternion.identity);
+                Fireleft.GetComponent<Tidalwave>().left = true;
+            }
+            else { var Firere = Instantiate(Fireslash, new Vector3(movement.transform.localPosition.x + 1.6f, movement.transform.localPosition.y + 0.2f, 0), Quaternion.identity); }
+
+        }
+    }
     #endregion
 
 
@@ -698,7 +766,80 @@ public class Restrictions : MonoBehaviour
         }
     }
 
+    public void DamageenemiesUpandFront()
+    {
 
+
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(upslashhitbox.position, swordAttackRange * 1.3f);
+        foreach (Collider2D enemy in hitEnemies)
+        {
+            if (enemy.GetComponent<Enemyhealth>() != null)
+
+
+            {
+                if (reducedamagebyhalf == true)
+                {
+                    enemy.GetComponent<Enemyhealth>().dealdamage(attack.currentWeapon.damage / 2);
+
+                }
+                else if (trippledamage == true) enemy.GetComponent<Enemyhealth>().dealdamage(attack.currentWeapon.damage * 3);
+                else enemy.GetComponent<Enemyhealth>().dealdamage(attack.currentWeapon.damage);
+                if (enemy.GetComponent<Moveenemy>() != null)
+                {
+
+
+
+                    bool left = false;
+                    if (hasNOknockback == false)
+                    {
+                        if (movement.transform.localScale.x < 1f) left = true;
+                        if (isupattack == true) enemy.GetComponent<Moveenemy>().Knockbackafterattack(1.5f, 4, left);
+                        else if (isONLYupattack == true) enemy.GetComponent<Moveenemy>().Knockbackafterattack(0, 5f, left);
+                        else if (isdownattack == true) enemy.GetComponent<Moveenemy>().Knockbackafterattack(0.3f, -15, left);
+                        else
+                            enemy.GetComponent<Moveenemy>().Knockbackafterattack(1.5f, 1, left);
+
+                    }
+
+
+
+
+                }
+                Debug.Log("hit enemy");
+            }
+        }
+    }
+
+    public void DamageenemiesupSpear()
+    {
+
+
+        Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(spearupHitBox.position, new Vector2(1,2.5f),0);
+        foreach (Collider2D enemy in hitEnemies)
+        {
+            if (enemy.GetComponent<Enemyhealth>() != null)
+
+
+            {
+               
+                enemy.GetComponent<Enemyhealth>().dealdamage(attack.currentWeapon.damage);
+                if (enemy.GetComponent<Moveenemy>() != null)
+                {
+
+                    bool left = false;
+                    if (hasNOknockback == false)
+                    {
+                        if (movement.transform.localScale.x < 1f) left = true;
+                       
+                         if (isONLYupattack == true) enemy.GetComponent<Moveenemy>().Knockbackafterattack(0, 3f, left);
+                     
+                        else
+                            enemy.GetComponent<Moveenemy>().Knockbackafterattack(1.5f, 1, left);
+                    }
+                }
+            }
+        }
+    }
     public void Damageenemiesbackwards()
     {
 
@@ -751,7 +892,7 @@ public class Restrictions : MonoBehaviour
         Gizmos.DrawWireSphere(upslashhitbox.position, swordAttackRange * 1.3f);
         Gizmos.DrawWireSphere(downslashhitbox.position, swordAttackRange);
         Gizmos.DrawWireCube(spearHitBox.position, new Vector3( 2.15f, 1.2f,0));
-      
+        Gizmos.DrawWireCube(spearupHitBox.position, new Vector3(1, 2.5f,0));
     }
     #endregion 
 

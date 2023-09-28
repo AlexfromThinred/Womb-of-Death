@@ -17,10 +17,12 @@ public class Attack : MonoBehaviour
     public GameObject swing;
     public Animator animator;
     public Movement movement;
+    public Memory memory;
     void Start()
     {
         animator = GetComponentInChildren<Animator>();
         movement = GetComponent<Movement>();
+        memory = GetComponent<Memory>();
     }
 
 
@@ -100,9 +102,14 @@ public class Attack : MonoBehaviour
                     // Spear Attack Code
                     Debug.Log("Spear");
 
-
-                    animator.SetTrigger("Spear");
-                    currentMeeleCooldown = currentWeapon.cooldown;
+                    if (Input.GetKey(KeyCode.W) && memory.fireslash == true ) { animator.SetTrigger("Spearupfire"); currentMeeleCooldown = currentWeapon.cooldown * 1.2f; }
+                    else if (Input.GetKey(KeyCode.W)) { animator.SetTrigger("Spearup"); currentMeeleCooldown = currentWeapon.cooldown * 1.2f; }
+                    else
+                    {
+                        animator.SetTrigger("Spear");
+                        currentMeeleCooldown = currentWeapon.cooldown;
+                    }
+                   
 
 
 

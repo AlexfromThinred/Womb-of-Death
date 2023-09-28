@@ -322,6 +322,8 @@ MonoBehaviour:
   upslashhitbox: {fileID: 1242815877673362169}
   backslashhitbox: {fileID: 6021892377575697029}
   spearHitBox: {fileID: 5556903935219991229}
+  spearupHitBox: {fileID: 5049230391926827921}
+  UpandFront: {fileID: 6952781754666039073}
   reducedamagebyhalf: 0
   boosteddown: 0
   downdamagecounter: 0
@@ -333,6 +335,12 @@ MonoBehaviour:
   shockWaveOnGround: {fileID: 1819753798501667898, guid: c1c74a172d2b05247886c768506d038f,
     type: 3}
   Lightningstrike: {fileID: 6607641045490216584, guid: ac16b69386b5aad499c776df9624c897,
+    type: 3}
+  Earthstab: {fileID: 101313362556187472, guid: 24af8d32bb3504744916c0dfe41c4ad2,
+    type: 3}
+  tidalWavethrow: {fileID: 331205795708400461, guid: b9c1384d852b9c9479789d9286b17e9e,
+    type: 3}
+  Fireslash: {fileID: 7682183428369458532, guid: 7626cddd85f26334988f96cf8ec1b533,
     type: 3}
 --- !u!1 &3373930359289539613
 GameObject:
@@ -551,6 +559,76 @@ RectTransform:
   m_AnchoredPosition: {x: 0.2428, y: -0.0571}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &4967397416069405094
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5049230391926827921}
+  m_Layer: 0
+  m_Name: Spearup
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &5049230391926827921
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4967397416069405094}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7261656901192655003}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.042, y: 0.266}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &5689861514049816550
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6952781754666039073}
+  m_Layer: 0
+  m_Name: UpandFront
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &6952781754666039073
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5689861514049816550}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7261656901192655003}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.283, y: 0.132}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6638569928027698647
 GameObject:
   m_ObjectHideFlags: 0
@@ -596,6 +674,8 @@ RectTransform:
   - {fileID: 1541491179389949239}
   - {fileID: 1242815877673362169}
   - {fileID: 5556903935219991229}
+  - {fileID: 5049230391926827921}
+  - {fileID: 6952781754666039073}
   m_Father: {fileID: 880641541217535082}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -782,6 +862,9 @@ MonoBehaviour:
   swordgroundshockwave: 0
   lightningstrike: 0
   lightningstrikeHammer: 0
+  earthstabhammer: 0
+  tidalWave: 0
+  fireslash: 0
 --- !u!114 &8954686304284623989
 MonoBehaviour:
   m_ObjectHideFlags: 0
