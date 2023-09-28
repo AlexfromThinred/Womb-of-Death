@@ -49,14 +49,14 @@ public class Movement : MonoBehaviour
    
 
 
-    void Update()
+    void FixedUpdate()
     {
       
-        xMin = -3f - playermovementspeedbuff; xMax = 3f + playermovementspeedbuff;
+        xMin = -4f - playermovementspeedbuff; xMax = 4f + playermovementspeedbuff;
         if (boosted == true)
         {
-            if (gameObject.transform.localScale.x < 1f) { playermovementspeed = -3f - playermovementspeedbuff; }
-            else playermovementspeed = 3f +playermovementspeedbuff;
+            if (gameObject.transform.localScale.x < 1f) { playermovementspeed = -4f - playermovementspeedbuff; }
+            else playermovementspeed = 4f +playermovementspeedbuff;
             yeet.velocity = new Vector2(playermovementspeed, 0f);
         }
 
@@ -83,16 +83,16 @@ public class Movement : MonoBehaviour
 
                 if (Input.GetKey(KeyCode.D) && ispropelling == false && boosted == false)
                 {
-                    if(yeet.velocity.x < 0) playermovementspeed += 0.06f + playermovementspeedbuff;
+                    if(yeet.velocity.x < 0) playermovementspeed += 0.4f + playermovementspeedbuff;
 
 
-                    playermovementspeed += 0.025f + playermovementspeedbuff;
+                    playermovementspeed += 0.2f + playermovementspeedbuff;
                 }
 
                 if (Input.GetKey(KeyCode.A) && ispropelling == false && boosted == false)
                 {
-                    if (yeet.velocity.x > 0) playermovementspeed -= 0.06f + playermovementspeedbuff;
-                    playermovementspeed -= 0.025f + playermovementspeedbuff;
+                    if (yeet.velocity.x > 0) playermovementspeed -= 0.4f + playermovementspeedbuff;
+                    playermovementspeed -= 0.2f + playermovementspeedbuff;
                 }
 
 
@@ -155,43 +155,28 @@ public class Movement : MonoBehaviour
  
     public void jump()
     {
-        animator.SetTrigger("Jump");
-     
-       
+        animator.SetTrigger("Jump");    
         playerymov = jumpspeed;
         Vector2 jumpvelocity = new Vector2(playermovementspeed, playerymov);
-    
-
         yeet.velocity = jumpvelocity;
-        
-
-
+        grounded = false;
     }
+
+
     private IEnumerator Wait()
     {
-       
         yield return new WaitForSeconds(0.4f);
-       
         ispropelling = false;
     }
+
+
     public void walljump()
     {
-
-
         if (playermovementspeed > 0) { playermovementspeed = -3f; isgoingtoleft = true;  } else if (playermovementspeed < 0) { playermovementspeed = 3f; isgoingtoleft = false; }
-
-
         ispropelling = true;
-
         playerymov = jumpspeed;
         Vector2 jumpvelocity = new Vector2(playermovementspeed, playerymov);
-       
-
         yeet.velocity = jumpvelocity;
-
         StartCoroutine(Wait());
-
-     
-
     }
 }
