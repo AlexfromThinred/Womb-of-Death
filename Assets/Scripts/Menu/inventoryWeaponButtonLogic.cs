@@ -6,12 +6,11 @@ using UnityEngine.UI;
 public class InventoryWeaponButtonLogic : MonoBehaviour
 {
     // Start is called before the first frame update
-    public int weaponSlot;
     public WeaponData weapon;
     public bool isActive;
     Memory memory;
     GameObject player;
-    // Wenn man das anders definiert zieht er sich Unity.Engine.UIElements; damit funktioniert der Code nicht
+    // Wenn man das anders definiert zieht er sich UnityEngine.UIElements; damit funktioniert der Code nicht
     public UnityEngine.UI.Image oldImage;
     void Start()
     {
