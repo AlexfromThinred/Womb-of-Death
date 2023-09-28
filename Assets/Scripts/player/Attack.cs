@@ -101,6 +101,10 @@ public class Attack : MonoBehaviour
                     Debug.Log("Spear");
 
 
+                    animator.SetTrigger("Spear");
+                    currentMeeleCooldown = currentWeapon.cooldown;
+
+
 
                     break;
                 case WeaponData.Type.Hammer:

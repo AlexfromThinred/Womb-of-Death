@@ -20,6 +20,7 @@ public class Memory : MonoBehaviour
 
     public bool lightningstrike;
     public bool lightningstrikeHammer;
+    public bool earthstabhammer;
 
 
     void Start()
@@ -27,6 +28,7 @@ public class Memory : MonoBehaviour
         swordgroundshockwave = true;
         lightningstrike = true;
         lightningstrikeHammer = true;
+        earthstabhammer = true;
     }
     // Update is called once per frame
      void Update()
@@ -57,7 +59,7 @@ public class Memory : MonoBehaviour
         {
             activeWeapons[0] = newWeaponData;
             currentWeaponData = newWeaponData;
-        } else if (activeWeapons[1] == null || activeWeapons[0] == noWeapon)
+        } else if (activeWeapons[1] == null || activeWeapons[1] == noWeapon)
         {
             activeWeapons[1] = newWeaponData;
         }
