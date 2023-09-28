@@ -8,8 +8,8 @@ public class Tidalwave : MonoBehaviour
     public bool left;
     public Transform Wave;
     public Rigidbody2D rigid;
-    public bool isfireinstead;
-
+    public bool isFireInstead;
+    public bool isAirDrill;
 
     void Start()
     {
@@ -21,16 +21,22 @@ public class Tidalwave : MonoBehaviour
     }
     public void FixedUpdate()
     {
-        if (isfireinstead)
+        if (isFireInstead)
         {
             if (left)
             {
-                rigid.velocity = new Vector2(-5, 0);
+                rigid.velocity = new Vector2(-2, 0);
             }
-            else rigid.velocity = new Vector2(5, 0);
+            else rigid.velocity = new Vector2(2, 0);
         }
-        else
-        {
+        else if (isAirDrill) {
+            if (left)
+            {
+                rigid.velocity = new Vector2(-7, 0);
+            }
+            else rigid.velocity = new Vector2(7, 0);
+        }else
+        { 
             if (left)
             {
                 rigid.velocity = new Vector2(-8, 0);
@@ -58,6 +64,22 @@ public class Tidalwave : MonoBehaviour
         }
     }
 
+    public void Airdamage()
+    {
+        Collider2D[] hitEnemiesleft = Physics2D.OverlapBoxAll(Wave.position, new Vector2(0.8f, 0.6f), 0);
+        foreach (Collider2D enemy in hitEnemiesleft)
+        {
+            if (enemy.GetComponent<Enemyhealth>() != null)
+
+                enemy.GetComponent<Enemyhealth>().dealdamage(1);
+
+            if (enemy.GetComponent<Moveenemy>() != null)
+            {
+                enemy.GetComponent<Moveenemy>().Knockbackafterattack(1.2f, 0.5f, left);
+
+            }
+        }
+    }
 
 
     public void Tidalwavedamage()
@@ -84,7 +106,7 @@ public class Tidalwave : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.DrawCube(Wave.position, new Vector3(0.8f, 1f, 0));
+        Gizmos.DrawCube(Wave.position, new Vector3(0.8f, 0.6f, 0));
 
     }
 }

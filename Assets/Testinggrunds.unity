@@ -2229,6 +2229,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mushinski Shroomston spawn
       objectReference: {fileID: 0}
+    - target: {fileID: 584955978201350009, guid: 647bd784fd046174b9037f46efc5f511,
+        type: 3}
+      propertyPath: candashup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 584955978201350009, guid: 647bd784fd046174b9037f46efc5f511,
+        type: 3}
+      propertyPath: boostspeed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 880641541217535082, guid: 647bd784fd046174b9037f46efc5f511,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2300,6 +2310,16 @@ PrefabInstance:
         type: 3}
       propertyPath: swordAttackRange
       value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8988879075522986000, guid: 647bd784fd046174b9037f46efc5f511,
+        type: 3}
+      propertyPath: m_Mass
+      value: 0.044
+      objectReference: {fileID: 0}
+    - target: {fileID: 8988879075522986000, guid: 647bd784fd046174b9037f46efc5f511,
+        type: 3}
+      propertyPath: m_GravityScale
+      value: 0.65
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3213,6 +3233,74 @@ Rigidbody2D:
     type: 3}
   m_PrefabInstance: {fileID: 4327916184985144257}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5541471998929976094
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4774212301007752663, guid: 0a7641f3d3e7c6e4bb343520c8b42ccd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.5935407
+      objectReference: {fileID: 0}
+    - target: {fileID: 4774212301007752663, guid: 0a7641f3d3e7c6e4bb343520c8b42ccd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.4523609
+      objectReference: {fileID: 0}
+    - target: {fileID: 4774212301007752663, guid: 0a7641f3d3e7c6e4bb343520c8b42ccd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.9558306
+      objectReference: {fileID: 0}
+    - target: {fileID: 4774212301007752663, guid: 0a7641f3d3e7c6e4bb343520c8b42ccd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4774212301007752663, guid: 0a7641f3d3e7c6e4bb343520c8b42ccd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4774212301007752663, guid: 0a7641f3d3e7c6e4bb343520c8b42ccd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4774212301007752663, guid: 0a7641f3d3e7c6e4bb343520c8b42ccd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4774212301007752663, guid: 0a7641f3d3e7c6e4bb343520c8b42ccd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4774212301007752663, guid: 0a7641f3d3e7c6e4bb343520c8b42ccd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4774212301007752663, guid: 0a7641f3d3e7c6e4bb343520c8b42ccd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6327574339382915356, guid: 0a7641f3d3e7c6e4bb343520c8b42ccd,
+        type: 3}
+      propertyPath: m_Name
+      value: Airdrill
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0a7641f3d3e7c6e4bb343520c8b42ccd, type: 3}
 --- !u!1001 &8426219267530536252
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3566,3 +3654,4 @@ SceneRoots:
   - {fileID: 939912592}
   - {fileID: 1779336151}
   - {fileID: 4327916184985144257}
+  - {fileID: 5541471998929976094}

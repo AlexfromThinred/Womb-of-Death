@@ -78,7 +78,7 @@ public class Spells : MonoBehaviour
     {
         
         movement.movementrestriction = false;
-        movement.yeet.gravityScale = 0.5f;
+        movement.yeet.gravityScale = 0.65f;
 
         
     }

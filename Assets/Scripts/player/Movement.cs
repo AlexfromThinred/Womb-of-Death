@@ -41,8 +41,8 @@ public class Movement : MonoBehaviour
         playercollider = GetComponent<BoxCollider2D>();
         yeet = GetComponent<Rigidbody2D>();
         gravitymultiplier = -0.5f;
-        jumpspeed = 6f;
-        xMin = -3f - playermovementspeedbuff; xMax = 3f + playermovementspeedbuff;
+        jumpspeed = 7f;
+        xMin = -3.6f - playermovementspeedbuff; xMax = 3.6f + playermovementspeedbuff;
         isonwall = false;
         ispropelling = false;
     }
@@ -52,11 +52,11 @@ public class Movement : MonoBehaviour
     void FixedUpdate()
     {
       
-        xMin = -4f - playermovementspeedbuff; xMax = 4f + playermovementspeedbuff;
+        xMin = -3.6f - playermovementspeedbuff; xMax = 3.6f + playermovementspeedbuff;
         if (boosted == true)
         {
-            if (gameObject.transform.localScale.x < 1f) { playermovementspeed = -4f - playermovementspeedbuff; }
-            else playermovementspeed = 4f +playermovementspeedbuff;
+            if (gameObject.transform.localScale.x < 1f) { playermovementspeed = -3.6f - playermovementspeedbuff; }
+            else playermovementspeed = 3.6f + playermovementspeedbuff;
             yeet.velocity = new Vector2(playermovementspeed, 0f);
         }
 
@@ -86,13 +86,13 @@ public class Movement : MonoBehaviour
                     if(yeet.velocity.x < 0) playermovementspeed += 0.4f + playermovementspeedbuff;
 
 
-                    playermovementspeed += 0.2f + playermovementspeedbuff;
+                    playermovementspeed += 0.23f + playermovementspeedbuff;
                 }
 
                 if (Input.GetKey(KeyCode.A) && ispropelling == false && boosted == false)
                 {
                     if (yeet.velocity.x > 0) playermovementspeed -= 0.4f + playermovementspeedbuff;
-                    playermovementspeed -= 0.2f + playermovementspeedbuff;
+                    playermovementspeed -= 0.23f + playermovementspeedbuff;
                 }
 
 
@@ -100,10 +100,10 @@ public class Movement : MonoBehaviour
                 {
 
 
-                    if (isgoingtoleft == true) { playermovementspeed = -3 - playermovementspeedbuff; }
+                    if (isgoingtoleft == true) { playermovementspeed = -3.6f - playermovementspeedbuff; }
                     else
                     {
-                        playermovementspeed = 3 + playermovementspeedbuff;
+                        playermovementspeed = 3.6f + playermovementspeedbuff;
 
                     }
 
@@ -122,7 +122,7 @@ public class Movement : MonoBehaviour
                 if (yeet.velocity.y < 0)
                 {
                     animator.ResetTrigger("Jump");
-                    yeet.velocity += 0.035f * Vector2.down;
+                    yeet.velocity += 0.4f * Vector2.down;
                 }
 
                 if (yeet.velocity.y > 0) animator.SetBool("acceleratedown", false); else animator.SetBool("acceleratedown", true);
@@ -138,7 +138,7 @@ public class Movement : MonoBehaviour
                 if (yeet.velocity.y < 0)
                 {
                     animator.ResetTrigger("Jump");
-                    yeet.velocity += 0.035f * Vector2.down;
+                    yeet.velocity += 0.4f * Vector2.down;
                 }
             }
             

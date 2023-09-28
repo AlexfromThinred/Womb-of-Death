@@ -23,6 +23,7 @@ public class Memory : MonoBehaviour
     public bool earthstabhammer;
     public bool tidalWave;
     public bool fireslash;
+    public bool airDrill;
 
     void Start()
     {
@@ -32,6 +33,7 @@ public class Memory : MonoBehaviour
         earthstabhammer = true;
         tidalWave = true;
         fireslash = true;
+        airDrill = true;
     }
     // Update is called once per frame
      void Update()

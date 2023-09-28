@@ -342,6 +342,8 @@ MonoBehaviour:
     type: 3}
   Fireslash: {fileID: 7682183428369458532, guid: 7626cddd85f26334988f96cf8ec1b533,
     type: 3}
+  airDrill: {fileID: 6327574339382915356, guid: 0a7641f3d3e7c6e4bb343520c8b42ccd,
+    type: 3}
 --- !u!1 &3373930359289539613
 GameObject:
   m_ObjectHideFlags: 0
@@ -865,6 +867,7 @@ MonoBehaviour:
   earthstabhammer: 0
   tidalWave: 0
   fireslash: 0
+  airDrill: 0
 --- !u!114 &8954686304284623989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -903,6 +906,7 @@ MonoBehaviour:
   swing: {fileID: 0}
   animator: {fileID: 0}
   movement: {fileID: 0}
+  memory: {fileID: 0}
 --- !u!1 &6865465902282334690
 GameObject:
   m_ObjectHideFlags: 0

@@ -36,6 +36,7 @@ public class Restrictions : MonoBehaviour
     public GameObject Earthstab;
     public GameObject tidalWavethrow;
     public GameObject Fireslash;
+    public GameObject airDrill;
 
     public void Start()
     {
@@ -195,8 +196,8 @@ public class Restrictions : MonoBehaviour
         reducedamagebyhalf = true;
         isONLYupattack = true;
         if (movement.transform.localScale.x < 1f)
-            movement.yeet.velocity = new Vector2(-5f, 7f);
-        else movement.yeet.velocity = new Vector2(5f, 7f);
+            movement.yeet.velocity = new Vector2(-8f, 7f);
+        else movement.yeet.velocity = new Vector2(8f, 7f);
         Hammerfarfalling = true;
       
     }
@@ -310,14 +311,13 @@ public class Restrictions : MonoBehaviour
             attack.attackQueuedUp = false;
         }
 
-        movement.yeet.gravityScale = 0.5f;
+        movement.yeet.gravityScale = 0.65f;
 
 
     }
 
     public void swordslashthree()
     {
-        isdownattack = true;
         animator.ResetTrigger("stopattack");
         if (attack.attackQueuedUp == false)
         {
@@ -332,6 +332,8 @@ public class Restrictions : MonoBehaviour
         }
         else
         {
+
+            isdownattack = true;
             movement.attackrestrictionwithgravity = true;
             movement.yeet.velocity = new Vector2(0f, -2f);
             attack.attackQueuedUp = false;
@@ -373,7 +375,7 @@ public class Restrictions : MonoBehaviour
     public void resetweaponrestriction()
     {
 
-        movement.yeet.gravityScale = 0.5f;
+        movement.yeet.gravityScale = 0.65f;
         movement.attackrestriction = false;
         movement.attackrestrictionwithgravity = false;
         attack.inComboAttack = false;
@@ -573,10 +575,25 @@ public class Restrictions : MonoBehaviour
 
             if (movement.transform.localScale.x < 1f)
             {
-                var Fireleft = Instantiate(Fireslash, new Vector3(movement.transform.localPosition.x - 1.6f, movement.transform.localPosition.y +0.2f, 0), Quaternion.identity);
+                var Fireleft = Instantiate(Fireslash, new Vector3(movement.transform.localPosition.x - 1.6f, movement.transform.localPosition.y - 0.22f, 0), Quaternion.identity);
                 Fireleft.GetComponent<Tidalwave>().left = true;
             }
-            else { var Firere = Instantiate(Fireslash, new Vector3(movement.transform.localPosition.x + 1.6f, movement.transform.localPosition.y + 0.2f, 0), Quaternion.identity); }
+            else { var Firere = Instantiate(Fireslash, new Vector3(movement.transform.localPosition.x + 1.6f, movement.transform.localPosition.y - 0.22f, 0), Quaternion.identity); }
+
+        }
+    }
+
+    public void instantiateAirdrill()
+    {
+        if (memory.fireslash == true)
+        {
+
+            if (movement.transform.localScale.x < 1f)
+            {
+                var Airdrilllef = Instantiate(airDrill, new Vector3(movement.transform.localPosition.x - 1.5f, movement.transform.localPosition.y -0.17f, 0), Quaternion.identity);
+                Airdrilllef.GetComponent<Tidalwave>().left = true;
+            }
+            else { var Airdrillre = Instantiate(airDrill, new Vector3(movement.transform.localPosition.x + 1.5f, movement.transform.localPosition.y - 0.17f, 0), Quaternion.identity); }
 
         }
     }
@@ -840,6 +857,7 @@ public class Restrictions : MonoBehaviour
             }
         }
     }
+
     public void Damageenemiesbackwards()
     {
 

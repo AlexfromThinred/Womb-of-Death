@@ -19,7 +19,7 @@ public class Spellmovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         alive += Time.deltaTime;
 

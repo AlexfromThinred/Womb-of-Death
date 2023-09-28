@@ -16,7 +16,7 @@ MonoBehaviour:
   setsyoustill: 1
   animationtriggerword: fireball
   damage: 3
-  xmovement: 0.015
+  xmovement: 0.7
   ymovement: 0
   spellName: fireball
   spellDescription: stand still in the air for a moment and shoot a fireball.
