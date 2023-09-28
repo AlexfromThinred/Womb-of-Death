@@ -8219,6 +8219,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84de9e84d38a3e44195901689e458cb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1957569357 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4694255355858953944, guid: 6cb6d7ffb5bc02847b5496ddd1f23603,
+    type: 3}
+  m_PrefabInstance: {fileID: 1507944165178699100}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3993ef18c5559ba4da14a554b4c8ad5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1991568987
 GameObject:
   m_ObjectHideFlags: 0
@@ -8926,10 +8938,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 315129568374743281, guid: 6cb6d7ffb5bc02847b5496ddd1f23603,
+        type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 4a7eeb87f92bb8c419a86483cd0c1544,
+        type: 2}
     - target: {fileID: 3148393781692199720, guid: 6cb6d7ffb5bc02847b5496ddd1f23603,
         type: 3}
       propertyPath: m_Name
       value: CanvasofSpellsandWeapons
+      objectReference: {fileID: 0}
+    - target: {fileID: 4840509840454860355, guid: 6cb6d7ffb5bc02847b5496ddd1f23603,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -460
+      objectReference: {fileID: 0}
+    - target: {fileID: 4840509840454860355, guid: 6cb6d7ffb5bc02847b5496ddd1f23603,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7349959901397608642, guid: 6cb6d7ffb5bc02847b5496ddd1f23603,
         type: 3}
@@ -9033,13 +9061,48 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7396176016867509968, guid: 6cb6d7ffb5bc02847b5496ddd1f23603,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7396176016867509968, guid: 6cb6d7ffb5bc02847b5496ddd1f23603,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7396176016867509968, guid: 6cb6d7ffb5bc02847b5496ddd1f23603,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 966451272}
     - target: {fileID: 7396176016867509968, guid: 6cb6d7ffb5bc02847b5496ddd1f23603,
         type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: selectWeapon
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1957569357}
+    - target: {fileID: 7396176016867509968, guid: 6cb6d7ffb5bc02847b5496ddd1f23603,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7396176016867509968, guid: 6cb6d7ffb5bc02847b5496ddd1f23603,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: swapWeapon
+      objectReference: {fileID: 0}
+    - target: {fileID: 7396176016867509968, guid: 6cb6d7ffb5bc02847b5496ddd1f23603,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UIswapWeapon, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7396176016867509968, guid: 6cb6d7ffb5bc02847b5496ddd1f23603,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8149804947136970291, guid: 6cb6d7ffb5bc02847b5496ddd1f23603,
+        type: 3}
+      propertyPath: m_Name
+      value: active Weapon 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

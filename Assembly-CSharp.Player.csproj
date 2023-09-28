@@ -67,6 +67,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
     <Compile Include="Assets\Scripts\weapons\CollectWeapon.cs" />
     <Compile Include="Assets\Scripts\Enemys\Basics\Enemyhealth.cs" />
+    <Compile Include="Assets\HoveredSlot.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_ExampleScript_01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMPro_InstructionOverlay.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
@@ -90,6 +91,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_FrameRateCounter.cs" />
     <Compile Include="Assets\Scripts\player\Dash\Playerboost.cs" />
+    <Compile Include="Assets\Scripts\Instantiations\Player\Earthstabing.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextConsoleSimulator.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TeleType.cs" />
     <Compile Include="Assets\Scripts\player\Movement.cs" />
@@ -122,6 +124,7 @@
     <Compile Include="Assets\Scripts\Menu\HoveredWeapon.cs" />
     <Compile Include="Assets\Scripts\player\Cameramovement.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
+    <Compile Include="Assets\UIswapWeapon.cs" />
     <Compile Include="Assets\Scripts\player\Memory.cs" />
     <Compile Include="Assets\Scripts\Instantiations\Player\Groundshockwave.cs" />
     <Compile Include="Assets\Scripts\player\Dash\Afterimage.cs" />

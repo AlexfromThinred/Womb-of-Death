@@ -4,19 +4,13 @@ using UnityEngine;
 
 public class selectHoveredActiveWeapon : MonoBehaviour
 {
-    WeaponData weaponData;
+    public int selectedSlot;
     void Start()
     {
-        weaponData = GetComponentInChildren<ActiveWeaponButtonLogic>().weapon;
+        selectedSlot = GetComponentInChildren<ActiveWeaponButtonLogic>().weaponSlot;
     }
-
-    // Update is called once per frame
-    void Update()
+    public void selectSlot()
     {
-        
-    }
-    public void selectWeapon()
-    {
-
+        GetComponentInParent<HoveredSlot>().hoveredSlot = selectedSlot;
     }
 }
