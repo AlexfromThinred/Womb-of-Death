@@ -14,7 +14,7 @@ public class Groundshockwave : MonoBehaviour
         {
             if (enemy.GetComponent<Enemyhealth>() != null)
 
-                enemy.GetComponent<Enemyhealth>().dealdamage(1);
+                enemy.GetComponent<Enemyhealth>().dealdamage(1, false, false);
 
         }
 
@@ -23,7 +23,7 @@ public class Groundshockwave : MonoBehaviour
         {
             if (enemy.GetComponent<Enemyhealth>() != null)
 
-                enemy.GetComponent<Enemyhealth>().dealdamage(1);
+                enemy.GetComponent<Enemyhealth>().dealdamage(1, false, false);
 
         }
     }

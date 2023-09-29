@@ -54,7 +54,7 @@ public class Tidalwave : MonoBehaviour
         {
             if (enemy.GetComponent<Enemyhealth>() != null)
 
-                enemy.GetComponent<Enemyhealth>().dealdamage(1);
+                enemy.GetComponent<Enemyhealth>().dealdamage(1, true, false);
 
             if (enemy.GetComponent<Moveenemy>() != null)
             {
@@ -71,7 +71,7 @@ public class Tidalwave : MonoBehaviour
         {
             if (enemy.GetComponent<Enemyhealth>() != null)
 
-                enemy.GetComponent<Enemyhealth>().dealdamage(1);
+                enemy.GetComponent<Enemyhealth>().dealdamage(1, false, false);
 
             if (enemy.GetComponent<Moveenemy>() != null)
             {
@@ -89,7 +89,7 @@ public class Tidalwave : MonoBehaviour
         {
             if (enemy.GetComponent<Enemyhealth>() != null)
 
-                enemy.GetComponent<Enemyhealth>().dealdamage(1);
+                enemy.GetComponent<Enemyhealth>().dealdamage(1, false, true);
 
             if (enemy.GetComponent<Moveenemy>() != null)
             {

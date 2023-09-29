@@ -23,7 +23,7 @@ public class Earthstabing : MonoBehaviour
         {
             if (enemy.GetComponent<Enemyhealth>() != null)
 
-                enemy.GetComponent<Enemyhealth>().dealdamage(2);
+                enemy.GetComponent<Enemyhealth>().dealdamage(2, false, false);
 
             if (enemy.GetComponent<Moveenemy>() != null)
             {

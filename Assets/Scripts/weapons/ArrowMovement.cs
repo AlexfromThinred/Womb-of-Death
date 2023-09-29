@@ -32,7 +32,7 @@ public class ArrowMovement : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.GetComponent<Enemyhealth>() == null) { return; }
-        other.GetComponent<Enemyhealth>().dealdamage((weaponData.damage));
+        other.GetComponent<Enemyhealth>().dealdamage((weaponData.damage), false, false);
         Destroy(gameObject);
         
     }

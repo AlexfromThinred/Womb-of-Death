@@ -12,7 +12,7 @@ public class Lightningstrike : MonoBehaviour
         {
             if (enemy.GetComponent<Enemyhealth>() != null)
 
-                enemy.GetComponent<Enemyhealth>().dealdamage(2);
+                enemy.GetComponent<Enemyhealth>().dealdamage(2, false, false);
 
         }
 

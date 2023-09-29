@@ -9,7 +9,8 @@ public class Spellmovement : MonoBehaviour
     public Spellobject spell;
     public new SpriteRenderer renderer;
     public float alive;
-
+    public bool isFire;
+    public bool isWater;
 
     void Start()
     {
@@ -36,7 +37,10 @@ public class Spellmovement : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.GetComponent<Enemyhealth>() == null) { Debug.Log("no enemy"); return; }
-         other.GetComponent<Enemyhealth>().dealdamage(spell.damage);
+
+        if (spell.isFire) { other.GetComponent<Enemyhealth>().dealdamage(spell.damage, true, false); }
+        else if (spell.isWater) { other.GetComponent<Enemyhealth>().dealdamage(spell.damage, false, true); }
+        else  other.GetComponent<Enemyhealth>().dealdamage(spell.damage, false, false); 
 
         if (other.GetComponent<Moveenemy>() != null)
          other.GetComponent<Moveenemy>().Knockbackafterattack(spell.enemyknockbackX, spell.enemyknockbackY, goestoleft);

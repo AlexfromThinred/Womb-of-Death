@@ -13,6 +13,8 @@ public class Spellobject : ScriptableObject
     public bool setsyoustill;
     public string animationtriggerword;
     public int damage;
+    public bool isFire;
+    public bool isWater;
 
     public float xmovement, ymovement;
 

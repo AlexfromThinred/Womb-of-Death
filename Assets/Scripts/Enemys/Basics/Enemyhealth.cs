@@ -9,9 +9,14 @@ public class Enemyhealth : MonoBehaviour
 
     public GameObject obj;
 
-  
-    public void dealdamage(int damage)
+    public bool canonlybedamagedbyFire;
+    public bool canonlybedamagedbyWater;
+
+    public void dealdamage(int damage,bool firedamage,bool waterdamage)
     {
+
+        if (canonlybedamagedbyFire == true && firedamage == false) return;
+        if (canonlybedamagedbyWater == true && waterdamage == false) return;
 
         flash.Flash();
         health -= damage;

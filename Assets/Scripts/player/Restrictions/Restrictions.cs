@@ -622,12 +622,12 @@ public class Restrictions : MonoBehaviour
             {
                 if (reducedamagebyhalf == true)
                 {
-                    enemy.GetComponent<Enemyhealth>().dealdamage(attack.currentWeapon.damage / 2);
+                    enemy.GetComponent<Enemyhealth>().dealdamage(attack.currentWeapon.damage / 2, false, false);
 
                 }
-                else if (trippledamage == true) enemy.GetComponent<Enemyhealth>().dealdamage(attack.currentWeapon.damage * 3);
-                else if (doubledamage == true) enemy.GetComponent<Enemyhealth>().dealdamage(attack.currentWeapon.damage * 2);
-                else enemy.GetComponent<Enemyhealth>().dealdamage(attack.currentWeapon.damage);
+                else if (trippledamage == true) enemy.GetComponent<Enemyhealth>().dealdamage(attack.currentWeapon.damage * 3, false, false);
+                else if (doubledamage == true) enemy.GetComponent<Enemyhealth>().dealdamage(attack.currentWeapon.damage * 2, false, false);
+                else enemy.GetComponent<Enemyhealth>().dealdamage(attack.currentWeapon.damage, false, false);
                 if (enemy.GetComponent<Moveenemy>() != null)
                 {
 
@@ -668,8 +668,8 @@ public class Restrictions : MonoBehaviour
             
                
              
-                 if (doubledamage == true) enemy.GetComponent<Enemyhealth>().dealdamage(attack.currentWeapon.damage * 2);
-                else enemy.GetComponent<Enemyhealth>().dealdamage(attack.currentWeapon.damage);
+                 if (doubledamage == true) enemy.GetComponent<Enemyhealth>().dealdamage(attack.currentWeapon.damage * 2, false, false);
+                else enemy.GetComponent<Enemyhealth>().dealdamage(attack.currentWeapon.damage, false, false);
                 if (enemy.GetComponent<Moveenemy>() != null)
                 {
 
@@ -710,11 +710,11 @@ public class Restrictions : MonoBehaviour
             {
                 if (reducedamagebyhalf == true)
                 {
-                    enemy.GetComponent<Enemyhealth>().dealdamage(attack.currentWeapon.damage / 2);
+                    enemy.GetComponent<Enemyhealth>().dealdamage(attack.currentWeapon.damage / 2, false, false);
 
                 }
-                else if (trippledamage == true) enemy.GetComponent<Enemyhealth>().dealdamage(attack.currentWeapon.damage * 3);
-                else enemy.GetComponent<Enemyhealth>().dealdamage(attack.currentWeapon.damage);
+                else if (trippledamage == true) enemy.GetComponent<Enemyhealth>().dealdamage(attack.currentWeapon.damage * 3, false, false);
+                else enemy.GetComponent<Enemyhealth>().dealdamage(attack.currentWeapon.damage, false, false);
                 if (enemy.GetComponent<Moveenemy>() != null)
                 {
 
@@ -753,11 +753,11 @@ public class Restrictions : MonoBehaviour
             {
                 if (reducedamagebyhalf == true)
                 {
-                    enemy.GetComponent<Enemyhealth>().dealdamage(attack.currentWeapon.damage / 2);
+                    enemy.GetComponent<Enemyhealth>().dealdamage(attack.currentWeapon.damage / 2, false, false);
 
                 }
-                else if (trippledamage == true) enemy.GetComponent<Enemyhealth>().dealdamage(attack.currentWeapon.damage * 3);
-                else enemy.GetComponent<Enemyhealth>().dealdamage(attack.currentWeapon.damage);
+                else if (trippledamage == true) enemy.GetComponent<Enemyhealth>().dealdamage(attack.currentWeapon.damage * 3, false, false);
+                else enemy.GetComponent<Enemyhealth>().dealdamage(attack.currentWeapon.damage, false, false);
                 if (enemy.GetComponent<Moveenemy>() != null)
                 {
 
@@ -797,11 +797,11 @@ public class Restrictions : MonoBehaviour
             {
                 if (reducedamagebyhalf == true)
                 {
-                    enemy.GetComponent<Enemyhealth>().dealdamage(attack.currentWeapon.damage / 2);
+                    enemy.GetComponent<Enemyhealth>().dealdamage(attack.currentWeapon.damage / 2, false, false);
 
                 }
-                else if (trippledamage == true) enemy.GetComponent<Enemyhealth>().dealdamage(attack.currentWeapon.damage * 3);
-                else enemy.GetComponent<Enemyhealth>().dealdamage(attack.currentWeapon.damage);
+                else if (trippledamage == true) enemy.GetComponent<Enemyhealth>().dealdamage(attack.currentWeapon.damage * 3, false, false);
+                else enemy.GetComponent<Enemyhealth>().dealdamage(attack.currentWeapon.damage, false, false);
                 if (enemy.GetComponent<Moveenemy>() != null)
                 {
 
@@ -840,7 +840,7 @@ public class Restrictions : MonoBehaviour
 
             {
                
-                enemy.GetComponent<Enemyhealth>().dealdamage(attack.currentWeapon.damage);
+                enemy.GetComponent<Enemyhealth>().dealdamage(attack.currentWeapon.damage, false, false);
                 if (enemy.GetComponent<Moveenemy>() != null)
                 {
 
@@ -872,11 +872,11 @@ public class Restrictions : MonoBehaviour
             {
                 if (reducedamagebyhalf == true)
                 {
-                    enemy.GetComponent<Enemyhealth>().dealdamage(attack.currentWeapon.damage / 2);
+                    enemy.GetComponent<Enemyhealth>().dealdamage(attack.currentWeapon.damage / 2 , false,false);
 
                 }
-                else if (trippledamage == true) enemy.GetComponent<Enemyhealth>().dealdamage(attack.currentWeapon.damage * 3);
-                else enemy.GetComponent<Enemyhealth>().dealdamage(attack.currentWeapon.damage);
+                else if (trippledamage == true) enemy.GetComponent<Enemyhealth>().dealdamage(attack.currentWeapon.damage * 3, false, false);
+                else enemy.GetComponent<Enemyhealth>().dealdamage(attack.currentWeapon.damage, false, false);
                 if (enemy.GetComponent<Moveenemy>() != null)
                 {
 
