@@ -262,10 +262,11 @@ public class Restrictions : MonoBehaviour
 
     public void sworddownfall()
     {
+        if (movement.yeet.velocity.y == 0) Debug.Log("sdfasfafawfawf");
         movement.yeet.velocity = new Vector2(0, -15);
         isdownslashingendless = true;
         boosteddown = true;
-
+      
 
     }
 
