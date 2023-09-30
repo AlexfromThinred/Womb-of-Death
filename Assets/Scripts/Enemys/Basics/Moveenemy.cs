@@ -10,11 +10,13 @@ public class Moveenemy : MonoBehaviour
     public float isstillstaggrered;
     public bool grounded;
     public bool cannotBeKnockedBack;
-
+    public bool frozen;
+    public SpriteRenderer freeze;
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
         cannotBeKnockedBack = false;
+       // freeze = GetComponentInChildren<SpriteRenderer>();
     }
 
    public void Knockbackafterattack(float x, float y, bool knocktoleft)
@@ -33,10 +35,26 @@ public class Moveenemy : MonoBehaviour
     
 
     }
-    void Update()
+
+    public void gettingfotzen() { frozen = true; freeze.gameObject.SetActive(true); }
+    void FixedUpdate()
     {
+        if (frozen)
+        {
+            body.bodyType = RigidbodyType2D.Static;
+          
+            freeze.gameObject.GetComponent<Animator>().SetBool("isfrozen",true);
+        }
+        else
+        {
+            body.bodyType = RigidbodyType2D.Dynamic;
+            
+        }
+
+
+        
         isstillstaggrered += Time.deltaTime;
-        if (isstillstaggrered > 0.5f)
+        if (isstillstaggrered > 0.5f && !frozen)
         {
             if (isgoingleft == true)
                 enemyspeed -= enemyAcceleration;

@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7c1a531a649cdbc4a8d632afa3309cc8, type: 3}
-  m_Name: Fireball
+  m_Name: Icebreath
   m_EditorClassIdentifier: 
-  spellcooldown: 4
+  spellcooldown: 12
   setsyoustill: 1
-  animationtriggerword: fireball
-  damage: 3
-  isFire: 1
-  isWater: 0
-  xmovement: 0.3
+  animationtriggerword: Icebreath
+  damage: 0
+  isFire: 0
+  isWater: 1
+  xmovement: 0
   ymovement: 0
-  spellName: fireball
-  spellDescription: stand still in the air for a moment and shoot a fireball.
-  pushesYouBack: 1
-  pushX: 2.5
-  pushY: 1
-  knocksenemysback: 1
-  enemyknockbackX: 3
-  enemyknockbackY: 1
+  spellName: Icebreath
+  spellDescription: Freezes all Enemies in front of you
+  pushesYouBack: 0
+  pushX: 0
+  pushY: 0
+  knocksenemysback: 0
+  enemyknockbackX: 0
+  enemyknockbackY: 0

@@ -122,15 +122,15 @@ public class Movement : MonoBehaviour
                 if (playermovementspeed < 0) transform.localScale = new Vector2(-3, 3);
 
 
-                if (yeet.velocity.y < 0)
+                if (yeet.velocity.y < -0.2)
                 {
                  
                     animator.ResetTrigger("Jump");
-                    yeet.velocity += 0.52f * Vector2.down;
+                    yeet.velocity += 0.49f * Vector2.down;
                 }
-                else if ( yeet.velocity.y > 0 && !Input.GetKey(KeyCode.Space) && isjumping == false)
+                else if ( yeet.velocity.y > 0.5 && !Input.GetKey(KeyCode.Space) && isjumping == false)
                     {
-                        yeet.velocity += Vector2.up * Physics2D.gravity.y * 0.15f;
+                        yeet.velocity += Vector2.up * Physics2D.gravity.y * 0.13f;
 
                     }
                 
@@ -151,7 +151,7 @@ public class Movement : MonoBehaviour
 
             } else if (attackrestrictionwithgravity == true)
             {
-                if (yeet.velocity.y < 0.3f)
+                if (yeet.velocity.y < -0.3f)
                 {
                     isjumping = false;
                     animator.ResetTrigger("Jump");
@@ -184,7 +184,7 @@ public class Movement : MonoBehaviour
     }
     private IEnumerator MinJump()
     {
-        yield return new WaitForSeconds(0.18f);
+        yield return new WaitForSeconds(0.27f);
         isjumping = false;
     }
 
