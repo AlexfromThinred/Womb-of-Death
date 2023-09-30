@@ -54,8 +54,8 @@ public class Spells : MonoBehaviour
         if (spell.setsyoustill == true) movement.movementrestriction = true;
         if(movement.boosted == false)
         movement.yeet.velocity = new Vector2(0,0);
-       
-       
+
+        movement.yeet.gravityScale = 0.65f;
 
     }
 
@@ -81,6 +81,14 @@ public class Spells : MonoBehaviour
         movement.yeet.gravityScale = 0.65f;
 
         
+    }
+    public void resetmovementrestriction2()
+    {
+
+        movement.movementrestriction = false;
+        movement.yeet.gravityScale = 0.65f;
+
+
     }
 
     public  void instanspell()
