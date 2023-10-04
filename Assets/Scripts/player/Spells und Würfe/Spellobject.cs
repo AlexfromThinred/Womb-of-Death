@@ -15,6 +15,7 @@ public class Spellobject : ScriptableObject
     public int damage;
     public bool isFire;
     public bool isWater;
+    public bool looksAtMouse;
 
     public float xmovement, ymovement;
 
@@ -29,4 +30,7 @@ public class Spellobject : ScriptableObject
 
     public bool knocksenemysback;
     public float enemyknockbackX, enemyknockbackY;
+
+
+    public GameObject spellObj;
 }

@@ -145,7 +145,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.5
+  - time: 0.41666666
     functionName: swordslashtwo
     data: 
     objectReferenceParameter: {fileID: 0}
@@ -159,7 +159,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 1
+  - time: 0.9166667
     functionName: swordslashthree
     data: 
     objectReferenceParameter: {fileID: 0}

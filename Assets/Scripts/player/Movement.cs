@@ -128,9 +128,9 @@ public class Movement : MonoBehaviour
                     animator.ResetTrigger("Jump");
                     yeet.velocity += 0.49f * Vector2.down;
                 }
-                else if ( yeet.velocity.y > 0.5 && !Input.GetKey(KeyCode.Space) && isjumping == false)
+                else if ( yeet.velocity.y > 0.45 && !Input.GetKey(KeyCode.Space) && isjumping == false)
                     {
-                        yeet.velocity += Vector2.up * Physics2D.gravity.y * 0.13f;
+                        yeet.velocity += Vector2.up * Physics2D.gravity.y * 0.085f;
 
                     }
                 

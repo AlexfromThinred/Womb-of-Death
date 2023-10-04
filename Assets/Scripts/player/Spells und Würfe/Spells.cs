@@ -14,8 +14,10 @@ public class Spells : MonoBehaviour
     public float currentcooldown;
     public bool cancast;
     public string wordforanomationtrigger;
-
+    public bool instantiateAtMouse;
     public Movement movement;
+    public Vector3 screenposition;
+    public Vector3 worldposition;
 
     void Start()
     {
@@ -49,6 +51,7 @@ public class Spells : MonoBehaviour
     {
       
         Debug.Log(wordforanomationtrigger);
+        if(instantiateAtMouse == false)
         animator.SetTrigger(wordforanomationtrigger);
         cancast = false;
         if (spell.setsyoustill == true) movement.movementrestriction = true;
@@ -56,15 +59,20 @@ public class Spells : MonoBehaviour
         movement.yeet.velocity = new Vector2(0,0);
 
         movement.yeet.gravityScale = 0.65f;
-
+        if (instantiateAtMouse)
+        {
+            screenposition = Input.mousePosition;
+            worldposition = Camera.main.ScreenToWorldPoint(screenposition);
+            instanspellatMouseposition(worldposition);
+        }
     }
 
     public void getspellinfos(Spellobject spell)
     {
         cooldown = spell.spellcooldown;
         wordforanomationtrigger = spell.animationtriggerword;
-        
-
+        instantiateAtMouse = spell.looksAtMouse;
+        obj = spell.spellObj;
 
 
     }
@@ -115,6 +123,12 @@ public class Spells : MonoBehaviour
             movement.playermovementspeed = -3f;
         }
 
-        
+       
+    }
+    public void instanspellatMouseposition(Vector3 pos)
+    {
+        var Spell = Instantiate(obj, new Vector3(pos.x, pos.y, -2), Quaternion.identity);
+      
+
     }
 }

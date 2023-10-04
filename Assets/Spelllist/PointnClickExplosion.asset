@@ -10,24 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7c1a531a649cdbc4a8d632afa3309cc8, type: 3}
-  m_Name: Fireball
+  m_Name: PointnClickExplosion
   m_EditorClassIdentifier: 
-  spellcooldown: 4
-  setsyoustill: 1
-  animationtriggerword: fireball
+  spellcooldown: 8
+  setsyoustill: 0
+  animationtriggerword: 
   damage: 3
   isFire: 1
   isWater: 0
-  looksAtMouse: 0
-  xmovement: 0.3
+  looksAtMouse: 1
+  xmovement: 0
   ymovement: 0
-  spellName: fireball
-  spellDescription: stand still in the air for a moment and shoot a fireball.
-  pushesYouBack: 1
-  pushX: 2.5
-  pushY: 1
-  knocksenemysback: 1
-  enemyknockbackX: 3
-  enemyknockbackY: 1
-  spellObj: {fileID: 6936343112673328755, guid: 767f593a4336f1e4e8b44274c5d9d1d4,
+  spellName: Explosion
+  spellDescription: After a short period an explosion set of at the point of your
+    Mouse
+  pushesYouBack: 0
+  pushX: 0
+  pushY: 0
+  knocksenemysback: 0
+  enemyknockbackX: 0
+  enemyknockbackY: 0
+  spellObj: {fileID: 5649915356116964548, guid: c7170aa16681df64fa0c9a6de9130e7b,
     type: 3}
