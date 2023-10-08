@@ -832,7 +832,7 @@ public class Restrictions : MonoBehaviour
     {
 
 
-        Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(spearupHitBox.position, new Vector2(1,2.5f),0);
+        Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(spearupHitBox.position, new Vector2(1,2.5f), -30);
         foreach (Collider2D enemy in hitEnemies)
         {
             if (enemy.GetComponent<Enemyhealth>() != null)
@@ -906,12 +906,14 @@ public class Restrictions : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
+
+        Gizmos.matrix = this.transform.localToWorldMatrix;
         Gizmos.DrawWireSphere(swordHitbox.position, swordAttackRange);
         Gizmos.DrawWireSphere(backslashhitbox.position, swordAttackRange);
         Gizmos.DrawWireSphere(upslashhitbox.position, swordAttackRange * 1.3f);
         Gizmos.DrawWireSphere(downslashhitbox.position, swordAttackRange);
         Gizmos.DrawWireCube(spearHitBox.position, new Vector3( 2.15f, 1.2f,0));
-        Gizmos.DrawWireCube(spearupHitBox.position, new Vector3(1, 2.5f,0));
+      //  Gizmos.DrawWireCube(spearupHitBox.position, new Vector3(1, 2.5f,0), -30);          ------>>>>>> dosent work right now with rotation
     }
     #endregion 
 

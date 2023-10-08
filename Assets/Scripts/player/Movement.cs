@@ -121,7 +121,7 @@ public class Movement : MonoBehaviour
                 if (playermovementspeed > 0) transform.localScale = new Vector2(3, 3);
                 if (playermovementspeed < 0) transform.localScale = new Vector2(-3, 3);
 
-
+                
                 if (yeet.velocity.y < -0.2)
                 {
                  
@@ -133,14 +133,18 @@ public class Movement : MonoBehaviour
                         yeet.velocity += Vector2.up * Physics2D.gravity.y * 0.085f;
 
                     }
-                
-                   
-                
 
-                
-                  
-                
-               
+                if (yeet.velocity.y <= 1.5 && isjumping)
+                {
+                    yeet.velocity += Vector2.up * Physics2D.gravity.y * 0.18f;
+                   
+                }
+
+
+
+
+
+
                 if (yeet.velocity.y > 0) animator.SetBool("acceleratedown", false); else animator.SetBool("acceleratedown", true);
 
                 if (grounded) animator.SetBool("isgrounded", true); else animator.SetBool("isgrounded", false);
