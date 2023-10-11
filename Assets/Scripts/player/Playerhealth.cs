@@ -16,6 +16,7 @@ public class Playerhealth : MonoBehaviour
 
     public void takedamage(int amount)
     {
+        Debug.Log("df");
         playerhealth -= amount;
         // if (playerhealth <= 0) startlosingsequence();
         if (playerhealth <= 0) Debug.LogError("DIGGA BIST DU EIGENTLICH SCHIEßE ODER WAS?!?!?!?! WIE VERKACKST DU DAS HIER");    }
