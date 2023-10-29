@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 7250778804884429469}
   - component: {fileID: 7571953942942822770}
   - component: {fileID: 5583342178093046220}
+  - component: {fileID: 2236258859591570880}
   m_Layer: 0
   m_Name: Lightning
   m_TagString: Untagged
@@ -99,7 +100,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: cb127adfcc5d95b4da17da2aa2a08196, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -152,3 +153,59 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2236258859591570880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6607641045490216584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ComponentVersion: 1
+  m_LightType: 1
+  m_BlendStyleIndex: 0
+  m_FalloffIntensity: 0.353
+  m_Color: {r: 0.013794942, g: 0.30037397, b: 0.5849056, a: 1}
+  m_Intensity: 0.4
+  m_LightVolumeIntensity: 1
+  m_LightVolumeIntensityEnabled: 0
+  m_ApplyToSortingLayers: 00000000
+  m_LightCookieSprite: {fileID: 0}
+  m_DeprecatedPointLightCookieSprite: {fileID: 0}
+  m_LightOrder: 0
+  m_AlphaBlendOnOverlap: 0
+  m_OverlapOperation: 0
+  m_NormalMapDistance: 3
+  m_NormalMapQuality: 2
+  m_UseNormalMap: 0
+  m_ShadowIntensityEnabled: 0
+  m_ShadowIntensity: 0.75
+  m_ShadowVolumeIntensityEnabled: 0
+  m_ShadowVolumeIntensity: 0.75
+  m_LocalBounds:
+    m_Center: {x: 0.00065000355, y: -0.0092999935, z: 0}
+    m_Extent: {x: 0.37565, y: 0.5509, z: 0}
+  m_PointLightInnerAngle: 360
+  m_PointLightOuterAngle: 360
+  m_PointLightInnerRadius: 0
+  m_PointLightOuterRadius: 1
+  m_ShapeLightParametricSides: 5
+  m_ShapeLightParametricAngleOffset: 0
+  m_ShapeLightParametricRadius: 1
+  m_ShapeLightFalloffSize: 0.3
+  m_ShapeLightFalloffOffset: {x: 0, y: 0}
+  m_ShapePath:
+  - {x: -0.020689564, y: -0.2518796, z: 0}
+  - {x: 0.044485018, y: -0.21943055, z: 0}
+  - {x: 0.009913845, y: -0.15029824, z: 0}
+  - {x: 0.079138525, y: -0.04105301, z: 0}
+  - {x: -0.01820874, y: 0.15688635, z: 0}
+  - {x: -0.018249907, y: 0.24104203, z: 0}
+  - {x: -0.07691296, y: 0.22805685, z: 0}
+  - {x: -0.0809435, y: 0.15796798, z: 0}
+  - {x: -0.0030658215, y: -0.03023667, z: 0}
+  - {x: -0.026861744, y: -0.085400075, z: 0}

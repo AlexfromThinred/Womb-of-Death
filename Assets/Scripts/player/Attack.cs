@@ -68,12 +68,17 @@ public class Attack : MonoBehaviour
 
                     break;
                 case WeaponData.Type.Sword:
+                    if (!meleeAttackReady)
+                    {
+                        break;
+                    }
 
                     inComboAttack = true;
                     if (Input.GetKey(KeyCode.W) && movement.grounded == true) { animator.SetTrigger("swordattackup"); } 
                     else if (Input.GetKey(KeyCode.S) && movement.grounded == false) animator.SetTrigger("swordattackdown"); 
                     else if(meleeAttackReady)
                     {
+                        currentMeeleCooldown = currentWeapon.cooldown;
                         inComboAttack = true;
                         animator.SetTrigger("swordattack");
                     }
@@ -101,9 +106,13 @@ public class Attack : MonoBehaviour
                 case WeaponData.Type.Spear:
                     // Spear Attack Code
                     Debug.Log("Spear");
-
-                    if (Input.GetKey(KeyCode.W) && memory.fireslash == true ) { animator.SetTrigger("Spearupfire"); currentMeeleCooldown = currentWeapon.cooldown * 1.2f; }
-                    else if (Input.GetKey(KeyCode.W)) { animator.SetTrigger("Spearup"); currentMeeleCooldown = currentWeapon.cooldown * 1.2f; }
+                    if (!meleeAttackReady)
+                    {
+                        break;
+                    }
+                   
+                    if (Input.GetKey(KeyCode.W)) { animator.SetTrigger("Spearup"); currentMeeleCooldown = currentWeapon.cooldown * 1.1f; }
+                    else if (Input.GetKey(KeyCode.S) && movement.grounded == false) { animator.SetTrigger("Speardown"); currentMeeleCooldown = currentWeapon.cooldown * 0.8f; }
                     else
                     {
                         animator.SetTrigger("Spear");

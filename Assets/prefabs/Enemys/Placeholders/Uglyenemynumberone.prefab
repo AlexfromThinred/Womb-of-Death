@@ -91,6 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 2
+  isHazard: 0
 --- !u!1 &8117764975788832000
 GameObject:
   m_ObjectHideFlags: 0
@@ -265,6 +266,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 6
   obj: {fileID: 2653685686588842468, guid: 17e7d9d1f0e320146a2183328fa4e34a, type: 3}
+  GivesXpOnDeath: 1
+  XpAmount: 4
   canonlybedamagedbyFire: 0
   canonlybedamagedbyWater: 0
 --- !u!212 &8401684281188715311

@@ -12,6 +12,7 @@ public class Moveenemy : MonoBehaviour
     public bool cannotBeKnockedBack;
     public bool frozen;
     public SpriteRenderer freeze;
+    public Damageontouch touchdamage;
     void Start()
     {
         body = GetComponent<Rigidbody2D>();

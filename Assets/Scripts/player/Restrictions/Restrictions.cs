@@ -19,13 +19,17 @@ public class Restrictions : MonoBehaviour
     public Transform spearHitBox;
     public Transform spearupHitBox;
     public Transform UpandFront;
+    public Transform Downspear;
     public bool reducedamagebyhalf;
     public bool boosteddown;
     public int downdamagecounter;
     public bool hasNOknockback;
     public bool trippledamage;
     public bool doubledamage;
-
+    public bool bigknockback;
+    public bool isnormalHammerattack;
+    public bool isfirstSpearattack;
+    public bool isreallyupattack;
 
 
     public bool Hammerfarfalling;
@@ -68,6 +72,7 @@ public class Restrictions : MonoBehaviour
 
     public void Spearstart()
     {
+        isfirstSpearattack = true;
         if (movement.transform.localScale.x < 1f)
             movement.yeet.velocity = new Vector2(-1, 0);
         else movement.yeet.velocity = new Vector2(1, 0);
@@ -78,9 +83,37 @@ public class Restrictions : MonoBehaviour
         movement.attackrestriction = true;
     }
 
+    public void Speardownaccele()
+    {
+       movement.yeet.velocity = new Vector2(movement.yeet.velocity.x, 6);
+    }
+
+    public void Speardowndashattack()
+    {
+        bigknockback = true;
+        if (movement.boosted == false)
+        {
+            animator.SetTrigger("stopattack");
+        
+            
+            bigknockback = false;
+
+        }
+
+    }
+
+    public void Speardowndashattackending()
+    {
+        animator.SetTrigger("stopattack");
+     
+         
+      
+
+    }
 
     public void Spearsecond()
     {
+        isfirstSpearattack = false;
         if (attack.attackQueuedUp == false)
         {
             animator.SetTrigger("stopattack");
@@ -93,26 +126,49 @@ public class Restrictions : MonoBehaviour
             movement.yeet.velocity = new Vector2(-3, 0);
         else movement.yeet.velocity = new Vector2(3, 0);
         attack.attackQueuedUp = false;
+       
+
+    }
+
+    public void Spearthird()
+    {
+        bigknockback = true;
+        if (attack.attackQueuedUp == false)
+        {
+            animator.SetTrigger("stopattack");
+            attack.inComboAttack = false;
+            movement.attackrestriction = false;
+            bigknockback = false;
+
+        }
+        else
+        if (movement.transform.localScale.x < 1f)
+            movement.yeet.velocity = new Vector2(-3, 0);
+        else movement.yeet.velocity = new Vector2(3, 0);
+        attack.attackQueuedUp = false;
+      
+
     }
 
     public void Spearend()
     {
         attack.inComboAttack = false;
-
+        bigknockback = false;
         attack.attackQueuedUp = false;
         doubledamage = false;
         movement.attackrestriction = false;
         animator.SetTrigger("stopattack");
+        isfirstSpearattack = false;
     }
 
     public void Spearupstart()
     {
 
-      
-        movement.yeet.velocity = new Vector2(0, 0);
-        swordAttackRange = swordAttackRange + 0.6f;
+        isONLYupattack = true;
+     //   movement.attackrestriction = true;
+        swordAttackRange = swordAttackRange + 0.3f;
 
-        movement.attackrestriction = true;
+     
     }
     public void Spearupsecond()
     {
@@ -124,13 +180,10 @@ public class Restrictions : MonoBehaviour
 
         isONLYupattack = false;
 
-        swordAttackRange = swordAttackRange - 0.6f;
+        swordAttackRange = swordAttackRange - 0.3f;
 
-        movement.attackrestriction = false;
+      //  movement.attackrestriction = false;
     }
-
-
-
 
 
     public void Hammerupstart()
@@ -147,7 +200,7 @@ public class Restrictions : MonoBehaviour
         attack.inComboAttack = true;
         movement.yeet.velocity = new Vector2(0, 0);
         swordAttackRange = swordAttackRange + 0.6f;
-
+        isnormalHammerattack = true;
         movement.attackrestriction = true;
     }
 
@@ -159,7 +212,7 @@ public class Restrictions : MonoBehaviour
 
     public void Hammerend()
     {
-
+        isnormalHammerattack = false;
         doubledamage = false;
         attack.inComboAttack = false;
         movement.attackrestriction = false;
@@ -171,6 +224,7 @@ public class Restrictions : MonoBehaviour
 
     public void Secondhammerstrike()
     {
+        isnormalHammerattack = false;
         if (attack.attackQueuedUp == false)
         {
             animator.SetTrigger("stopattack");
@@ -238,6 +292,50 @@ public class Restrictions : MonoBehaviour
 
     }
 
+    public void Stopattack()
+    {
+        animator.SetTrigger("stopattack");
+        movement.attackrestriction = false;
+        movement.attackrestrictionwithgravity = false;
+        isupattack = false;
+        reducedamagebyhalf = false;
+        doubledamage = false;
+        attack.inComboAttack = false;
+        attack.attackQueuedUp = false;
+        movement.yeet.velocity = new Vector2(0, 0);
+        isreallyupattack = false;
+    }
+
+    public void SwordUpDebugger()
+    {
+        movement.yeet.velocity = new Vector2(0, 0);
+      
+        movement.yeet.gravityScale = 0.65f;
+    }
+
+    public void SwordUpslashDashAttack()
+    {
+        reducedamagebyhalf = false;
+        isupattack = false;
+        if (movement.boosted == false)
+        {
+            animator.SetTrigger("stopattack");
+            movement.yeet.gravityScale = 0.65f;
+            movement.attackrestriction = false;
+            movement.attackrestrictionwithgravity = false;
+            movement.yeet.velocity = new Vector2(0, 0);
+
+
+
+
+        }
+        else isreallyupattack = true;
+     
+
+
+
+    }
+
     public void sworduupslashmovement()
     {
         movement.yeet.gravityScale = 0;
@@ -279,8 +377,7 @@ public class Restrictions : MonoBehaviour
             movement.yeet.velocity = new Vector2(-4f, -0.5f);
         else movement.yeet.velocity = new Vector2(4f, -0.5f);
         movement.yeet.gravityScale = 0;
-        attack.currentMeeleCooldown = attack.currentWeapon.cooldown;
-        Debug.Log(attack.currentWeapon.cooldown);
+       
     }
 
     public void swordstop()
@@ -296,7 +393,7 @@ public class Restrictions : MonoBehaviour
             animator.SetTrigger("stopattack");
             attack.inComboAttack = false;
             resetweaponrestriction();
-            attack.currentMeeleCooldown = attack.currentWeapon.cooldown;
+          
             swordAttackRange = swordAttackRange - 0.2f;
 
 
@@ -326,7 +423,7 @@ public class Restrictions : MonoBehaviour
             animator.SetTrigger("stopattack");
             attack.inComboAttack = false;
             resetweaponrestriction();
-            attack.currentMeeleCooldown = attack.currentWeapon.cooldown;
+         
             swordAttackRange = swordAttackRange - 0.2f;
 
 
@@ -338,6 +435,7 @@ public class Restrictions : MonoBehaviour
             movement.attackrestrictionwithgravity = true;
             movement.yeet.velocity = new Vector2(0f, -2f);
             attack.attackQueuedUp = false;
+            attack.currentMeeleCooldown = attack.currentWeapon.cooldown;
         }
 
 
@@ -352,8 +450,7 @@ public class Restrictions : MonoBehaviour
         animator.SetTrigger("stopattack");
         isdownattack = false;
         reducedamagebyhalf = false;
-        attack.currentMeeleCooldown = attack.currentWeapon.cooldown;
-
+       
         StartCoroutine(fixstuck());
     }
 
@@ -637,9 +734,13 @@ public class Restrictions : MonoBehaviour
                     if (hasNOknockback == false)
                     {
                         if (movement.transform.localScale.x < 1f) left = true;
-                        if (isupattack == true) enemy.GetComponent<Moveenemy>().Knockbackafterattack(1.5f, 4, left);
-                        else if (isdownattack == true) enemy.GetComponent<Moveenemy>().Knockbackafterattack(0.3f, -15, left);
+                        if (isupattack == true) enemy.GetComponent<Moveenemy>().Knockbackafterattack(2f, 3.8f, left);
+                        else if (isreallyupattack == true) enemy.GetComponent<Moveenemy>().Knockbackafterattack(1.5f, 5.2f, left);
+                        else if (isdownattack == true) enemy.GetComponent<Moveenemy>().Knockbackafterattack(1.5f, -9, left);
+                        else if (isONLYupattack == true && GetComponentInParent<Movement>().boosted == true) enemy.GetComponent<Moveenemy>().Knockbackafterattack(10, 0f, left);
+                        else if (isnormalHammerattack == true && GetComponentInParent<Movement>().boosted == true) enemy.GetComponent<Moveenemy>().Knockbackafterattack(3, 3f, left);
                         else if (isONLYupattack == true) enemy.GetComponent<Moveenemy>().Knockbackafterattack(4, 1f, left);
+                        else if (GetComponentInParent<Movement>().boosted == true) enemy.GetComponent<Moveenemy>().Knockbackafterattack(11, 1f, left);
                         else
                             enemy.GetComponent<Moveenemy>().Knockbackafterattack(1.5f, 1, left);
 
@@ -649,7 +750,7 @@ public class Restrictions : MonoBehaviour
 
 
                 }
-                Debug.Log("hit enemy");
+                
             }
         }
     }
@@ -682,6 +783,13 @@ public class Restrictions : MonoBehaviour
                         if (isupattack == true) enemy.GetComponent<Moveenemy>().Knockbackafterattack(1.5f, 4, left);
                         else if (isdownattack == true) enemy.GetComponent<Moveenemy>().Knockbackafterattack(0.3f, -15, left);
                         else if (isONLYupattack == true) enemy.GetComponent<Moveenemy>().Knockbackafterattack(4, 1f, left);
+                        else if (bigknockback == false && isfirstSpearattack == false && GetComponentInParent<Movement>().boosted == true)
+                        {
+                            enemy.GetComponent<Moveenemy>().Knockbackafterattack(5, 5f, left);
+                            attack.currentMeeleCooldown = 0.3f;
+                        }
+                        else if (bigknockback == true && GetComponentInParent<Movement>().boosted == true) enemy.GetComponent<Moveenemy>().Knockbackafterattack(8, 1f, left);
+                        else if (bigknockback == true) enemy.GetComponent<Moveenemy>().Knockbackafterattack(3, 1f, left);
                         else
                             enemy.GetComponent<Moveenemy>().Knockbackafterattack(1.5f, 1, left);
 
@@ -691,7 +799,7 @@ public class Restrictions : MonoBehaviour
 
 
                 }
-                Debug.Log("hit enemy");
+                
             }
         }
     }
@@ -735,12 +843,56 @@ public class Restrictions : MonoBehaviour
 
 
                 }
-                Debug.Log("hit enemy");
+             
             }
         }
     }
 
-      public void Damageenemiesupwards()
+    public void DamageenemieswithDownSpear()
+    {
+        //Collider2D[] enemyandotherstuff = Physics2D.OverlapBoxAll(Downspear.position, new Vector2(1.1f, 2f), 0);
+
+        Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(Downspear.position, new Vector2(1.1f, 2f), 0);
+        foreach (Collider2D enemy in hitEnemies)
+        {
+            if (enemy.GetComponent<Enemyhealth>() != null)
+
+
+            {
+                if (reducedamagebyhalf == true)
+                {
+                    enemy.GetComponent<Enemyhealth>().dealdamage(attack.currentWeapon.damage / 2, false, false);
+
+                }
+                else if (trippledamage == true) enemy.GetComponent<Enemyhealth>().dealdamage(attack.currentWeapon.damage * 3, false, false);
+                else enemy.GetComponent<Enemyhealth>().dealdamage(attack.currentWeapon.damage, false, false);
+                if (enemy.GetComponent<Moveenemy>() != null)
+                {
+
+
+
+                    bool left = false;
+                    if (hasNOknockback == false)
+                    {
+                        if (movement.transform.localScale.x < 1f) left = true;
+                        if (isupattack == true) enemy.GetComponent<Moveenemy>().Knockbackafterattack(0f, -3, left);
+                        else if (isdownattack == true) enemy.GetComponent<Moveenemy>().Knockbackafterattack(0f, -3, left);
+                        else
+                            enemy.GetComponent<Moveenemy>().Knockbackafterattack(0f, -3, left);
+
+                    }
+
+
+
+
+                }
+              
+            }
+        }
+    }
+
+
+    public void Damageenemiesupwards()
     {
 
         
@@ -768,7 +920,7 @@ public class Restrictions : MonoBehaviour
                     {
                         if (movement.transform.localScale.x < 1f) left = true;
                         if (isupattack == true) enemy.GetComponent<Moveenemy>().Knockbackafterattack(1.5f, 4, left);
-                        else if   (isONLYupattack == true) enemy.GetComponent<Moveenemy>().Knockbackafterattack(0, 5f, left);
+                        else if   (isONLYupattack == true) enemy.GetComponent<Moveenemy>().Knockbackafterattack(0, 3.3f, left);
                             else if (isdownattack == true) enemy.GetComponent<Moveenemy>().Knockbackafterattack(0.3f, -15, left);
                         else
                             enemy.GetComponent<Moveenemy>().Knockbackafterattack(1.5f, 1, left);
@@ -779,7 +931,7 @@ public class Restrictions : MonoBehaviour
 
 
                 }
-                Debug.Log("hit enemy");
+                
             }
         }
     }
@@ -823,7 +975,7 @@ public class Restrictions : MonoBehaviour
 
 
                 }
-                Debug.Log("hit enemy");
+           
             }
         }
     }
@@ -898,7 +1050,7 @@ public class Restrictions : MonoBehaviour
 
 
                 }
-                Debug.Log("hit enemy");
+              
             }
         }
     }
@@ -913,7 +1065,8 @@ public class Restrictions : MonoBehaviour
         Gizmos.DrawWireSphere(upslashhitbox.position, swordAttackRange * 1.3f);
         Gizmos.DrawWireSphere(downslashhitbox.position, swordAttackRange);
         Gizmos.DrawWireCube(spearHitBox.position, new Vector3( 2.15f, 1.2f,0));
-      //  Gizmos.DrawWireCube(spearupHitBox.position, new Vector3(1, 2.5f,0), -30);          ------>>>>>> dosent work right now with rotation
+        Gizmos.DrawWireCube(Downspear.position, new Vector3(1.1f, 2f, 0));
+        //  Gizmos.DrawWireCube(spearupHitBox.position, new Vector3(1, 2.5f,0), -30);          ------>>>>>> dosent work right now with rotation
     }
     #endregion 
 

@@ -28,7 +28,7 @@ public class Lightningstrike : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.DrawCube(midstrike.position, new Vector3(0.4f,3f, 0));
+    //    Gizmos.DrawCube(midstrike.position, new Vector3(0.4f,3f, 0));
 
     }
 }

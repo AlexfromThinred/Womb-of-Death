@@ -30,7 +30,7 @@ public class Playerboost : MonoBehaviour
         if (movement.boosted == true) checkafterimages();
         if (movement.movementrestriction == false && ready && dashqueuedup)
         {
-            Debug.Log("boost"); movement.playermovementspeedbuff = 6f; 
+            movement.playermovementspeedbuff = 6f; 
             StartCoroutine(boosttime()); 
             movement.boosted = true; 
             dashqueuedup = false;
@@ -39,7 +39,7 @@ public class Playerboost : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && ready && movement.movementrestriction == false) { Debug.Log("boost"); movement.playermovementspeedbuff = 6f; StartCoroutine(boosttime()); 
+        if (Input.GetKeyDown(KeyCode.LeftShift) && ready && movement.movementrestriction == false) {  movement.playermovementspeedbuff = 6f; StartCoroutine(boosttime()); 
             movement.boosted = true;
             ready = false;
         }

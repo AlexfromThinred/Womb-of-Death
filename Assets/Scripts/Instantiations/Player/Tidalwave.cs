@@ -96,7 +96,7 @@ public class Tidalwave : MonoBehaviour
 
             if (enemy.GetComponent<Moveenemy>() != null)
             {
-                enemy.GetComponent<Moveenemy>().Knockbackafterattack(1.2f, 0.5f, left);
+              //  enemy.GetComponent<Moveenemy>().Knockbackafterattack(1.2f, 0.5f, left);
 
             }
         }
