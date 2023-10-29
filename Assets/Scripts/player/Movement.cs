@@ -24,6 +24,7 @@ public class Movement : MonoBehaviour
 
     public Rigidbody2D yeet;
     public float jumpspeed;
+    public float walljumpspeed;
     public float gravitymultiplier;
     Collider2D playercollider;
     public float xMin, xMax;
@@ -44,6 +45,7 @@ public class Movement : MonoBehaviour
         yeet = GetComponent<Rigidbody2D>();
         gravitymultiplier = -0.5f;
         jumpspeed = 7f;
+        walljumpspeed = 5.5f;
         xMin = -3.6f - playermovementspeedbuff; xMax = 3.6f + playermovementspeedbuff;
         isonwall = false;
         ispropelling = false;
@@ -203,7 +205,7 @@ public class Movement : MonoBehaviour
     {
         if (playermovementspeed > 0) { playermovementspeed = -3f; isgoingtoleft = true;  } else if (playermovementspeed < 0) { playermovementspeed = 3f; isgoingtoleft = false; }
         ispropelling = true;
-        playerymov = jumpspeed;
+        playerymov = walljumpspeed;
         Vector2 jumpvelocity = new Vector2(playermovementspeed, playerymov);
         yeet.velocity = jumpvelocity;
         StartCoroutine(Wait());

@@ -8,7 +8,8 @@ public class Enemyhealth : MonoBehaviour
     private damageflash flash;
 
     public GameObject obj;
-
+    public bool GivesXpOnDeath;
+    public int XpAmount;
     public bool canonlybedamagedbyFire;
     public bool canonlybedamagedbyWater;
 
@@ -24,7 +25,12 @@ public class Enemyhealth : MonoBehaviour
         var damagenumber = Instantiate(obj, new Vector3(gameObject.transform.localPosition.x, gameObject.transform.localPosition.y + 1, -3), Quaternion.identity);
         damagenumber.GetComponent<Showdamagenumber>().showdamage(damage);
 
-        if (health <= 0) Destroy(gameObject);
+        if (health <= 0)
+        {
+
+            if (GivesXpOnDeath) FindAnyObjectByType<Playerhealth>().GetXp(XpAmount);
+            Destroy(gameObject);
+        }
 
 
 

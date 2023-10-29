@@ -5,7 +5,7 @@ using UnityEngine;
 public class Afterimage : MonoBehaviour
 {
     [SerializeField]
-    private float activeTime = 0.4f;
+    private float activeTime = 0.6f;
     private float timeActivated;
     private float alpha;
     [SerializeField]

@@ -19,7 +19,7 @@ MonoBehaviour:
   isFire: 1
   isWater: 0
   looksAtMouse: 0
-  xmovement: 0.3
+  xmovement: 0.23
   ymovement: 0
   spellName: fireball
   spellDescription: stand still in the air for a moment and shoot a fireball.
