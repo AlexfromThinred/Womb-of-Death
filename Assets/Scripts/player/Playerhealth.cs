@@ -11,6 +11,7 @@ public class Playerhealth : MonoBehaviour
     public int Lebensbalken;
     public Showhealthbar healthbar;
     public ShowXP xp;
+    public SpriteRenderer sprite;
 
     public bool[] LebensbalkenDieNochDaSind ;
     public int onCurrentLebensBalken;
@@ -52,6 +53,7 @@ public class Playerhealth : MonoBehaviour
        
     }
 
+  
 
     public void takedamage(int amount)
     {
@@ -77,7 +79,9 @@ public class Playerhealth : MonoBehaviour
 
 
             isinvincible = true;
+            sprite.color = new Color32(255, 255, 255, 100);
             StartCoroutine(Invinciblity());
+
 
             // playerflash kreieren
             // wir instantiaten den Damageframe wie bei z.b. Hollow Knight und haben den Spieler dann in einem 0.5 invincibility moment
@@ -92,7 +96,8 @@ public class Playerhealth : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
         isinvincible = false;
-     
+        sprite.color = new Color32(255, 255, 255, 255);
+
     }
 
 

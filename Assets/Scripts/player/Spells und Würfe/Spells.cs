@@ -50,7 +50,7 @@ public class Spells : MonoBehaviour
     public void Usespell(Spellobject spell)
     {
       
-        Debug.Log(wordforanomationtrigger);
+   
         if(instantiateAtMouse == false)
         animator.SetTrigger(wordforanomationtrigger);
         cancast = false;

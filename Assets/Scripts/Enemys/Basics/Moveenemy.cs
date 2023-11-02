@@ -4,20 +4,28 @@ using UnityEngine;
 
 public class Moveenemy : MonoBehaviour
 {
+    public bool dosentMove;
+    public bool hardtoKnockedBack;
     public Rigidbody2D body;
+    public bool noticedPlayer;
     public float enemyspeed, enemymaxspeed, enemyAcceleration;
-    private bool isgoingleft;
+    public bool isgoingleft;
     public float isstillstaggrered;
     public bool grounded;
     public bool cannotBeKnockedBack;
     public bool frozen;
     public SpriteRenderer freeze;
     public Damageontouch touchdamage;
+    public bool followsplayer;
+    public Transform playertransform;
+    public Transform ownPosition;
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
         cannotBeKnockedBack = false;
-       // freeze = GetComponentInChildren<SpriteRenderer>();
+        // freeze = GetComponentInChildren<SpriteRenderer>();
+        playertransform = FindFirstObjectByType<Movement>().transform;
+        ownPosition = GetComponent<Transform>();
     }
 
    public void Knockbackafterattack(float x, float y, bool knocktoleft)
@@ -26,11 +34,12 @@ public class Moveenemy : MonoBehaviour
         {
             if (knocktoleft == true)
             {
+
                 body.velocity = new Vector2(-x, y);
             }
             else body.velocity = new Vector2(x, y);
 
-            isstillstaggrered = 0;
+            isstillstaggrered = 0.3f;
 
         }
     
@@ -40,39 +49,95 @@ public class Moveenemy : MonoBehaviour
     public void gettingfotzen() { frozen = true; freeze.gameObject.SetActive(true); }
     void FixedUpdate()
     {
-        if (frozen)
+        if(dosentMove == false) {
+        if (isgoingleft )
         {
-            body.bodyType = RigidbodyType2D.Static;
-          
-            freeze.gameObject.GetComponent<Animator>().SetBool("isfrozen",true);
+            float scaling;
+            scaling = gameObject.transform.localScale.x;
+            scaling = Mathf.Abs(scaling);
+            gameObject.transform.localScale = new Vector2(scaling, gameObject.transform.localScale.y);
         }
         else
         {
-            body.bodyType = RigidbodyType2D.Dynamic;
+            float scaling;
+            scaling = gameObject.transform.localScale.x;
+            scaling = Mathf.Abs(scaling);
             
+            gameObject.transform.localScale = new Vector2(-scaling, gameObject.transform.localScale.y);
+        }
         }
 
 
-        
-        isstillstaggrered += Time.deltaTime;
-        if (isstillstaggrered > 0.5f && !frozen)
+        if (noticedPlayer)
         {
-            if (isgoingleft == true)
-                enemyspeed -= enemyAcceleration;
-            else enemymaxspeed += enemyAcceleration;
-            Mathf.Clamp(enemyspeed, -enemymaxspeed, enemymaxspeed);
+            if (frozen)
+            {
+                body.bodyType = RigidbodyType2D.Static;
 
-            body.velocity = new Vector2(enemyspeed, body.velocity.y);
+                freeze.gameObject.GetComponent<Animator>().SetBool("isfrozen", true);
+            }
+            else
+            {
+                body.bodyType = RigidbodyType2D.Dynamic;
 
-         
-        } 
-           
+            }
+
+            enemyspeed = Mathf.Clamp(enemyspeed, -enemymaxspeed, enemymaxspeed);
+            isstillstaggrered += Time.deltaTime;
+
+
+
+            if (followsplayer && isstillstaggrered > 0.5f && !frozen)
+            {
+
+                if (playertransform.position.x > ownPosition.position.x)
+                    isgoingleft = false;
+                else isgoingleft = true;
+
+
+
+            } 
+            
+            if (isstillstaggrered > 0.5f && !frozen && dosentMove == false)
+            {
+                if (isgoingleft == true)
+                    enemyspeed -= enemyAcceleration;
+                else enemyspeed += enemyAcceleration;
+
+
+                body.velocity = new Vector2(enemyspeed, body.velocity.y);
+
+
+            } else
+            {
+                enemyspeed = 0;
+                body.velocity = new Vector2(enemyspeed, body.velocity.y);
+            }
+        
+
+
+
+        }
+
     }
 
     public void changedirection()
     {
-        isgoingleft = true;
-        gameObject.transform.localScale = new Vector2(-3f, 3);
-        enemyspeed = -enemyspeed;
+
+        if(isgoingleft == false){
+            isgoingleft = true;
+            gameObject.transform.localScale = new Vector2(-gameObject.transform.localScale.x, gameObject.transform.localScale.y);
+         
+
+        }
+        else
+        {
+            isgoingleft = false;
+            gameObject.transform.localScale = new Vector2(-gameObject.transform.localScale.x, gameObject.transform.localScale.y);
+
+        }
+       
     }
+
+  
 }

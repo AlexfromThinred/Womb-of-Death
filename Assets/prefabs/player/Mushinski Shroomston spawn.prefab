@@ -1088,6 +1088,8 @@ MonoBehaviour:
   currenthealthOfAffectedHealthbar: 0
   Lebensbalken: 0
   healthbar: {fileID: 0}
+  xp: {fileID: 0}
+  sprite: {fileID: 612212184878682957}
   LebensbalkenDieNochDaSind: 010101010101
   onCurrentLebensBalken: 0
   currentLevelNumber: 0

@@ -39,7 +39,7 @@ public class Spellmovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.GetComponent<Enemyhealth>() == null || canstillhit == false) { Debug.Log("no enemy"); return; }
+        if (other.gameObject.GetComponent<Enemyhealth>() == null || canstillhit == false) {  return; }
         animator.SetTrigger("hit");
         canstillhit = false;
         if (spell.isFire) { other.GetComponent<Enemyhealth>().dealdamage(spell.damage, true, false); }
