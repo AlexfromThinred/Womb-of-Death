@@ -151,6 +151,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   left: {fileID: 3182078920757288030}
   right: {fileID: 6552198277419552544}
+  leftdraw: 0
+  GarenE: {fileID: 0}
 --- !u!1 &2402227292162571628
 GameObject:
   m_ObjectHideFlags: 0

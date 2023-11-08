@@ -74,9 +74,10 @@ public class Attack : MonoBehaviour
                     }
 
                     inComboAttack = true;
-                    if (Input.GetKey(KeyCode.W) && movement.grounded == true) { animator.SetTrigger("swordattackup"); } 
+                    if (Input.GetKey(KeyCode.W) && movement.grounded == true) { animator.SetTrigger("swordattackup"); }
+                    else if (Input.GetKey(KeyCode.W) && movement.grounded == false) { animator.SetTrigger("SwordgarenSpecial"); }
                     else if (Input.GetKey(KeyCode.S) && movement.grounded == false) animator.SetTrigger("swordattackdown"); 
-                    else if(meleeAttackReady)
+                    else
                     {
                         currentMeeleCooldown = currentWeapon.cooldown;
                         inComboAttack = true;
@@ -139,6 +140,9 @@ public class Attack : MonoBehaviour
                     break;
                 default: Debug.Log("none");
                    break;
+
+                    
+          
 
 
             }

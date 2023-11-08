@@ -7,6 +7,14 @@ public class Groundshockwave : MonoBehaviour
 
     public Transform left;
     public Transform right;
+    public bool leftdraw;
+    public Transform GarenE;
+
+    public void inst()
+    {
+        if (leftdraw)
+            gameObject.transform.localScale = new Vector2( -gameObject.transform.localScale.x, gameObject.transform.localScale.y);
+    }
     public void dealdamageleft()
     {
         Collider2D[] hitEnemiesleft = Physics2D.OverlapBoxAll(left.position, new Vector2(1.3f, 0.5f), 0);
@@ -28,16 +36,29 @@ public class Groundshockwave : MonoBehaviour
         }
     }
 
-  
+    public void dealDamageGarenE()
+    {
+       
+        Collider2D[] hitEnemiesleft = Physics2D.OverlapCircleAll(GarenE.position, 1f);
+        foreach (Collider2D enemy in hitEnemiesleft)
+        {
+            if (enemy.GetComponent<Enemyhealth>() != null)
 
-    public void destroygameobj()
+                enemy.GetComponent<Enemyhealth>().dealdamage(5, false, false);
+
+        }
+    }
+
+        public void destroygameobj()
     {
         Destroy(gameObject);
     }
 
     private void OnDrawGizmosSelected()
     {
+      
+        Gizmos.DrawSphere(GarenE.position, 1);
         Gizmos.DrawCube(left.position, new Vector3(1.3f, 0.5f, 0));
-     
+
     }
 }

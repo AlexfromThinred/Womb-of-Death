@@ -44,8 +44,8 @@ public class Movement : MonoBehaviour
         playercollider = GetComponent<BoxCollider2D>();
         yeet = GetComponent<Rigidbody2D>();
         gravitymultiplier = -0.5f;
-        jumpspeed = 7f;
-        walljumpspeed = 5.5f;
+        jumpspeed = 10f;
+        walljumpspeed = 6f;
         xMin = -3.6f - playermovementspeedbuff; xMax = 3.6f + playermovementspeedbuff;
         isonwall = false;
         ispropelling = false;
@@ -69,17 +69,16 @@ public class Movement : MonoBehaviour
         {
             if(attackrestriction == false )
             {
-                if (grounded && boosted == false || isonwall) playermovementspeedbuff = 0;
 
-              
+                #region Movement basics
+                // resets Dash movementspeed buff
+
+                if (grounded && boosted == false || isonwall) playermovementspeedbuff = 0;
+                // Jumping or Walljumping
 
                 if (grounded && Input.GetKey(KeyCode.Space)) jump(); else if (!grounded && Input.GetKey(KeyCode.Space) && isonwall && !ispropelling) walljump();
 
-               
-               
-
-
-
+                // instantly stay still when on ground and not moving
                 if (!Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A) && grounded == true) { playermovementspeed = 0; }
 
 
@@ -123,22 +122,33 @@ public class Movement : MonoBehaviour
                 if (playermovementspeed > 0) transform.localScale = new Vector2(3, 3);
                 if (playermovementspeed < 0) transform.localScale = new Vector2(-3, 3);
 
-                
+
+                #endregion
+
+                #region Jumpscript
+
+
+
+
                 if (yeet.velocity.y < -0.2)
                 {
                  
                     animator.ResetTrigger("Jump");
-                    yeet.velocity += 0.49f * Vector2.down;
+                    yeet.velocity += 0.54f * Vector2.down;
                 }
                 else if ( yeet.velocity.y > 0.45 && !Input.GetKey(KeyCode.Space) && isjumping == false)
                     {
                         yeet.velocity += Vector2.up * Physics2D.gravity.y * 0.085f;
 
                     }
+                else
+                {
+                    yeet.velocity += Vector2.up * Physics2D.gravity.y * 0.008f;
+                }
 
                 if (yeet.velocity.y <= 1.5 && isjumping)
                 {
-                    yeet.velocity += Vector2.up * Physics2D.gravity.y * 0.18f;
+                     yeet.velocity += Vector2.up * Physics2D.gravity.y * 0.18f;
                    
                 }
 
@@ -165,7 +175,9 @@ public class Movement : MonoBehaviour
 
                 }
             }
-            
+
+            #endregion
+
 
         }
         else  yeet.gravityScale = 0;  
@@ -179,24 +191,30 @@ public class Movement : MonoBehaviour
  
     public void jump()
     {
+        
+        animator.SetTrigger("Jump");
         isjumping = true;
-        animator.SetTrigger("Jump");    
         playerymov = jumpspeed;
         Vector2 jumpvelocity = new Vector2(playermovementspeed, playerymov);
         yeet.velocity = jumpvelocity;
+        StartCoroutine(MinJump());
         grounded = false;
 
-        StartCoroutine(MinJump());
+
     }
+
+   
     private IEnumerator MinJump()
     {
-        yield return new WaitForSeconds(0.27f);
+        yield return new WaitForSeconds(0.08f);
         isjumping = false;
     }
+   
+
 
     private IEnumerator Wait()
     {
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.24f);
         ispropelling = false;
     }
 

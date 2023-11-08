@@ -183,6 +183,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 2
   isHazard: 0
+--- !u!1 &5832451992954402060
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 909699698150591376}
+  m_Layer: 0
+  m_Name: NumberAppear
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &909699698150591376
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5832451992954402060}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5689543174793399583}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8117764975788832000
 GameObject:
   m_ObjectHideFlags: 0
@@ -335,13 +366,14 @@ Transform:
   m_GameObject: {fileID: 8432965214011535713}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.26, y: 2.503, z: -0.1269568}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2011204076081437264}
   - {fileID: 8853993324100855100}
   - {fileID: 8461215490241306316}
+  - {fileID: 909699698150591376}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3552167825005286304
@@ -357,6 +389,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 6
+  damagenumberAppearTransform: {fileID: 909699698150591376}
   obj: {fileID: 2653685686588842468, guid: 17e7d9d1f0e320146a2183328fa4e34a, type: 3}
   GivesXpOnDeath: 1
   XpAmount: 4
@@ -453,7 +486,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64df6432434b1ae4d9bd68fac674516f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dosentMove: 0
+  hardtoKnockedBack: 0
   body: {fileID: 2463597382160803422}
+  noticedPlayer: 0
   enemyspeed: -1
   enemymaxspeed: 0
   enemyAcceleration: 0
@@ -464,6 +500,9 @@ MonoBehaviour:
   frozen: 0
   freeze: {fileID: 4535024970649972678}
   touchdamage: {fileID: 0}
+  followsplayer: 0
+  playertransform: {fileID: 0}
+  ownPosition: {fileID: 0}
 --- !u!61 &1758550449198543788
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -353,6 +353,8 @@ MonoBehaviour:
     type: 3}
   airDrill: {fileID: 6327574339382915356, guid: 0a7641f3d3e7c6e4bb343520c8b42ccd,
     type: 3}
+  MosterSlice: {fileID: 3879720082370239444, guid: 5a1f302916331654e867b8d4ad984485,
+    type: 3}
 --- !u!114 &8525882316889016826
 MonoBehaviour:
   m_ObjectHideFlags: 0

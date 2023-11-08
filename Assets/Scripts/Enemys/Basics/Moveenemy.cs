@@ -19,6 +19,7 @@ public class Moveenemy : MonoBehaviour
     public bool followsplayer;
     public Transform playertransform;
     public Transform ownPosition;
+   
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
@@ -39,7 +40,11 @@ public class Moveenemy : MonoBehaviour
             }
             else body.velocity = new Vector2(x, y);
 
-            isstillstaggrered = 0.3f;
+            if(hardtoKnockedBack)
+            {
+                isstillstaggrered = 0.2f;
+            } else
+            isstillstaggrered = 0f;
 
         }
     
@@ -110,8 +115,8 @@ public class Moveenemy : MonoBehaviour
 
             } else
             {
-                enemyspeed = 0;
-                body.velocity = new Vector2(enemyspeed, body.velocity.y);
+               // enemyspeed = 0;
+                //body.velocity = new Vector2(enemyspeed, body.velocity.y);
             }
         
 

@@ -41,6 +41,7 @@ public class Restrictions : MonoBehaviour
     public GameObject tidalWavethrow;
     public GameObject Fireslash;
     public GameObject airDrill;
+    public GameObject MosterSlice;
 
     public void Start()
     {
@@ -54,6 +55,7 @@ public class Restrictions : MonoBehaviour
         trippledamage = false;
     }
 
+   
     public void Update()
     {
         if (isdownslashingendless == true && movement.grounded == true)
@@ -85,29 +87,33 @@ public class Restrictions : MonoBehaviour
 
     public void Speardownaccele()
     {
-       movement.yeet.velocity = new Vector2(movement.yeet.velocity.x, 6);
+        movement.isjumping = true;
+        movement.yeet.velocity = new Vector2(movement.yeet.velocity.x, 7.5f);
+        
     }
 
     public void Speardowndashattack()
     {
+        
         bigknockback = true;
         if (movement.boosted == false)
         {
+            movement.isjumping = false;
             animator.SetTrigger("stopattack");
-        
-            
+
+           
             bigknockback = false;
 
-        }
+        } 
 
     }
 
     public void Speardowndashattackending()
     {
         animator.SetTrigger("stopattack");
-     
-         
-      
+
+        movement.isjumping = false;
+
 
     }
 
@@ -281,6 +287,15 @@ public class Restrictions : MonoBehaviour
         isONLYupattack = false;
         Hammerfarfalling = false;
         doubledamage = false;
+    }
+
+    public void SwordspecialGarenE()
+    {
+        movement.yeet.gravityScale = 0;
+        movement.yeet.velocity = new Vector2(0, 0);
+        swordAttackRange = swordAttackRange + 0.2f;
+     
+        movement.attackrestriction = true;
     }
 
     public void sworduupslash()
@@ -473,13 +488,15 @@ public class Restrictions : MonoBehaviour
     public void resetweaponrestriction()
     {
 
-        movement.yeet.gravityScale = 0.65f;
+        movement.yeet.gravityScale = 1f;
         movement.attackrestriction = false;
         movement.attackrestrictionwithgravity = false;
         attack.inComboAttack = false;
         attack.attackQueuedUp = false;
         reducedamagebyhalf = false;
         downdamagecounter = 0;
+        isONLYupattack = false;
+        isreallyupattack = false;
     }
 
     public void resetmovement()
@@ -525,9 +542,14 @@ public class Restrictions : MonoBehaviour
         trippledamage = true;
     }
 
-    public void isupslash()
+    public void isUpslash()
     {
         isONLYupattack = true;
+    }
+
+    public void isFrontUpslash()
+    {
+        isreallyupattack = true;
     }
 
     public void onlymoverestriction()
@@ -625,8 +647,8 @@ public class Restrictions : MonoBehaviour
     {
         if (memory.lightningstrikeHammer == true)
         {        
-          var Lightnings = Instantiate(Lightningstrike, new Vector3(movement.transform.localPosition.x - 1.6f, movement.transform.localPosition.y, 0), Quaternion.identity);
-          var Lightningst = Instantiate(Lightningstrike, new Vector3(movement.transform.localPosition.x + 1.6f, movement.transform.localPosition.y, 0), Quaternion.identity); 
+          var Lightnings = Instantiate(Lightningstrike, new Vector3(movement.transform.localPosition.x - 1.6f, movement.transform.localPosition.y + 0.8f, 0), Quaternion.identity);
+          var Lightningst = Instantiate(Lightningstrike, new Vector3(movement.transform.localPosition.x + 1.6f, movement.transform.localPosition.y + 0.8f, 0), Quaternion.identity); 
         }
     }
 
@@ -695,6 +717,21 @@ public class Restrictions : MonoBehaviour
 
         }
     }
+
+    public void instantiateGarenE()
+    {
+        
+            if (movement.transform.localScale.x < 0)
+            {
+                var MosterSliceobj = Instantiate(MosterSlice, new Vector3(movement.transform.localPosition.x , movement.transform.localPosition.y , 0), Quaternion.identity);
+                MosterSliceobj.GetComponent<Groundshockwave>().leftdraw = true;
+            }
+            else { var MosterSliceobj = Instantiate(MosterSlice, new Vector3(movement.transform.localPosition.x, movement.transform.localPosition.y, 0), Quaternion.identity); }
+
+        
+    }
+
+
     #endregion
 
 
@@ -1042,7 +1079,7 @@ public class Restrictions : MonoBehaviour
                         else if (isONLYupattack == true) enemy.GetComponent<Moveenemy>().Knockbackafterattack(-4, 1f, left);
                 
                         else
-                            enemy.GetComponent<Moveenemy>().Knockbackafterattack(1.5f, 1, left);
+                            enemy.GetComponent<Moveenemy>().Knockbackafterattack(-1.5f, 1, left);
 
                     }
 

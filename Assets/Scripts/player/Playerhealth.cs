@@ -127,8 +127,10 @@ public class Playerhealth : MonoBehaviour
 
     public void GetXp(int amount)
     {
+        if (amount == 0) return;
         currentXP += amount;
-        xp.changeXpUi();
+        
+       /* xp.changeXpUi();
         while(currentXP >= currentXPtonextLevelup)
         {
             currentLevelNumber++;
@@ -136,7 +138,7 @@ public class Playerhealth : MonoBehaviour
             GetcurrentXPLevel();
             //getinfos and upgrade Lebensbalken und Leben pro Balken
         }
-
+       */
     }
 
     public void GetcurrentXPLevel()
