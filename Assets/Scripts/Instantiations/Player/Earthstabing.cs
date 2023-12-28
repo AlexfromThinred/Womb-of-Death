@@ -6,6 +6,7 @@ public class Earthstabing : MonoBehaviour
 {
     public Movement movement;
     public bool left;
+    public bool iswall;
     public void Start()
     {
         movement = FindObjectOfType<Movement>();
@@ -32,14 +33,16 @@ public class Earthstabing : MonoBehaviour
 
           
                
-                   
-                   
-                        enemy.GetComponent<Moveenemy>().Knockbackafterattack(1.5f, 5, left);
+                if(!iswall) enemy.GetComponent<Moveenemy>().Knockbackafterattack(1.5f, 5, left);
 
-                }
-
+                else enemy.GetComponent<Moveenemy>().Knockbackafterattack(-0.2f, 5, left);
 
             }
+           
+
+
+
+        }
 
 
         }
@@ -51,7 +54,7 @@ public class Earthstabing : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.DrawCube(stab.position, new Vector3(0.8f, 1f, 0));
+        Gizmos.DrawCube(stab.position, new Vector3(0.8f, 1.2f, 0));
 
     }
 

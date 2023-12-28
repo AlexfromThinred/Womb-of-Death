@@ -21,41 +21,41 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 1630828009, guid: 6fa8866ec0d7a0a4d9a79031cb06e60f, type: 3}
+      value: {fileID: 1383604180, guid: 46c6079f8ae98de4ea851149f8057794, type: 3}
     - time: 0.16666667
-      value: {fileID: -2011281171, guid: 6fa8866ec0d7a0a4d9a79031cb06e60f, type: 3}
+      value: {fileID: -87204854, guid: 46c6079f8ae98de4ea851149f8057794, type: 3}
     - time: 0.25
-      value: {fileID: 1707264675, guid: 6fa8866ec0d7a0a4d9a79031cb06e60f, type: 3}
-    - time: 0.41666666
-      value: {fileID: 1183424906, guid: 6fa8866ec0d7a0a4d9a79031cb06e60f, type: 3}
-    - time: 0.5833333
-      value: {fileID: -673392915, guid: 6fa8866ec0d7a0a4d9a79031cb06e60f, type: 3}
+      value: {fileID: -1373775734, guid: 46c6079f8ae98de4ea851149f8057794, type: 3}
+    - time: 0.33333334
+      value: {fileID: -1391997860, guid: 46c6079f8ae98de4ea851149f8057794, type: 3}
+    - time: 0.5
+      value: {fileID: 495467101, guid: 46c6079f8ae98de4ea851149f8057794, type: 3}
+    - time: 0.6666667
+      value: {fileID: -42995110, guid: 46c6079f8ae98de4ea851149f8057794, type: 3}
     - time: 0.75
-      value: {fileID: 1323885595, guid: 6fa8866ec0d7a0a4d9a79031cb06e60f, type: 3}
-    - time: 0.9166667
-      value: {fileID: -1660177015, guid: 6fa8866ec0d7a0a4d9a79031cb06e60f, type: 3}
+      value: {fileID: -1602938920, guid: 46c6079f8ae98de4ea851149f8057794, type: 3}
+    - time: 0.8333333
+      value: {fileID: -186811259, guid: 46c6079f8ae98de4ea851149f8057794, type: 3}
     - time: 1
-      value: {fileID: -875637316, guid: 6fa8866ec0d7a0a4d9a79031cb06e60f, type: 3}
-    - time: 1.0833334
-      value: {fileID: -1091872724, guid: 6fa8866ec0d7a0a4d9a79031cb06e60f, type: 3}
+      value: {fileID: -1191766473, guid: 46c6079f8ae98de4ea851149f8057794, type: 3}
     - time: 1.1666666
-      value: {fileID: 164765967, guid: 6fa8866ec0d7a0a4d9a79031cb06e60f, type: 3}
+      value: {fileID: -519448485, guid: 46c6079f8ae98de4ea851149f8057794, type: 3}
+    - time: 1.25
+      value: {fileID: 847236049, guid: 46c6079f8ae98de4ea851149f8057794, type: 3}
     - time: 1.3333334
-      value: {fileID: 1597169697, guid: 6fa8866ec0d7a0a4d9a79031cb06e60f, type: 3}
+      value: {fileID: 2015485248, guid: 46c6079f8ae98de4ea851149f8057794, type: 3}
     - time: 1.4166666
-      value: {fileID: -436256168, guid: 6fa8866ec0d7a0a4d9a79031cb06e60f, type: 3}
-    - time: 1.5
-      value: {fileID: -1669881585, guid: 6fa8866ec0d7a0a4d9a79031cb06e60f, type: 3}
-    - time: 1.5833334
       value: {fileID: -2093879709, guid: 6fa8866ec0d7a0a4d9a79031cb06e60f, type: 3}
+    - time: 1.5
+      value: {fileID: 14474746, guid: 46c6079f8ae98de4ea851149f8057794, type: 3}
     - time: 1.6666666
-      value: {fileID: -248429775, guid: 6fa8866ec0d7a0a4d9a79031cb06e60f, type: 3}
+      value: {fileID: -1520720714, guid: 46c6079f8ae98de4ea851149f8057794, type: 3}
+    - time: 1.75
+      value: {fileID: 987409703, guid: 46c6079f8ae98de4ea851149f8057794, type: 3}
     - time: 1.8333334
-      value: {fileID: -3142819, guid: 6fa8866ec0d7a0a4d9a79031cb06e60f, type: 3}
+      value: {fileID: -582943297, guid: 46c6079f8ae98de4ea851149f8057794, type: 3}
     - time: 2
-      value: {fileID: -324661131, guid: 6fa8866ec0d7a0a4d9a79031cb06e60f, type: 3}
-    - time: 2.1666667
-      value: {fileID: 1630828009, guid: 6fa8866ec0d7a0a4d9a79031cb06e60f, type: 3}
+      value: {fileID: 165101812, guid: 46c6079f8ae98de4ea851149f8057794, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -78,30 +78,30 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 1630828009, guid: 6fa8866ec0d7a0a4d9a79031cb06e60f, type: 3}
-    - {fileID: -2011281171, guid: 6fa8866ec0d7a0a4d9a79031cb06e60f, type: 3}
-    - {fileID: 1707264675, guid: 6fa8866ec0d7a0a4d9a79031cb06e60f, type: 3}
-    - {fileID: 1183424906, guid: 6fa8866ec0d7a0a4d9a79031cb06e60f, type: 3}
-    - {fileID: -673392915, guid: 6fa8866ec0d7a0a4d9a79031cb06e60f, type: 3}
-    - {fileID: 1323885595, guid: 6fa8866ec0d7a0a4d9a79031cb06e60f, type: 3}
-    - {fileID: -1660177015, guid: 6fa8866ec0d7a0a4d9a79031cb06e60f, type: 3}
-    - {fileID: -875637316, guid: 6fa8866ec0d7a0a4d9a79031cb06e60f, type: 3}
-    - {fileID: -1091872724, guid: 6fa8866ec0d7a0a4d9a79031cb06e60f, type: 3}
-    - {fileID: 164765967, guid: 6fa8866ec0d7a0a4d9a79031cb06e60f, type: 3}
-    - {fileID: 1597169697, guid: 6fa8866ec0d7a0a4d9a79031cb06e60f, type: 3}
-    - {fileID: -436256168, guid: 6fa8866ec0d7a0a4d9a79031cb06e60f, type: 3}
-    - {fileID: -1669881585, guid: 6fa8866ec0d7a0a4d9a79031cb06e60f, type: 3}
+    - {fileID: 1383604180, guid: 46c6079f8ae98de4ea851149f8057794, type: 3}
+    - {fileID: -87204854, guid: 46c6079f8ae98de4ea851149f8057794, type: 3}
+    - {fileID: -1373775734, guid: 46c6079f8ae98de4ea851149f8057794, type: 3}
+    - {fileID: -1391997860, guid: 46c6079f8ae98de4ea851149f8057794, type: 3}
+    - {fileID: 495467101, guid: 46c6079f8ae98de4ea851149f8057794, type: 3}
+    - {fileID: -42995110, guid: 46c6079f8ae98de4ea851149f8057794, type: 3}
+    - {fileID: -1602938920, guid: 46c6079f8ae98de4ea851149f8057794, type: 3}
+    - {fileID: -186811259, guid: 46c6079f8ae98de4ea851149f8057794, type: 3}
+    - {fileID: -1191766473, guid: 46c6079f8ae98de4ea851149f8057794, type: 3}
+    - {fileID: -519448485, guid: 46c6079f8ae98de4ea851149f8057794, type: 3}
+    - {fileID: 847236049, guid: 46c6079f8ae98de4ea851149f8057794, type: 3}
+    - {fileID: 2015485248, guid: 46c6079f8ae98de4ea851149f8057794, type: 3}
     - {fileID: -2093879709, guid: 6fa8866ec0d7a0a4d9a79031cb06e60f, type: 3}
-    - {fileID: -248429775, guid: 6fa8866ec0d7a0a4d9a79031cb06e60f, type: 3}
-    - {fileID: -3142819, guid: 6fa8866ec0d7a0a4d9a79031cb06e60f, type: 3}
-    - {fileID: -324661131, guid: 6fa8866ec0d7a0a4d9a79031cb06e60f, type: 3}
-    - {fileID: 1630828009, guid: 6fa8866ec0d7a0a4d9a79031cb06e60f, type: 3}
+    - {fileID: 14474746, guid: 46c6079f8ae98de4ea851149f8057794, type: 3}
+    - {fileID: -1520720714, guid: 46c6079f8ae98de4ea851149f8057794, type: 3}
+    - {fileID: 987409703, guid: 46c6079f8ae98de4ea851149f8057794, type: 3}
+    - {fileID: -582943297, guid: 46c6079f8ae98de4ea851149f8057794, type: 3}
+    - {fileID: 165101812, guid: 46c6079f8ae98de4ea851149f8057794, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 2.25
+    m_StopTime: 2.0833333
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -121,20 +121,27 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0
+  - time: 0.083333336
     functionName: sworduupslash
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.5833333
+  - time: 0.41666666
     functionName: sworduupslashmovement
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 0.41666666
+    functionName: Damageenemies
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.5833333
     functionName: Damageenemies
     data: 
@@ -142,28 +149,35 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.75
-    functionName: Damageenemies
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 1
+  - time: 0.8333333
     functionName: SwordUpslashDashAttack
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 1.3333334
+  - time: 1.1666666
     functionName: SwordUpDebugger
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 1.6666666
+  - time: 1.5
+    functionName: Damageenemies
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.5
+    functionName: SwordUpDebugger
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.75
     functionName: Damageenemies
     data: 
     objectReferenceParameter: {fileID: 0}
@@ -171,13 +185,13 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 1.9166666
-    functionName: Damageenemies
+    functionName: SwordUpDebugger
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 2.25
+  - time: 2.0833333
     functionName: Stopattack
     data: 
     objectReferenceParameter: {fileID: 0}

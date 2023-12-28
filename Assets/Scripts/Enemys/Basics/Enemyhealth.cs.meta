@@ -4,7 +4,10 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
+  - damagenumberAppearTransform: {instanceID: 0}
   - obj: {fileID: 2653685686588842468, guid: 17e7d9d1f0e320146a2183328fa4e34a, type: 3}
+  - HitVFX: {fileID: 2721753249771486226, guid: ab55cde0136bc3948b50ba633ef109d7,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

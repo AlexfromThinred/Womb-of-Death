@@ -18,47 +18,63 @@ public class Spells : MonoBehaviour
     public Movement movement;
     public Vector3 screenposition;
     public Vector3 worldposition;
+    public bool bufferedspell;
 
     void Start()
     {
      
         cancast = true;
         getspellinfos(spellobject);
-   
+        managecooldown();
 
     }
 
     public void managecooldown()
     {
-        if (cancast == false) currentcooldown += Time.deltaTime;
-        if (currentcooldown >= cooldown) { cancast = true; currentcooldown = 0; }
+        if (cancast == false) currentcooldown -= Time.deltaTime;
+        if (currentcooldown <= 0) { cancast = true; currentcooldown = 0; }
     }
 
    
     void Update()
     {
         
-        if(Input.GetKeyDown(KeyCode.R) && cancast == true && movement.attackrestriction == false)
+        
+
+        if(bufferedspell == true && movement.attackrestriction == false)
+        {
+            Usespell(spellobject);
+            bufferedspell = false;
+
+        }else if (Input.GetKeyDown(KeyCode.R) && cancast == true && movement.attackrestriction == false)
         {
             Usespell(spellobject);
 
         }
+        else if (Input.GetKeyDown(KeyCode.R) && cancast == true) bufferedspell = true;
+
+
         managecooldown();
 
     }
 
     public void Usespell(Spellobject spell)
     {
-      
+        currentcooldown = cooldown;
    
         if(instantiateAtMouse == false)
         animator.SetTrigger(wordforanomationtrigger);
+
         cancast = false;
+
         if (spell.setsyoustill == true) movement.movementrestriction = true;
+
         if(movement.boosted == false)
+
         movement.yeet.velocity = new Vector2(0,0);
 
-        movement.yeet.gravityScale = 0.65f;
+        movement.yeet.gravityScale = 1f;
+
         if (instantiateAtMouse)
         {
             screenposition = Input.mousePosition;

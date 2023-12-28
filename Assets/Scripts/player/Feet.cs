@@ -6,11 +6,12 @@ public class Feet : MonoBehaviour
 {
     public Movement movement;
     public Collider2D coll;
+    public Audiomanager audioManager;
 
     public void Start()
     {
         coll = GetComponent<Collider2D>();
-
+        audioManager = FindObjectOfType<Audiomanager>(); 
        
     }
 
@@ -26,7 +27,10 @@ public class Feet : MonoBehaviour
 
         if (Physics2D.BoxCast(coll.bounds.center, coll.bounds.size - new Vector3(0.001f, 0, 0), 0f, Vector2.down, .1f) == true && collision.CompareTag("ground") == true)
         {
+            if(movement.grounded == false) audioManager.Play("LandAudio");
             movement.grounded = true;
+            movement.hasdoublejump = true;
+           
         }
         //  if (collision.CompareTag("ground") == true) movement.grounded = true;
         //   else movement.grounded = false;
@@ -41,6 +45,7 @@ public class Feet : MonoBehaviour
         if (Physics2D.BoxCast(coll.bounds.center, coll.bounds.size - new Vector3(0.001f, 0, 0), 0f, Vector2.down, .1f) == true && collision.CompareTag("ground") == true) 
         {
          movement.grounded = true;
+            movement.hasdoublejump = true;
         }
        // else movement.grounded = false;
 

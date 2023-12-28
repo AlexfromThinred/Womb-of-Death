@@ -61,4 +61,11 @@ public class Groundshockwave : MonoBehaviour
         Gizmos.DrawCube(left.position, new Vector3(1.3f, 0.5f, 0));
 
     }
+
+    public void SwordBiteAudio()
+    {
+        FindObjectOfType<Audiomanager>().Play("SwordBiteAudio");
+    }
+
+
 }

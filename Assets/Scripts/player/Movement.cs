@@ -21,7 +21,7 @@ public class Movement : MonoBehaviour
     public float playermovementspeedbuff = 0;
     public bool movementrestriction;
 
-
+    public Audiomanager audioManager;
     public Rigidbody2D yeet;
     public float jumpspeed;
     public float walljumpspeed;
@@ -33,10 +33,11 @@ public class Movement : MonoBehaviour
     public bool canattack;
 
     public bool isjumping;
-
+    public bool hasdoublejump;
    
     void Start()
     {
+        audioManager = FindObjectOfType<Audiomanager>();
         attackrestriction = false;
         attackrestrictionwithgravity = false;
         movementrestriction = false;
@@ -50,8 +51,19 @@ public class Movement : MonoBehaviour
         isonwall = false;
         ispropelling = false;
     }
-   
 
+    public void Update()
+    {
+        if (movementrestriction == false)
+        {
+            if (attackrestriction == false)
+            {
+                if (grounded && Input.GetKey(KeyCode.Space)) jump(); else if (!grounded && Input.GetKeyDown(KeyCode.Space) && isonwall) walljump(); else if (!grounded && Input.GetKeyDown(KeyCode.Space) && hasdoublejump) {  jump(); hasdoublejump = false; }
+
+            }
+        }
+
+    }
 
     void FixedUpdate()
     {
@@ -76,8 +88,7 @@ public class Movement : MonoBehaviour
                 if (grounded && boosted == false || isonwall) playermovementspeedbuff = 0;
                 // Jumping or Walljumping
 
-                if (grounded && Input.GetKey(KeyCode.Space)) jump(); else if (!grounded && Input.GetKey(KeyCode.Space) && isonwall && !ispropelling) walljump();
-
+                
                 // instantly stay still when on ground and not moving
                 if (!Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A) && grounded == true) { playermovementspeed = 0; }
 
@@ -191,7 +202,8 @@ public class Movement : MonoBehaviour
  
     public void jump()
     {
-        
+        audioManager.Play("Jumpaudios");
+        animator.ResetTrigger("Jump");
         animator.SetTrigger("Jump");
         isjumping = true;
         playerymov = jumpspeed;

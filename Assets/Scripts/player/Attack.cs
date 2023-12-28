@@ -11,8 +11,10 @@ public class Attack : MonoBehaviour
     public bool comboAttacks;
     public bool attackQueuedUp;
     public bool inComboAttack;
+    public bool specialReady;
     public float currentRangedCooldown;
     public float currentMeeleCooldown;
+    public float specialWeaponCooldown;
     public GameObject arrow;
     public GameObject swing;
     public Animator animator;
@@ -26,7 +28,7 @@ public class Attack : MonoBehaviour
     }
 
 
-    
+
 
     // Update is called once per frame
     void Update()
@@ -34,34 +36,37 @@ public class Attack : MonoBehaviour
         // Cooldown Management
         meleeAttackReady = (currentMeeleCooldown <= 0);
         rangedAttackReady = (currentRangedCooldown <= 0);
+        specialReady = (specialWeaponCooldown <= 0);
         currentWeapon = GetComponent<Memory>().currentWeaponData;
         if (currentRangedCooldown > 0 && currentWeapon.weaponType == WeaponData.WeaponType.Ranged)
         {
             currentRangedCooldown -= Time.deltaTime;
         }
-        if (currentMeeleCooldown > 0 && currentWeapon.weaponType == WeaponData.WeaponType.Melee) {
+        if (currentMeeleCooldown > 0 && currentWeapon.weaponType == WeaponData.WeaponType.Melee)
+        {
             currentMeeleCooldown -= Time.deltaTime;
-            if(currentWeapon.type == WeaponData.Type.Sword && movement.grounded && currentMeeleCooldown > currentWeapon.cooldown / 25)
+            if (currentWeapon.type == WeaponData.Type.Sword && movement.grounded && currentMeeleCooldown > currentWeapon.cooldown / 25)
             {
                 currentMeeleCooldown = currentWeapon.cooldown / 25;
             }
         }
-
+        if (specialWeaponCooldown > 0) specialWeaponCooldown -= Time.deltaTime;
 
         // Main LMB Input
-        if (Input.GetKeyDown(KeyCode.Mouse0) && movement.movementrestriction == false && movement.boosted == false && movement.attackrestriction == false) { 
-            switch(currentWeapon.type)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && movement.movementrestriction == false && movement.boosted == false && movement.attackrestriction == false)
+        {
+            switch (currentWeapon.type)
             {
                 case WeaponData.Type.Bow:
                     // Bow Default Attack
-                    if(!rangedAttackReady)
+                    if (!rangedAttackReady)
                     {
                         break;
                     }
-                     var projectile = Instantiate(arrow, new Vector3(gameObject.transform.localPosition.x,gameObject.transform.localPosition.y, 0), 
-                         Quaternion.Euler(0f, 0f, (Mathf.Atan2(Input.mousePosition.y - Camera.main.WorldToScreenPoint(gameObject.transform.localPosition).y, Input.mousePosition.x - Camera.main.WorldToScreenPoint(gameObject.transform.localPosition).x) * Mathf.Rad2Deg)));
+                    var projectile = Instantiate(arrow, new Vector3(gameObject.transform.localPosition.x, gameObject.transform.localPosition.y, 0),
+                        Quaternion.Euler(0f, 0f, (Mathf.Atan2(Input.mousePosition.y - Camera.main.WorldToScreenPoint(gameObject.transform.localPosition).y, Input.mousePosition.x - Camera.main.WorldToScreenPoint(gameObject.transform.localPosition).x) * Mathf.Rad2Deg)));
                     currentRangedCooldown = currentWeapon.cooldown;
-                   break;
+                    break;
                 case WeaponData.Type.Crossbow:
                     // Crossbow Attack Code
 
@@ -75,13 +80,22 @@ public class Attack : MonoBehaviour
 
                     inComboAttack = true;
                     if (Input.GetKey(KeyCode.W) && movement.grounded == true) { animator.SetTrigger("swordattackup"); }
-                    else if (Input.GetKey(KeyCode.W) && movement.grounded == false) { animator.SetTrigger("SwordgarenSpecial"); }
-                    else if (Input.GetKey(KeyCode.S) && movement.grounded == false) animator.SetTrigger("swordattackdown"); 
-                    else
+                   // else if (Input.GetKey(KeyCode.W) && movement.grounded == false) {  }
+                    else if (Input.GetKey(KeyCode.S) && movement.grounded == false)
+                    {
+                        animator.SetTrigger("swordattackdown");
+                    }
+                    else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
                     {
                         currentMeeleCooldown = currentWeapon.cooldown;
                         inComboAttack = true;
                         animator.SetTrigger("swordattack");
+                    }
+                    else
+                    {
+                        currentMeeleCooldown = currentWeapon.cooldown;
+                        inComboAttack = true;
+                        animator.SetTrigger("swordstill");
                     }
                     break;
 
@@ -96,12 +110,12 @@ public class Attack : MonoBehaviour
                         break;
                     }
                     if (Input.GetKey(KeyCode.S) && movement.grounded == false) { animator.SetTrigger("daggerdown"); currentMeeleCooldown = currentWeapon.cooldown * 1.4f; }
-                    else if (Input.GetKey(KeyCode.W)) { animator.SetTrigger("daggerup"); currentMeeleCooldown = currentWeapon.cooldown * 1.5f; } 
+                    else if (Input.GetKey(KeyCode.W)) { animator.SetTrigger("daggerup"); currentMeeleCooldown = currentWeapon.cooldown * 1.5f; }
                     else
                     {
                         animator.SetTrigger("daggerattack");
                         currentMeeleCooldown = currentWeapon.cooldown;
-                       
+
                     }
                     break;
                 case WeaponData.Type.Spear:
@@ -111,7 +125,7 @@ public class Attack : MonoBehaviour
                     {
                         break;
                     }
-                   
+
                     if (Input.GetKey(KeyCode.W)) { animator.SetTrigger("Spearup"); currentMeeleCooldown = currentWeapon.cooldown * 1.1f; }
                     else if (Input.GetKey(KeyCode.S) && movement.grounded == false) { animator.SetTrigger("Speardown"); currentMeeleCooldown = currentWeapon.cooldown * 0.8f; }
                     else
@@ -119,7 +133,7 @@ public class Attack : MonoBehaviour
                         animator.SetTrigger("Spear");
                         currentMeeleCooldown = currentWeapon.cooldown;
                     }
-                   
+
 
 
 
@@ -131,18 +145,20 @@ public class Attack : MonoBehaviour
                     {
                         break;
                     }
-                    if (Input.GetKey(KeyCode.W)) { animator.SetTrigger("Hammerup"); currentMeeleCooldown = currentWeapon.cooldown -1; }
-                    else if(Input.GetKey(KeyCode.S) ) { animator.SetTrigger("Hammerdown"); currentMeeleCooldown = currentWeapon.cooldown -1; } else
+                    if (Input.GetKey(KeyCode.W)) { animator.SetTrigger("Hammerup"); currentMeeleCooldown = currentWeapon.cooldown - 1; }
+                    else if (Input.GetKey(KeyCode.S)) { animator.SetTrigger("Hammerdown"); currentMeeleCooldown = currentWeapon.cooldown - 1; }
+                    else
                     {
                         animator.SetTrigger("Hammer"); currentMeeleCooldown = currentWeapon.cooldown; inComboAttack = true;
                     }
-                   
-                    break;
-                default: Debug.Log("none");
-                   break;
 
-                    
-          
+                    break;
+                default:
+                    Debug.Log("none");
+                    break;
+
+
+
 
 
             }
@@ -151,10 +167,23 @@ public class Attack : MonoBehaviour
 
 
 
+        if (Input.GetKeyDown(KeyCode.Mouse1) && movement.movementrestriction == false && movement.boosted == false && movement.attackrestriction == false)
+        {
+            switch (currentWeapon.type)
+            {
+                case WeaponData.Type.Hammer:
+                    if (!specialReady) break;
+                    animator.SetTrigger("earthwallhammer"); movement.attackrestriction = true; specialWeaponCooldown = currentWeapon.specialcooldown;
+                    break;
+
+                case WeaponData.Type.Sword:
+                    if (!specialReady) break;
+                    animator.SetTrigger("SwordgarenSpecial"); specialWeaponCooldown = currentWeapon.specialcooldown;
+                    break;
+            }
 
 
-
+        }
     }
-
   
 }

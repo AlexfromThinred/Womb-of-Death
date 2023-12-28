@@ -13,11 +13,13 @@ MonoBehaviour:
   m_Name: Nudelholz
   m_EditorClassIdentifier: 
   weaponName: "Fungi\xB4s Mattarello"
-  specialName: Bonk
+  specialName: Dragons Roar
   itemDescription: A rolling pin given to you for beating Mr. Fungi in a Battle
   sprite: {fileID: 21300000, guid: febde3c73f7082c4bb8e805e743a82e9, type: 3}
   projectileSprite: {fileID: 0}
   damage: 3
   cooldown: 10
+  specialcooldown: 4
+  specialdamage: 3
   type: 1
   weaponType: 2

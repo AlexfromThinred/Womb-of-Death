@@ -50,7 +50,7 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _Color: {r: 0.09433961, g: 0.09433961, b: 0.09433961, a: 1}
+    - _Color: {r: 0.33962262, g: 0.33962262, b: 0.33962262, a: 1}
     - _FogSpeed: {r: 0.04, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &6466911206212559027

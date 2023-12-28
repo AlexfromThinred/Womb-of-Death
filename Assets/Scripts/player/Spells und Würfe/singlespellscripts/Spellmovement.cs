@@ -13,6 +13,7 @@ public class Spellmovement : MonoBehaviour
     public bool isWater;
     public Animator animator;
     public bool canstillhit;
+    public bool Fireballsound;
 
     void Start()
     {
@@ -41,6 +42,7 @@ public class Spellmovement : MonoBehaviour
     {
         if (other.gameObject.GetComponent<Enemyhealth>() == null || canstillhit == false) {  return; }
         animator.SetTrigger("hit");
+      
         canstillhit = false;
         if (spell.isFire) { other.GetComponent<Enemyhealth>().dealdamage(spell.damage, true, false); }
         else if (spell.isWater) { other.GetComponent<Enemyhealth>().dealdamage(spell.damage, false, true); }
@@ -48,12 +50,22 @@ public class Spellmovement : MonoBehaviour
 
         if (other.GetComponent<Moveenemy>() != null)
          other.GetComponent<Moveenemy>().Knockbackafterattack(spell.enemyknockbackX, spell.enemyknockbackY, goestoleft);
+
+        switch (spell.spellName)
+        {
+            case "Fireball":
+                FindObjectOfType<Audiomanager>().Play("FireballHit");
+                Debug.Log("yeetdfgvearg");
+                break;
+        }
         
     }
 
   public void deleted()
     {
+       
         Destroy(gameObject);
+       
     }
 
 }

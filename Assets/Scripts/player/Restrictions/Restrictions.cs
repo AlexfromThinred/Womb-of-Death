@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class Restrictions : MonoBehaviour
 {
+    public Audiomanager audioManager;
     public Attack attack;
     public Movement movement;
     public Animator animator;
     public Memory memory;
     public float swordAttackRange;
+    public float hammerAttackRange;
+    public float daggerAttackRange;
+    public float spearAttackRange;
+    public float momentaryattackrange;
+
     public bool isupattack, isONLYupattack;
     public bool isdownattack;
     public bool isdownslashingendless;
@@ -42,9 +48,16 @@ public class Restrictions : MonoBehaviour
     public GameObject Fireslash;
     public GameObject airDrill;
     public GameObject MosterSlice;
+    public GameObject Earthwall;
 
     public void Start()
     {
+        swordAttackRange = 0.5f;
+        momentaryattackrange = 0.5f;
+        hammerAttackRange = 1.3f;
+        daggerAttackRange = 0.5f;
+        spearAttackRange = 1.1f;
+        audioManager = FindFirstObjectByType<Audiomanager>();
         movement = GetComponentInParent<Movement>();
         attack = GetComponentInParent<Attack>();
         animator = GetComponent<Animator>();
@@ -55,7 +68,15 @@ public class Restrictions : MonoBehaviour
         trippledamage = false;
     }
 
-   
+   public void ResettheStop()
+    {
+        animator.ResetTrigger("stopattack");
+        movement.attackrestriction = false;
+        movement.attackrestrictionwithgravity = false;
+        swordAttackRange = 0.5f;
+    }
+
+
     public void Update()
     {
         if (isdownslashingendless == true && movement.grounded == true)
@@ -69,6 +90,29 @@ public class Restrictions : MonoBehaviour
 
        
     }
+
+    #region Spell and Step Audio
+
+    public void FireballFocus()
+    {
+        audioManager.Play("Fireballfocus");
+    }
+
+    public void StepleftAudio()
+    {
+        audioManager.Play("Stepgrasleft");
+    }
+
+    public void SteprightAudio()
+    {
+        audioManager.Play("Stepgtasright");
+    }
+   
+       
+    
+    #endregion
+
+
 
     #region singleattacks
 
@@ -196,7 +240,7 @@ public class Restrictions : MonoBehaviour
     {
         reducedamagebyhalf = true;
         movement.yeet.velocity = new Vector2(0, 0);
-      
+        audioManager.Play("Hammeup");
         movement.attackrestriction = true;
     }
 
@@ -208,6 +252,7 @@ public class Restrictions : MonoBehaviour
         swordAttackRange = swordAttackRange + 0.6f;
         isnormalHammerattack = true;
         movement.attackrestriction = true;
+        audioManager.Play("Hammerswing");
     }
 
     public void dealdoubledamage()
@@ -228,6 +273,20 @@ public class Restrictions : MonoBehaviour
         attack.attackQueuedUp = false;
     }
 
+    public void HammerUpStrikeAudio()
+    {
+        audioManager.Play("Hammersecondswing");
+    }
+
+    public void HammerSecondStrikeaudio()
+    {
+        audioManager.Play("Hammersecondswing");
+    }
+    public void HammerSwingAudio()
+    {
+        audioManager.Play("Hammerswing");
+    }
+   
     public void Secondhammerstrike()
     {
         isnormalHammerattack = false;
@@ -245,6 +304,8 @@ public class Restrictions : MonoBehaviour
             doubledamage = true;
             attack.attackQueuedUp = false;
             isONLYupattack = true;
+            audioManager.Play("Hammerswing");
+            
         }
 
 
@@ -273,7 +334,16 @@ public class Restrictions : MonoBehaviour
     }
     public void Hammerfalling()
     {
+        animator.ResetTrigger("nexthammerup");
         downdamagecounter ++;
+        if (downdamagecounter >= 6 && downdamagecounter <= 11) animator.SetTrigger("nexthammerup");
+        movement.yeet.velocity = new Vector2(0, -14);
+    }
+    public void Hammerfallingsecond()
+    {
+        animator.ResetTrigger("nexthammerup");
+        downdamagecounter++;
+        if (downdamagecounter >=11) animator.SetTrigger("thirdhammerip");
         movement.yeet.velocity = new Vector2(0, -14);
     }
 
@@ -291,20 +361,24 @@ public class Restrictions : MonoBehaviour
 
     public void SwordspecialGarenE()
     {
+        movement.attackrestriction = true;
         movement.yeet.gravityScale = 0;
         movement.yeet.velocity = new Vector2(0, 0);
-        swordAttackRange = swordAttackRange + 0.2f;
-     
+        swordAttackRange = swordAttackRange + 0.3f;
+        audioManager.Play("SwordSwing");
+        audioManager.Play("Swordunsheath");
         movement.attackrestriction = true;
     }
 
     public void sworduupslash()
     {
+        swordAttackRange = swordAttackRange + 0.3f;
         isupattack = true;
         movement.yeet.velocity = new Vector2(0, 0);
         movement.attackrestriction = true;
         reducedamagebyhalf = true;
-
+        audioManager.Play("SwordSwing");
+        audioManager.Play("Swordunsheath");
     }
 
     public void Stopattack()
@@ -330,6 +404,7 @@ public class Restrictions : MonoBehaviour
 
     public void SwordUpslashDashAttack()
     {
+        swordAttackRange = swordAttackRange - 0.3f;
         reducedamagebyhalf = false;
         isupattack = false;
         if (movement.boosted == false)
@@ -354,14 +429,15 @@ public class Restrictions : MonoBehaviour
     public void sworduupslashmovement()
     {
         movement.yeet.gravityScale = 0;
-        movement.yeet.velocity = new Vector2(0, 10f);
+        movement.yeet.velocity = new Vector2(0, 8f);
         animator.ResetTrigger("swordattackup");
 
     }
 
     public void sworddownstart()
     {
-
+        audioManager.Play("SwordSwing");
+        audioManager.Play("Swordunsheath");
         isdownattack = true;
         reducedamagebyhalf = true;
 
@@ -375,7 +451,7 @@ public class Restrictions : MonoBehaviour
 
     public void sworddownfall()
     {
-        if (movement.yeet.velocity.y == 0) Debug.Log("sdfasfafawfawf");
+      
         movement.yeet.velocity = new Vector2(0, -15);
         isdownslashingendless = true;
         boosteddown = true;
@@ -383,24 +459,60 @@ public class Restrictions : MonoBehaviour
 
     }
 
+    public void swordFalling()
+    {
+        movement.yeet.velocity = new Vector2(0, -15);
+
+    }
+
     public void swordslashone()
     {
-        swordAttackRange = swordAttackRange + 0.2f;
+       
         reducedamagebyhalf = true;
         movement.attackrestriction = true;
         if (movement.transform.localScale.x < 1f)
             movement.yeet.velocity = new Vector2(-4f, -0.5f);
         else movement.yeet.velocity = new Vector2(4f, -0.5f);
         movement.yeet.gravityScale = 0;
-       
+        audioManager.Play("SwordSwing");
+        audioManager.Play("Swordunsheath");
     }
-
-    public void swordstop()
+    public void swordstillslash()
     {
-        movement.yeet.velocity = new Vector2(0, 0);
+        swordAttackRange = swordAttackRange + 0.3f;
+        reducedamagebyhalf = true;
+        movement.attackrestriction = true;
+       
+            movement.yeet.velocity = new Vector2(0, 1f);
+     
+        movement.yeet.gravityScale = 0;
+        audioManager.Play("SwordSwing");
+        audioManager.Play("Swordunsheath");
     }
 
-    public void swordslashtwo()
+    public void swordstillback()
+    {
+        
+        if(Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D))
+        {
+            movement.yeet.velocity = new Vector2(0, -0.5f);
+            movement.playermovementspeed = 0;
+        }
+        else if (Input.GetKey(KeyCode.A))
+        {
+            movement.yeet.velocity = new Vector2(-8f, 2f);
+            movement.playermovementspeed = -4;
+        }
+       else if (Input.GetKey(KeyCode.D)) { movement.yeet.velocity = new Vector2(8f, 2); movement.playermovementspeed = 4; }
+            
+        else movement.yeet.velocity = new Vector2(0, -0.5f);
+
+      
+
+
+    }
+
+    public void swordstillend()
     {
         reducedamagebyhalf = false;
         if (attack.attackQueuedUp == false)
@@ -408,9 +520,40 @@ public class Restrictions : MonoBehaviour
             animator.SetTrigger("stopattack");
             attack.inComboAttack = false;
             resetweaponrestriction();
-          
-            swordAttackRange = swordAttackRange - 0.2f;
 
+            swordAttackRange = swordAttackRange - 0.3f;
+
+
+        }
+        else
+        {
+           
+            audioManager.Play("SwordSwing");
+           
+
+            attack.attackQueuedUp = false;
+        }
+
+        movement.yeet.gravityScale = 0.65f;
+
+
+    }
+
+    public void swordstop()
+    {
+        movement.yeet.velocity = new Vector2(0, 0);
+        swordAttackRange = swordAttackRange + 0.3f;
+    }
+
+    public void swordslashtwo()
+    {
+        reducedamagebyhalf = false;
+        if (attack.attackQueuedUp == false)
+        {
+            swordAttackRange = swordAttackRange - 0.3f;
+            attack.inComboAttack = false;
+            resetweaponrestriction();
+            animator.SetTrigger("stopattack");
 
         }
         else
@@ -418,8 +561,7 @@ public class Restrictions : MonoBehaviour
             if (movement.transform.localScale.x < 1f)
                 movement.yeet.velocity = new Vector2(-2f, 2);
             else movement.yeet.velocity = new Vector2(2f, 2);
-
-
+            audioManager.Play("SwordSwing");
 
             attack.attackQueuedUp = false;
         }
@@ -434,18 +576,19 @@ public class Restrictions : MonoBehaviour
         animator.ResetTrigger("stopattack");
         if (attack.attackQueuedUp == false)
         {
-
-            animator.SetTrigger("stopattack");
+            swordAttackRange = swordAttackRange - 0.3f;
             attack.inComboAttack = false;
             resetweaponrestriction();
+            animator.SetTrigger("stopattack");
+           
          
-            swordAttackRange = swordAttackRange - 0.2f;
+           
 
 
         }
         else
         {
-
+            audioManager.Play("SwordSwing");
             isdownattack = true;
             movement.attackrestrictionwithgravity = true;
             movement.yeet.velocity = new Vector2(0f, -2f);
@@ -458,23 +601,25 @@ public class Restrictions : MonoBehaviour
 
     }
 
-   
+    public void swordstilldown()
+    {
+        movement.yeet.velocity = new Vector2(0, -1);
+    }
+
+
     public void changetonormal()
     {
 
-        animator.SetTrigger("stopattack");
+       
         isdownattack = false;
         reducedamagebyhalf = false;
+        
        
-        StartCoroutine(fixstuck());
+        movement.attackrestriction = false;
+        animator.SetTrigger("stopattack");
     }
 
-    public IEnumerator fixstuck()
-    {
-
-        yield return new WaitForSeconds(0.01f);
-        animator.ResetTrigger("stopattack");
-    }
+    
 
     public void downslashendsword()
     {
@@ -488,7 +633,7 @@ public class Restrictions : MonoBehaviour
     public void resetweaponrestriction()
     {
 
-        movement.yeet.gravityScale = 1f;
+        movement.yeet.gravityScale = 0.65f;
         movement.attackrestriction = false;
         movement.attackrestrictionwithgravity = false;
         attack.inComboAttack = false;
@@ -513,7 +658,7 @@ public class Restrictions : MonoBehaviour
 
     public void reduceswordattackrange()
     {
-        swordAttackRange = swordAttackRange - 0.2f;
+        swordAttackRange = swordAttackRange - 0.3f;
     }
     public void reducehammerattackrange()
     {
@@ -575,6 +720,11 @@ public class Restrictions : MonoBehaviour
         movement.attackrestriction = false;
     }
 
+    public void ResettriggersHammer()
+    {
+        animator.ResetTrigger("earthwallhammer");
+        movement.attackrestriction = false;
+    }
 
     #region Shockwaves and other instantiated things
 
@@ -639,6 +789,28 @@ public class Restrictions : MonoBehaviour
 
             }
             else { var Earthstabright = Instantiate(Earthstab, new Vector3(movement.transform.localPosition.x + 3.6f, movement.transform.localPosition.y - 0.1f, 0), Quaternion.identity); }
+        }
+
+    }
+
+
+    public void instantiateEarthwall()
+    {
+
+        if (memory.earthstabhammer == true)
+        {
+
+
+           
+
+            if (movement.transform.localScale.x < 1f)
+            {
+                var Earthstableft = Instantiate(Earthwall, new Vector3(movement.transform.localPosition.x - 2.6f, movement.transform.localPosition.y - 0.1f, 0), Quaternion.identity);
+
+            }
+            else { var Earthstabright = Instantiate(Earthwall, new Vector3(movement.transform.localPosition.x + 2.6f, movement.transform.localPosition.y - 0.1f, 0), Quaternion.identity); }
+
+            
         }
 
     }
@@ -742,10 +914,10 @@ public class Restrictions : MonoBehaviour
 
         if (boosteddown == true)
         {
-            movement.yeet.velocity = new Vector2(0, -17 - (downdamagecounter / 2)); downdamagecounter++;
+           // movement.yeet.velocity = new Vector2(0, -17 - (downdamagecounter / 2)); downdamagecounter++;
 
-            if (downdamagecounter >= 7) reducedamagebyhalf = false;
-            if (Hammerfarfalling == true && downdamagecounter >= 9) doubledamage = true;
+            if (downdamagecounter >= 6) reducedamagebyhalf = false;
+            if (Hammerfarfalling == true && downdamagecounter >= 11) doubledamage = true;
         }
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(swordHitbox.position, swordAttackRange);
         foreach (Collider2D enemy in hitEnemies)
