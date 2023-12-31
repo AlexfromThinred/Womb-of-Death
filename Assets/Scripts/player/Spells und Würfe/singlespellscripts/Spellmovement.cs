@@ -55,7 +55,7 @@ public class Spellmovement : MonoBehaviour
         {
             case "Fireball":
                 FindObjectOfType<Audiomanager>().Play("FireballHit");
-                Debug.Log("yeetdfgvearg");
+               
                 break;
         }
         

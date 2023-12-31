@@ -24,7 +24,7 @@ public class Spellobject : ScriptableObject
 
     public bool pushesYouBack;
     public float pushX, pushY;
-
+    public Sprite sprite;
 
 
 

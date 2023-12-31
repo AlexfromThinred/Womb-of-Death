@@ -7,7 +7,7 @@ public class Foggrump : MonoBehaviour
     public int ran;
     public Animator anim;
     public Moveenemy move;
-  
+    public GameObject proj;
     public float timegone;
 
     public Transform Arm;
@@ -54,6 +54,7 @@ public class Foggrump : MonoBehaviour
     [System.Obsolete]
     public void attacks()
     {
+        GetComponent<ThrowStuff>().Throwprojectile(proj);
         ran = Random.RandomRange(0, 2);
         if(ran== 0)
         {

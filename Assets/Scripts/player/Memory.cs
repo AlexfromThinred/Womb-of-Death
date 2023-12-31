@@ -14,6 +14,7 @@ public class Memory : MonoBehaviour
     public WeaponData[] activeWeapons = new WeaponData[2];
     public int activeWeapon = 0;
     public WeaponData noWeapon;
+ 
 
 
     public bool swordgroundshockwave;
@@ -38,7 +39,7 @@ public class Memory : MonoBehaviour
     // Update is called once per frame
      void Update()
      {
-      if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
             if (activeWeapon == 0 && activeWeapons[1] != null)
             {
@@ -51,7 +52,7 @@ public class Memory : MonoBehaviour
             }
             
         }
-    }
+     }
     // Stuff that happens, when weapon gets picked up
     public void weaponPickup(WeaponData newWeaponData)
     {

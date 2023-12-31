@@ -26,6 +26,7 @@ MonoBehaviour:
   pushesYouBack: 1
   pushX: 2.5
   pushY: 1
+  sprite: {fileID: 1248992871, guid: ed9ed70b050f2c84087954b2dcb342f8, type: 3}
   knocksenemysback: 1
   enemyknockbackX: 3
   enemyknockbackY: 1

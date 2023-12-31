@@ -19,6 +19,9 @@ public class Moveenemy : MonoBehaviour
     public bool followsplayer;
     public Transform playertransform;
     public Transform ownPosition;
+
+
+    public bool isProjectile;
    
     void Start()
     {
@@ -31,7 +34,19 @@ public class Moveenemy : MonoBehaviour
 
    public void Knockbackafterattack(float x, float y, bool knocktoleft)
     {
-        if(cannotBeKnockedBack == false)
+
+        if (isProjectile == true && !cannotBeKnockedBack)
+        {
+
+            if (knocktoleft == true)
+            {
+
+                body.velocity = new Vector2(-x-5, y*1.3f);
+            }
+            else body.velocity = new Vector2(x+5, y * 1.3f);
+          //  return;
+        }
+        else if (cannotBeKnockedBack == false)
         {
             if (knocktoleft == true)
             {
@@ -51,7 +66,7 @@ public class Moveenemy : MonoBehaviour
 
     }
 
-    public void gettingfotzen() { frozen = true; freeze.gameObject.SetActive(true); }
+    public void gettingfotzen() { if (!isProjectile) { frozen = true; freeze.gameObject.SetActive(true); } }
     void FixedUpdate()
     {
         if(dosentMove == false) {
@@ -80,6 +95,7 @@ public class Moveenemy : MonoBehaviour
                 body.bodyType = RigidbodyType2D.Static;
 
                 freeze.gameObject.GetComponent<Animator>().SetBool("isfrozen", true);
+                return;
             }
             else
             {

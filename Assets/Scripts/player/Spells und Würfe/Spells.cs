@@ -8,7 +8,7 @@ public class Spells : MonoBehaviour
     public Spellobject spellobject;
 
     public GameObject obj;
-
+    public Showcooldown showcooldown;
     public Animator animator;
     public float cooldown;
     public float currentcooldown;
@@ -22,7 +22,7 @@ public class Spells : MonoBehaviour
 
     void Start()
     {
-     
+        showcooldown = FindAnyObjectByType<Showcooldown>();
         cancast = true;
         getspellinfos(spellobject);
         managecooldown();
@@ -61,8 +61,8 @@ public class Spells : MonoBehaviour
     public void Usespell(Spellobject spell)
     {
         currentcooldown = cooldown;
-   
-        if(instantiateAtMouse == false)
+        showcooldown.maxCooldownSpell = cooldown;
+        if (instantiateAtMouse == false)
         animator.SetTrigger(wordforanomationtrigger);
 
         cancast = false;

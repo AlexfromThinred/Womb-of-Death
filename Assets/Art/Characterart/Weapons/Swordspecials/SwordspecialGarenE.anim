@@ -21,25 +21,25 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 1997646699, guid: 495e2100d534f7e4aac6c6fb2b99b50c, type: 3}
+      value: {fileID: 916733633, guid: 61d8ae016ea74714cad9a5ee6cd12545, type: 3}
     - time: 0.083333336
-      value: {fileID: 654794447, guid: 495e2100d534f7e4aac6c6fb2b99b50c, type: 3}
+      value: {fileID: -401304341, guid: 61d8ae016ea74714cad9a5ee6cd12545, type: 3}
     - time: 0.16666667
-      value: {fileID: 1801740227, guid: 495e2100d534f7e4aac6c6fb2b99b50c, type: 3}
+      value: {fileID: 595117849, guid: 61d8ae016ea74714cad9a5ee6cd12545, type: 3}
     - time: 0.25
-      value: {fileID: -1600241573, guid: 495e2100d534f7e4aac6c6fb2b99b50c, type: 3}
+      value: {fileID: -1170993203, guid: 61d8ae016ea74714cad9a5ee6cd12545, type: 3}
     - time: 0.33333334
-      value: {fileID: 2080494792, guid: 495e2100d534f7e4aac6c6fb2b99b50c, type: 3}
+      value: {fileID: 60068166, guid: 61d8ae016ea74714cad9a5ee6cd12545, type: 3}
     - time: 0.41666666
-      value: {fileID: -173924502, guid: 495e2100d534f7e4aac6c6fb2b99b50c, type: 3}
+      value: {fileID: -1664125267, guid: 61d8ae016ea74714cad9a5ee6cd12545, type: 3}
     - time: 0.5
-      value: {fileID: -460647488, guid: 495e2100d534f7e4aac6c6fb2b99b50c, type: 3}
+      value: {fileID: -1321244856, guid: 61d8ae016ea74714cad9a5ee6cd12545, type: 3}
     - time: 0.5833333
-      value: {fileID: 2127553992, guid: 495e2100d534f7e4aac6c6fb2b99b50c, type: 3}
+      value: {fileID: 1332121765, guid: 61d8ae016ea74714cad9a5ee6cd12545, type: 3}
     - time: 0.6666667
-      value: {fileID: 1562577604, guid: 495e2100d534f7e4aac6c6fb2b99b50c, type: 3}
+      value: {fileID: -1648310450, guid: 61d8ae016ea74714cad9a5ee6cd12545, type: 3}
     - time: 0.75
-      value: {fileID: 447421855, guid: 495e2100d534f7e4aac6c6fb2b99b50c, type: 3}
+      value: {fileID: -1372227301, guid: 61d8ae016ea74714cad9a5ee6cd12545, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -62,16 +62,16 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 1997646699, guid: 495e2100d534f7e4aac6c6fb2b99b50c, type: 3}
-    - {fileID: 654794447, guid: 495e2100d534f7e4aac6c6fb2b99b50c, type: 3}
-    - {fileID: 1801740227, guid: 495e2100d534f7e4aac6c6fb2b99b50c, type: 3}
-    - {fileID: -1600241573, guid: 495e2100d534f7e4aac6c6fb2b99b50c, type: 3}
-    - {fileID: 2080494792, guid: 495e2100d534f7e4aac6c6fb2b99b50c, type: 3}
-    - {fileID: -173924502, guid: 495e2100d534f7e4aac6c6fb2b99b50c, type: 3}
-    - {fileID: -460647488, guid: 495e2100d534f7e4aac6c6fb2b99b50c, type: 3}
-    - {fileID: 2127553992, guid: 495e2100d534f7e4aac6c6fb2b99b50c, type: 3}
-    - {fileID: 1562577604, guid: 495e2100d534f7e4aac6c6fb2b99b50c, type: 3}
-    - {fileID: 447421855, guid: 495e2100d534f7e4aac6c6fb2b99b50c, type: 3}
+    - {fileID: 916733633, guid: 61d8ae016ea74714cad9a5ee6cd12545, type: 3}
+    - {fileID: -401304341, guid: 61d8ae016ea74714cad9a5ee6cd12545, type: 3}
+    - {fileID: 595117849, guid: 61d8ae016ea74714cad9a5ee6cd12545, type: 3}
+    - {fileID: -1170993203, guid: 61d8ae016ea74714cad9a5ee6cd12545, type: 3}
+    - {fileID: 60068166, guid: 61d8ae016ea74714cad9a5ee6cd12545, type: 3}
+    - {fileID: -1664125267, guid: 61d8ae016ea74714cad9a5ee6cd12545, type: 3}
+    - {fileID: -1321244856, guid: 61d8ae016ea74714cad9a5ee6cd12545, type: 3}
+    - {fileID: 1332121765, guid: 61d8ae016ea74714cad9a5ee6cd12545, type: 3}
+    - {fileID: -1648310450, guid: 61d8ae016ea74714cad9a5ee6cd12545, type: 3}
+    - {fileID: -1372227301, guid: 61d8ae016ea74714cad9a5ee6cd12545, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -127,13 +127,6 @@ AnimationClip:
     messageOptions: 0
   - time: 0.5833333
     functionName: Damageenemies
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.6666667
-    functionName: reduceswordattackrange
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

@@ -17,7 +17,10 @@ MonoBehaviour:
   itemDescription: New Description
   sprite: {fileID: 21300000, guid: 0dee462124cec3743b3eea91bad6f3c3, type: 3}
   projectileSprite: {fileID: 21300000, guid: f095653fadb71654bab19ea2d23bc84e, type: 3}
+  specialSprite: {fileID: 21300000, guid: 0dee462124cec3743b3eea91bad6f3c3, type: 3}
   damage: 1
   cooldown: 2
+  specialcooldown: 10
+  specialdamage: 1
   type: 4
   weaponType: 2

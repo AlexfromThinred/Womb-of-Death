@@ -11,10 +11,11 @@ public class WeaponData : ScriptableObject
     public string itemDescription = "New Description";
     public Sprite sprite;
     public Sprite projectileSprite;
+    public Sprite specialSprite;
     public int damage = 0;
     public float cooldown = 1;
-    public float specialcooldown;
-    public float specialdamage;
+    public float specialcooldown = 10;
+    public float specialdamage = 1;
     public enum Type { Default, Sword, Daggers, Hammer, Spear, Bow, Crossbow, Staff, Wand}
     public enum WeaponType { Default, Ranged, Melee }
     public Type type = Type.Default;

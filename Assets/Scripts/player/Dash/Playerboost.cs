@@ -11,10 +11,11 @@ public class Playerboost : MonoBehaviour
     public bool candashup;
     public bool dashqueuedup;
     public float lastImageXPos, distanceBetweenImages;
+    Playerhealth health;
 
     public void Awake()
     {
-     
+        health = GetComponentInChildren<Playerhealth>();
         movement = GetComponent<Movement>();
         ready = true;
         dashqueuedup = false;
@@ -27,7 +28,11 @@ public class Playerboost : MonoBehaviour
 
     void Update()
     {
-        if (movement.boosted == true) checkafterimages();
+        if (movement.boosted == true)
+        {
+            checkafterimages();
+          
+        }
         if (movement.movementrestriction == false && ready && dashqueuedup)
         {
             movement.playermovementspeedbuff = 6f; 
@@ -42,6 +47,7 @@ public class Playerboost : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftShift) && ready && movement.movementrestriction == false) {  movement.playermovementspeedbuff = 6f; StartCoroutine(boosttime()); 
             movement.boosted = true;
             ready = false;
+            health.isinvincible = true;
         }
 
 
@@ -66,15 +72,15 @@ public class Playerboost : MonoBehaviour
 
     }
         IEnumerator boosttime()
-    {
+        {
 
         yield return new WaitForSeconds(0.3f);
-       
+        health.isinvincible = false;
         movement.boosted = false;
         movement.playermovementspeedbuff = 0f;
         StartCoroutine(dashcooldown());
 
-    }
+        }
 
     IEnumerator dashcooldown()
     {

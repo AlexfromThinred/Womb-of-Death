@@ -9,11 +9,8 @@ public class Restrictions : MonoBehaviour
     public Movement movement;
     public Animator animator;
     public Memory memory;
-    public float swordAttackRange;
-    public float hammerAttackRange;
-    public float daggerAttackRange;
-    public float spearAttackRange;
-    public float momentaryattackrange;
+    public float currentAttackRange;
+    
 
     public bool isupattack, isONLYupattack;
     public bool isdownattack;
@@ -52,11 +49,7 @@ public class Restrictions : MonoBehaviour
 
     public void Start()
     {
-        swordAttackRange = 0.5f;
-        momentaryattackrange = 0.5f;
-        hammerAttackRange = 1.3f;
-        daggerAttackRange = 0.5f;
-        spearAttackRange = 1.1f;
+       
         audioManager = FindFirstObjectByType<Audiomanager>();
         movement = GetComponentInParent<Movement>();
         attack = GetComponentInParent<Attack>();
@@ -73,7 +66,7 @@ public class Restrictions : MonoBehaviour
         animator.ResetTrigger("stopattack");
         movement.attackrestriction = false;
         movement.attackrestrictionwithgravity = false;
-        swordAttackRange = 0.5f;
+        currentAttackRange = 0.5f;
     }
 
 
@@ -216,7 +209,7 @@ public class Restrictions : MonoBehaviour
 
         isONLYupattack = true;
      //   movement.attackrestriction = true;
-        swordAttackRange = swordAttackRange + 0.3f;
+        
 
      
     }
@@ -230,7 +223,7 @@ public class Restrictions : MonoBehaviour
 
         isONLYupattack = false;
 
-        swordAttackRange = swordAttackRange - 0.3f;
+        
 
       //  movement.attackrestriction = false;
     }
@@ -249,7 +242,7 @@ public class Restrictions : MonoBehaviour
      
         attack.inComboAttack = true;
         movement.yeet.velocity = new Vector2(0, 0);
-        swordAttackRange = swordAttackRange + 0.6f;
+       
         isnormalHammerattack = true;
         movement.attackrestriction = true;
         audioManager.Play("Hammerswing");
@@ -267,7 +260,7 @@ public class Restrictions : MonoBehaviour
         doubledamage = false;
         attack.inComboAttack = false;
         movement.attackrestriction = false;
-        swordAttackRange = swordAttackRange - 0.6f;
+       
         animator.SetTrigger("stopattack");
         isONLYupattack = false;
         attack.attackQueuedUp = false;
@@ -296,7 +289,7 @@ public class Restrictions : MonoBehaviour
             attack.inComboAttack = false;
             movement.attackrestriction = false;
             isONLYupattack = false;
-            swordAttackRange = swordAttackRange - 0.6f;
+           
 
 
         } else
@@ -325,7 +318,7 @@ public class Restrictions : MonoBehaviour
 
     public void Hammerupdown()
     {
-        swordAttackRange = swordAttackRange + 1f;
+       
         movement.yeet.velocity = new Vector2(0, -14);
         isdownslashingendless = true;
         boosteddown = true;
@@ -364,7 +357,7 @@ public class Restrictions : MonoBehaviour
         movement.attackrestriction = true;
         movement.yeet.gravityScale = 0;
         movement.yeet.velocity = new Vector2(0, 0);
-        swordAttackRange = swordAttackRange + 0.3f;
+      
         audioManager.Play("SwordSwing");
         audioManager.Play("Swordunsheath");
         movement.attackrestriction = true;
@@ -372,7 +365,7 @@ public class Restrictions : MonoBehaviour
 
     public void sworduupslash()
     {
-        swordAttackRange = swordAttackRange + 0.3f;
+       
         isupattack = true;
         movement.yeet.velocity = new Vector2(0, 0);
         movement.attackrestriction = true;
@@ -404,7 +397,7 @@ public class Restrictions : MonoBehaviour
 
     public void SwordUpslashDashAttack()
     {
-        swordAttackRange = swordAttackRange - 0.3f;
+      
         reducedamagebyhalf = false;
         isupattack = false;
         if (movement.boosted == false)
@@ -479,7 +472,7 @@ public class Restrictions : MonoBehaviour
     }
     public void swordstillslash()
     {
-        swordAttackRange = swordAttackRange + 0.3f;
+     
         reducedamagebyhalf = true;
         movement.attackrestriction = true;
        
@@ -521,7 +514,7 @@ public class Restrictions : MonoBehaviour
             attack.inComboAttack = false;
             resetweaponrestriction();
 
-            swordAttackRange = swordAttackRange - 0.3f;
+        
 
 
         }
@@ -542,7 +535,7 @@ public class Restrictions : MonoBehaviour
     public void swordstop()
     {
         movement.yeet.velocity = new Vector2(0, 0);
-        swordAttackRange = swordAttackRange + 0.3f;
+       
     }
 
     public void swordslashtwo()
@@ -550,7 +543,7 @@ public class Restrictions : MonoBehaviour
         reducedamagebyhalf = false;
         if (attack.attackQueuedUp == false)
         {
-            swordAttackRange = swordAttackRange - 0.3f;
+          
             attack.inComboAttack = false;
             resetweaponrestriction();
             animator.SetTrigger("stopattack");
@@ -576,7 +569,7 @@ public class Restrictions : MonoBehaviour
         animator.ResetTrigger("stopattack");
         if (attack.attackQueuedUp == false)
         {
-            swordAttackRange = swordAttackRange - 0.3f;
+          
             attack.inComboAttack = false;
             resetweaponrestriction();
             animator.SetTrigger("stopattack");
@@ -593,7 +586,7 @@ public class Restrictions : MonoBehaviour
             movement.attackrestrictionwithgravity = true;
             movement.yeet.velocity = new Vector2(0f, -2f);
             attack.attackQueuedUp = false;
-            attack.currentMeeleCooldown = attack.currentWeapon.cooldown;
+           // attack.currentMeeleCooldown = attack.currentWeapon.cooldown;
         }
 
 
@@ -656,13 +649,10 @@ public class Restrictions : MonoBehaviour
         reducedamagebyhalf = false;
     }
 
-    public void reduceswordattackrange()
-    {
-        swordAttackRange = swordAttackRange - 0.3f;
-    }
+ 
     public void reducehammerattackrange()
     {
-        swordAttackRange = swordAttackRange - 1f;
+       
         reducedamagebyhalf = false;
     }
 
@@ -919,7 +909,7 @@ public class Restrictions : MonoBehaviour
             if (downdamagecounter >= 6) reducedamagebyhalf = false;
             if (Hammerfarfalling == true && downdamagecounter >= 11) doubledamage = true;
         }
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(swordHitbox.position, swordAttackRange);
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(swordHitbox.position, currentAttackRange);
         foreach (Collider2D enemy in hitEnemies)
         {
             if (enemy.GetComponent<Enemyhealth>() != null)
@@ -995,7 +985,7 @@ public class Restrictions : MonoBehaviour
                         else if (bigknockback == false && isfirstSpearattack == false && GetComponentInParent<Movement>().boosted == true)
                         {
                             enemy.GetComponent<Moveenemy>().Knockbackafterattack(5, 5f, left);
-                            attack.currentMeeleCooldown = 0.3f;
+                           // attack.currentMeeleCooldown = 0.3f;
                         }
                         else if (bigknockback == true && GetComponentInParent<Movement>().boosted == true) enemy.GetComponent<Moveenemy>().Knockbackafterattack(8, 1f, left);
                         else if (bigknockback == true) enemy.GetComponent<Moveenemy>().Knockbackafterattack(3, 1f, left);
@@ -1018,7 +1008,7 @@ public class Restrictions : MonoBehaviour
     {
 
         
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(downslashhitbox.position, swordAttackRange);
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(downslashhitbox.position, currentAttackRange);
         foreach (Collider2D enemy in hitEnemies)
         {
             if (enemy.GetComponent<Enemyhealth>() != null)
@@ -1105,7 +1095,7 @@ public class Restrictions : MonoBehaviour
     {
 
         
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(upslashhitbox.position, swordAttackRange * 1.3f );
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(upslashhitbox.position, currentAttackRange * 1.3f );
         foreach (Collider2D enemy in hitEnemies)
         {
             if (enemy.GetComponent<Enemyhealth>() != null)
@@ -1149,7 +1139,7 @@ public class Restrictions : MonoBehaviour
     {
 
 
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(upslashhitbox.position, swordAttackRange * 1.3f);
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(upslashhitbox.position, currentAttackRange * 1.3f);
         foreach (Collider2D enemy in hitEnemies)
         {
             if (enemy.GetComponent<Enemyhealth>() != null)
@@ -1224,7 +1214,7 @@ public class Restrictions : MonoBehaviour
     {
 
 
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(backslashhitbox.position, swordAttackRange );
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(backslashhitbox.position, currentAttackRange);
         foreach (Collider2D enemy in hitEnemies)
         {
             if (enemy.GetComponent<Enemyhealth>() != null)
@@ -1269,10 +1259,10 @@ public class Restrictions : MonoBehaviour
     {
 
         Gizmos.matrix = this.transform.localToWorldMatrix;
-        Gizmos.DrawWireSphere(swordHitbox.position, swordAttackRange);
-        Gizmos.DrawWireSphere(backslashhitbox.position, swordAttackRange);
-        Gizmos.DrawWireSphere(upslashhitbox.position, swordAttackRange * 1.3f);
-        Gizmos.DrawWireSphere(downslashhitbox.position, swordAttackRange);
+        Gizmos.DrawWireSphere(swordHitbox.position, currentAttackRange);
+        Gizmos.DrawWireSphere(backslashhitbox.position, currentAttackRange);
+        Gizmos.DrawWireSphere(upslashhitbox.position, currentAttackRange * 1.3f);
+        Gizmos.DrawWireSphere(downslashhitbox.position, currentAttackRange);
         Gizmos.DrawWireCube(spearHitBox.position, new Vector3( 2.15f, 1.2f,0));
         Gizmos.DrawWireCube(Downspear.position, new Vector3(1.1f, 2f, 0));
         //  Gizmos.DrawWireCube(spearupHitBox.position, new Vector3(1, 2.5f,0), -30);          ------>>>>>> dosent work right now with rotation

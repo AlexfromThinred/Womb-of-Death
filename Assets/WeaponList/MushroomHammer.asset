@@ -17,6 +17,7 @@ MonoBehaviour:
   itemDescription: Hammer with Msuhrooms
   sprite: {fileID: 21300000, guid: 24b1fc22f8bbdd842aee16abff141bff, type: 3}
   projectileSprite: {fileID: 21300000, guid: f095653fadb71654bab19ea2d23bc84e, type: 3}
+  specialSprite: {fileID: 21300000, guid: 24b1fc22f8bbdd842aee16abff141bff, type: 3}
   damage: 3
   cooldown: 2.4
   specialcooldown: 6

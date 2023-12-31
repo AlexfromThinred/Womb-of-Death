@@ -17,7 +17,7 @@ public class Noticingplayer : MonoBehaviour
         {
             move.noticedPlayer = true;
             grump.anim.SetBool("Notice", true);
-            Debug.Log("dfdf");
+          
 
         }
     }

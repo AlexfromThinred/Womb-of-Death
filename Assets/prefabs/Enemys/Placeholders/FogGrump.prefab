@@ -200,6 +200,7 @@ GameObject:
   - component: {fileID: 3957182536269032336}
   - component: {fileID: 720061908777245698}
   - component: {fileID: 8869074231468184249}
+  - component: {fileID: 4111084153296276632}
   m_Layer: 0
   m_Name: FogGrump
   m_TagString: Untagged
@@ -240,13 +241,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fe52468f790fd14aaac139947563372, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 6
+  health: 40
   damagenumberAppearTransform: {fileID: 6824142068880878004}
   obj: {fileID: 2653685686588842468, guid: 17e7d9d1f0e320146a2183328fa4e34a, type: 3}
+  HitVFX: []
   GivesXpOnDeath: 1
   XpAmount: 4
   canonlybedamagedbyFire: 0
   canonlybedamagedbyWater: 0
+  projectile: {fileID: 0}
+  isprojectile: 0
 --- !u!212 &4043665539709064178
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -355,6 +359,7 @@ MonoBehaviour:
   followsplayer: 0
   playertransform: {fileID: 0}
   ownPosition: {fileID: 0}
+  isProjectile: 0
 --- !u!61 &2991914409680562234
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -450,9 +455,22 @@ MonoBehaviour:
   ran: 0
   anim: {fileID: 720061908777245698}
   move: {fileID: 1904444748231931284}
+  proj: {fileID: 0}
   timegone: 0
   Arm: {fileID: 4448980520414129887}
   tongue: {fileID: 2200130735277426179}
+--- !u!114 &4111084153296276632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3396619871895445688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46979e898773f7e4ea5a13d1717efe89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3515115287082356615
 GameObject:
   m_ObjectHideFlags: 0
@@ -576,6 +594,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 2
   isHazard: 0
+  alsoattacksenemys: 0
 --- !u!1 &9102663753319000467
 GameObject:
   m_ObjectHideFlags: 0
